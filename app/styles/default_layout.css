@@ -13,12 +13,14 @@
   padding-top:50px;
 }
 
-.signup {
+.top-btn {
   position:absolute;
   top:0;
   right:0;
   display:block;
   padding:80px 30px 10px 30px;
+  width:50px;
+  text-align:center;
   background-color:#EFEFEF;
 }
 

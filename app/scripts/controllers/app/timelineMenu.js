@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppTimelineMenuCtrl', function ($scope, $stateParams) {
-    $scope.$stateParams = $stateParams;
+  .controller('AppTimelineMenuCtrl', function ($scope, $state) {
+    $scope.$state = $state;
     $scope.communities = [
     {
       "id":1,

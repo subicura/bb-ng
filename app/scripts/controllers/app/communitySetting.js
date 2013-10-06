@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppCommunitySettingCtrl', function ($scope, $routeParams) {
-    $scope.community_id = $routeParams.community_id;
+  .controller('AppCommunitySettingCtrl', function ($scope, $state) {
+    $scope.$state = $state;
   });
