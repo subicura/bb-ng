@@ -1,6 +1,7 @@
 // Generated on 2013-10-05 using generator-angular 0.4.0
 'use strict';
 var LIVERELOAD_PORT = 35729;
+var modRewrite = require('connect-modrewrite');
 var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
@@ -74,6 +75,9 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
+              modRewrite([
+                '!\\.html|\\.js|\\.css|\\.png$ /index.html [L]'
+              ]),
               lrSnippet,
               mountFolder(connect, '.tmp'),
               mountFolder(connect, yeomanConfig.app)
