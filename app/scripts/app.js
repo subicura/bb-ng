@@ -44,7 +44,7 @@ angular.module('bbNgApp', ['ngResource', 'ui.router'])
         })
           .state('app.my.timeline', {
               url: '/timeline',
-              templateUrl: '/views/app/timelineDetail.html',
+              templateUrl: '/views/app/timeline/detail.html',
               controller: 'AppTimelineDetailCtrl'
             })
         .state('app.community', {
@@ -55,32 +55,32 @@ angular.module('bbNgApp', ['ngResource', 'ui.router'])
         })
           .state('app.community.item', {
             url: '/:community_id/items',
-            templateUrl: '/views/app/timelineItems.html',
+            templateUrl: '/views/app/timeline/items.html',
             controller: 'AppTimelineItemCtrl'
           })
           .state('app.community.report', {
             url: '/:community_id/report',
-            templateUrl: '/views/app/timelineReport.html',
+            templateUrl: '/views/app/timeline/report.html',
             controller: 'AppTimelineReportCtrl'
           })
           .state('app.community.calendar', {
             url: '/:community_id/calendar',
-            templateUrl: '/views/app/timelineCalendar.html',
+            templateUrl: '/views/app/timeline/calendar.html',
             controller: 'AppTimelineCalendarCtrl'
           })
           .state('app.community.member', {
             url: '/:community_id/members',
-            templateUrl: '/views/app/communityMember.html',
-            controller: 'AppCommunityMemberCtrl'
+            templateUrl: '/views/app/timeline/member.html',
+            controller: 'AppTimelineMemberCtrl'
           })
           .state('app.community.setting', {
             url: '/:community_id/setting',
-            templateUrl: '/views/app/communitySetting.html',
-            controller: 'AppCommunitySettingCtrl'
+            templateUrl: '/views/app/timeline/setting.html',
+            controller: 'AppTimelineSettingCtrl'
           })
           .state('app.community.timeline', {
             url: '/:community_id',
-            templateUrl: '/views/app/timelineDetail.html',
+            templateUrl: '/views/app/timeline/detail.html',
             controller: 'AppTimelineDetailCtrl'
           })
         .state('app.notification', {
