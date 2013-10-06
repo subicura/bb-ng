@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bbNgApp', [])
+angular.module('bbNgApp', ['ngResource'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -10,4 +10,6 @@ angular.module('bbNgApp', [])
       .otherwise({
         redirectTo: '/'
       });
+      
+    $locationProvider.html5Mode(true).hashPrefix('!');
   });
