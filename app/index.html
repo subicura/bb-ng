@@ -51,7 +51,7 @@
     <link rel="stylesheet" type="text/css" class="ui" href="/bower_components/semantic-ui/build/minified/modules/transition.min.css">
 
         <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="/styles/main.css">
+        <link rel="stylesheet" href="/styles/base.css">
         <!-- endbuild -->
 
     <!--[if lt IE 9]>
@@ -82,31 +82,20 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="/scripts/app.js"></script>
+
+        <script src="/scripts/controllers/default.js"></script>
         <script src="/scripts/controllers/main.js"></script>
         <script src="/scripts/controllers/welcome.js"></script>
         <script src="/scripts/controllers/join.js"></script>
-        <script src="scripts/controllers/app/timeline.js"></script>
+        <script src="/scripts/controllers/global.js"></script>
+
+        <script src="/scripts/controllers/app.js"></script>
+        <script src="/scripts/controllers/app/timeline.js"></script>
+
+        <script src="/scripts/directives/ppLayout.js"></script>
         <!-- endbuild -->
 
 </head>
-  <body ng-app="bbNgApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <div class="top">
-      <a href="/">
-        BudgetBook
-      </a>
-      <a href="/join">
-        회원가입
-      </a>
-      <a href="/app">
-        앱
-      </a>
-    </div>
-
-    <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+<body ng-app="bbNgApp" ng-controller="GlobalCtrl" pp-layout>
 </body>
 </html>
