@@ -16,4 +16,8 @@ describe('Controller: WelcomeCtrl', function () {
     });
   }));
 
+  it('facebook 로그인 함수가 있어야함', function () {
+    expect(scope.loginWithFacebook).toBeDefined();
+  });
+
 });
