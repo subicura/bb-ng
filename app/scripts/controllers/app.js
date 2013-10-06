@@ -9,11 +9,13 @@
  'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppCtrl', function ($scope, $location, $state) {
+  .controller('AppCtrl', function ($scope, $location, $state, UserService, LoginInfo) {
     $scope.$state = $state;
     $scope.$location = $location;
+    $scope.userInfo = LoginInfo.userInfo;
 
     $scope.logout = function() {
+    	UserService.logout();
       $location.path("/");
     }
   });
