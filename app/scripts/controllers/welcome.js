@@ -11,14 +11,14 @@
 angular.module('bbNgApp')
   .controller('WelcomeCtrl', function ($scope, $state) {
     $scope.loginWithFacebook = function() {
-      $state.go('my.timeline');
+      $state.go('app.my.timeline');
     }
 
     $scope.loginWithTwitter = function() {
-      $state.go('my.timeline');
+      $state.go('app.my.timeline');
     }
 
     $scope.loginWithEmail = function() {
-      $state.go('my.timeline');
+      $state.go('app.my.timeline');
     }
   });
