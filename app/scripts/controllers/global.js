@@ -10,5 +10,4 @@
 
 angular.module('bbNgApp')
   .controller('GlobalCtrl', function ($scope) {
-    
   });
