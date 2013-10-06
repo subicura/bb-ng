@@ -1,10 +1,8 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppTimelineCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('AppTimelineCtrl', function ($scope, $location, $routeParams) {
+    $scope.$location = $location;
+    
+    $scope.community_id = $routeParams.community_id;
   });
