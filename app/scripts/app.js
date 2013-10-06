@@ -31,6 +31,21 @@ angular.module('bbNgApp', ['ngResource', 'ui.router'])
         controller: 'AppTimelineCtrl',
         abstract: true
       })
+        .state('community.item', {
+          url: '/:community_id/items',
+          templateUrl: '/views/app/timelineItems.html',
+          controller: 'AppTimelineItemCtrl'
+        })
+        .state('community.report', {
+          url: '/:community_id/setting',
+          templateUrl: '/views/app/timelineReport.html',
+          controller: 'AppTimelineReportCtrl'
+        })
+        .state('community.calendar', {
+          url: '/:community_id/setting',
+          templateUrl: '/views/app/timelineCalendar.html',
+          controller: 'AppTimelineCalendarCtrl'
+        })
         .state('community.member', {
           url: '/:community_id/members',
           templateUrl: '/views/app/communityMember.html',

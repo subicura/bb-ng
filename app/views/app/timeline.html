@@ -17,14 +17,23 @@
 </div>
 
 <div class="main-content">
-  <div class="ui right floated icon buttons" ng-show="$state.includes('community')">
-    <a class="ui button" ng-class="{active:$state.is('community.member')}" ui-sref="community.member({community_id:$state.params.community_id})">
-      <i class="users icon"></i>
-    </a>
-    <a class="ui button" ng-class="{active:$state.is('community.setting')}" ui-sref="community.setting({community_id:$state.params.community_id})">
-      <i class="setting icon"></i>
-    </a>
+  <div class="timeline-top-menu" ng-show="$state.includes('community')">
+    <div class="ui mini black buttons">
+      <a class="ui button" ng-class="{active:$state.is('community.timeline')}" ui-sref="community.timeline({community_id:$state.params.community_id})">TIMELINE</a>
+      <a class="ui button" ng-class="{active:$state.is('community.item')}" ui-sref="community.item({community_id:$state.params.community_id})">ITEMS</a>
+      <a class="ui button" ng-class="{active:$state.is('community.report')}" ui-sref="community.report({community_id:$state.params.community_id})">REPORT</a>
+      <a class="ui button" ng-class="{active:$state.is('community.calendar')}" ui-sref="community.calendar({community_id:$state.params.community_id})">CALENDAR</a>
+    </div>
+
+    <div class="ui right floated icon mini black buttons">
+      <a class="ui button" ng-class="{active:$state.is('community.member')}" ui-sref="community.member({community_id:$state.params.community_id})">
+        <i class="users icon"></i>
+      </a>
+      <a class="ui button" ng-class="{active:$state.is('community.setting')}" ui-sref="community.setting({community_id:$state.params.community_id})">
+        <i class="setting icon"></i>
+      </a>
+    </div>
   </div>
 
-  <ui-view></ui-view>
+  <ui-view class="timeline-detail"></ui-view>
 </div>
