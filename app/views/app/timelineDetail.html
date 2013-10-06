@@ -1,2 +1,71 @@
-<p>This is the app/timeline view.</p>
-<p>community id - {{ $state.params.community_id }} </p>
+<div class="top-money-info ui connected items">
+  <div class="three ui row">
+    <div class="item">
+      <div class="content">
+        <div class="name">
+          <i class="cloud download icon"></i>
+          수입
+        </div>
+        <div class="number">
+          <i class="korean won icon"></i> 1,000,000
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="content">
+        <div class="name">
+          <i class="cloud upload icon"></i>
+          지출
+        </div>
+        <div class="number">
+          <i class="korean won icon"></i> 1,000,000
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="content">
+        <div class="name">
+          <i class="money icon"></i>
+          잔액
+        </div>
+        <div class="number">
+          <i class="korean won icon"></i> 1,000,000
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui positive button">
+  <i class="cloud download icon"></i>
+  수입입력
+</div>
+<div class="ui negative button">
+  <i class="cloud upload icon"></i>
+  지출입력
+</div>
+
+<form class="timeline-form ui form segment">
+  <p>수입/지출내역을 입력해주세요.</p>
+  <div class="three fields">
+    <div class="field">
+      <label>Type</label>
+      <input ng-model="form.item_type" placeholder="예) 식비/여가비" type="text">
+    </div>
+    <div class="field">
+      <label>Name</label>
+      <input ng-model="form.name" placeholder="예) 떡볶이" type="text">
+    </div>
+    <div class="field">
+      <label>Price</label>
+      <input ng-model="form.price" placeholder="금액입력" type="text">
+    </div>
+  </div>
+  <div class="field">
+    <label>Memo</label>
+    <input ng-model="form.memo" placeholder="메모입력" type="text">
+  </div>
+  <div class="ui blue submit button" ng-click="formSubmit()">Submit</div>
+  <div class="ui submit button" ng-click="formCancel()">Cancel</div>
+</form>
+
