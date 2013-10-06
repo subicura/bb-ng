@@ -9,14 +9,13 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('WelcomeCtrl', function ($scope, $location, $state, UserService) {
-    $scope.$location = $location;
+  .controller('WelcomeCtrl', function ($scope, $state, UserService) {       
     $scope.username = 'tester1@bbapi.com';
     $scope.password = '12341234';
 
     $scope.loginWithFacebook = function() {
       UserService.login(this.username, this.password, function(data, status){
-        $state.go('my.timeline');
+        $state.go('app.my.timeline');
       }, function(data, status){      
         alert(data['message']);
       });
@@ -24,7 +23,7 @@ angular.module('bbNgApp')
 
     $scope.loginWithTwitter = function() {
       UserService.login(this.username, this.password, function(data, status){
-        $state.go('my.timeline');
+        $state.go('app.my.timeline');
       }, function(data, status){      
         alert(data['message']);
       });
@@ -32,7 +31,7 @@ angular.module('bbNgApp')
 
     $scope.loginWithEmail = function() {
       UserService.login(this.username, this.password, function(data, status){
-        $state.go('my.timeline');
+        $state.go('app.my.timeline');
       }, function(data, status){      
         alert(data['message']);
       });

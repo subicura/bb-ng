@@ -9,7 +9,5 @@
  'use strict';
 
 angular.module('bbNgApp')
-  .controller('DefaultCtrl', function ($scope, $location, $state) {
-    $scope.$state = $state;
-    $scope.$location = $location;
+  .controller('DefaultCtrl', function ($scope) {
   });

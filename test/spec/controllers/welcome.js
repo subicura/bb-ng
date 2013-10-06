@@ -16,7 +16,8 @@ describe('Controller: WelcomeCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('facebook 로그인 함수가 있어야함', function () {
+    expect(scope.loginWithFacebook).toBeDefined();
   });
+
 });
