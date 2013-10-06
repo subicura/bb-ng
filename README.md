@@ -10,3 +10,5 @@ BudgetBook-Angularjs
     npm install
     bower install
     grunt server
+
+* Coding Note : https://docs.google.com/document/d/1B0eesqGERt39OwywQJbVSeaNQsfJa5PR0qIc1EsRbxQ/edit?usp=sharing
