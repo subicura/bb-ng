@@ -9,16 +9,31 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('WelcomeCtrl', function ($scope, $state) {
+  .controller('WelcomeCtrl', function ($scope, $state, UserService) {       
+    $scope.username = 'tester1@bbapi.com';
+    $scope.password = '12341234';
+
     $scope.loginWithFacebook = function() {
-      $state.go('app.my.timeline');
+      UserService.login(this.username, this.password, function(data, status){
+        $state.go('app.my.timeline');
+      }, function(data, status){      
+        alert(data['message']);
+      });
     }
 
     $scope.loginWithTwitter = function() {
-      $state.go('app.my.timeline');
+      UserService.login(this.username, this.password, function(data, status){
+        $state.go('app.my.timeline');
+      }, function(data, status){      
+        alert(data['message']);
+      });
     }
 
     $scope.loginWithEmail = function() {
-      $state.go('app.my.timeline');
+      UserService.login(this.username, this.password, function(data, status){
+        $state.go('app.my.timeline');
+      }, function(data, status){      
+        alert(data['message']);
+      });
     }
   });
