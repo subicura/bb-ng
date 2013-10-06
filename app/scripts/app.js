@@ -7,6 +7,10 @@ angular.module('bbNgApp', ['ngResource'])
         templateUrl: 'views/welcome.html',
         controller: 'WelcomeCtrl'
       })
+      .when('/join', {
+        templateUrl: 'views/join.html',
+        controller: 'JoinCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
