@@ -4,13 +4,13 @@
 
 <div class="ui fixed transparent inverted main menu">
   <div class="container">
-    <a class="launch item" href="/app"><i class="rocket icon"></i> BudgetBook</a>
+    <a class="launch item" ui-sref="my.timeline"><i class="rocket icon"></i> BudgetBook</a>
 
     <div class="right menu">
-      <a ng-class="{active:$location.path() == '/app/notifications'}" class="popup developer icon item" href="/app/notifications">
+      <a ng-class="{active:$state.is('notification')}" class="popup developer icon item" ui-sref="notification">
         <i class="bell outline icon"></i>
       </a>
-      <a ng-class="{active:$location.path() == '/app/setting'}" class="popup developer icon item" href="/app/setting">
+      <a ng-class="{active:$state.is('setting')}" class="popup developer icon item" ui-sref="setting">
         <i class="setting icon"></i>
       </a>
       <a class="popup icon github item" ng-click="logout()">

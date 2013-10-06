@@ -4,10 +4,10 @@
 
 <!-- Add your site or application content here -->
 <div class="wrapper">
-  <a class="signup" href="/join" ng-show="$location.path() != '/join'">
+  <a class="signup" ui-sref="join" ng-show="!$state.is('join')">
     Join
   </a>
-  <a class="signup" href="/" ng-show="$location.path() != '/'">
+  <a class="signup" ui-sref="welcome" ng-show="$state.is('join')">
     Login
   </a>
 

@@ -18,11 +18,11 @@
 
 <div class="main-content">
   {{ $stateParams }}
-  <div class="ui right floated icon buttons" ng-show="$stateParams.community_id">
-    <a class="ui button" ng-href="/app/communities/{{ $stateParams.community_id }}/members">
+  <div class="ui right floated icon buttons" ng-show="$state.includes('community')">
+    <a class="ui button" ng-class="{active:$state.is('community.member')}" ui-sref="community.member({community_id:$stateParams.community_id})">
       <i class="users icon"></i>
     </a>
-    <a class="ui button" ng-href="/app/communities/{{ $stateParams.community_id }}/setting">
+    <a class="ui button" ng-class="{active:$state.is('community.setting')}" ui-sref="community.setting({community_id:$stateParams.community_id})">
       <i class="setting icon"></i>
     </a>
   </div>
