@@ -8,7 +8,7 @@
     <i class="users icon"></i>
   </div>
   <div class="ui vertical inverted text menu">
-    <a class="item" ng-class="{active:community.id == community_id}" ng-href="/app/communities/{{ community.id }}" ng-repeat="community in communities">
+    <a class="item" ng-class="{active:community.id == $stateParams.community_id}" ui-sref="timeline({community_id:community.id})" ng-repeat="community in communities">
       <i class="gittip icon"></i>
       {{ community.name }}
     </a>
@@ -17,15 +17,15 @@
 </div>
 
 <div class="main-content">
-  <div class="ui right floated icon buttons" ng-show="community_id">
-    <a class="ui button" ng-href="/app/communities/{{ community_id }}/members">
+  <div class="ui right floated icon buttons" ng-show="$stateParams.community_id">
+    <a class="ui button" ng-href="/app/communities/{{ $stateParams.community_id }}/members">
       <i class="users icon"></i>
     </a>
-    <a class="ui button" ng-href="/app/communities/{{ community_id }}/setting">
+    <a class="ui button" ng-href="/app/communities/{{ $stateParams.community_id }}/setting">
       <i class="setting icon"></i>
     </a>
   </div>
 
   <p>This is the app/timeline view.</p>
-  <p>community id - {{ community_id }} </p>
+  <p>community id - {{ $stateParams.community_id }} </p>
 </div>

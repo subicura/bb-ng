@@ -10,7 +10,7 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .directive('ppLayout', function ($location, $http, $compile, $route) {
+  .directive('ppLayout', function ($location, $http, $compile, $state) {
     var cache = {};
 
     return {
@@ -18,23 +18,19 @@ angular.module('bbNgApp')
       link: function postLink(scope, element, attrs) {
         var currentLayout = null;
 
-        setLayout(getLayoutName());
+        setLayout(getLayoutName($location.path()));
 
-        scope.$on('$routeChangeStart', updateLayout);
+        scope.$on('$stateChangeStart', updateLayout);
 
-        function updateLayout(event) {
-          event.preventDefault();
-
-          if(getLayoutName() == "app" && currentLayout != "app") { // path - /app/xxxx
+        function updateLayout(event, toState, toParams, fromState, fromParams) {
+          if(getLayoutName(toState.url) == "app" && currentLayout != "app") { // path - /app/xxxx
             setLayout("app");
-          } else if(getLayoutName() == "default" && currentLayout != "default") {
+          } else if(getLayoutName(toState.url) == "default" && currentLayout != "default") {
             setLayout("default");
           }
         }
 
-        function getLayoutName() {
-          var path = $location.path();
-
+        function getLayoutName(path) {
           // TODO - config 변수로 뺄 것
           if(path.indexOf("/app") == 0) {
             return "app";

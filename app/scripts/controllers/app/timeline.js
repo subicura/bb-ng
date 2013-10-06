@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppTimelineCtrl', function ($scope, $location, $routeParams) {
+  .controller('AppTimelineCtrl', function ($scope, $location, $stateParams) {
+    $scope.$stateParams = $stateParams;
     $scope.$location = $location;
-    
-    $scope.community_id = $routeParams.community_id;
   });
