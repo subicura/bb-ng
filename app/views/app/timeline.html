@@ -1,6 +1,6 @@
 <div class="sidemenu" ng-controller="AppTimelineMenuCtrl">
   <div class="ui vertical inverted text menu">
-    <a class="item" ng-class="{active:$location.path() == '/app'}" href="/app">
+    <a class="item" ng-class="{active:$stateParams.community_id == null}" ui-sref="my.timeline">
       <i class="home icon"></i> My Money
     </a>
   </div>
@@ -8,7 +8,7 @@
     <i class="users icon"></i>
   </div>
   <div class="ui vertical inverted text menu">
-    <a class="item" ng-class="{active:community.id == $stateParams.community_id}" ui-sref="timeline({community_id:community.id})" ng-repeat="community in communities">
+    <a class="item" ng-class="{active:community.id == $stateParams.community_id}" ui-sref="community.timeline({community_id:community.id})" ng-repeat="community in communities">
       <i class="gittip icon"></i>
       {{ community.name }}
     </a>
@@ -17,6 +17,7 @@
 </div>
 
 <div class="main-content">
+  {{ $stateParams }}
   <div class="ui right floated icon buttons" ng-show="$stateParams.community_id">
     <a class="ui button" ng-href="/app/communities/{{ $stateParams.community_id }}/members">
       <i class="users icon"></i>
@@ -26,6 +27,5 @@
     </a>
   </div>
 
-  <p>This is the app/timeline view.</p>
-  <p>community id - {{ $stateParams.community_id }} </p>
+  <ui-view></ui-view>
 </div>

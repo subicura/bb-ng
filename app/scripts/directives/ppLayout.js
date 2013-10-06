@@ -18,21 +18,22 @@ angular.module('bbNgApp')
       link: function postLink(scope, element, attrs) {
         var currentLayout = null;
 
-        setLayout(getLayoutName($location.path()));
+        // console.log($state.current);
+        // setLayout(getLayoutName($location.path()));
 
         scope.$on('$stateChangeStart', updateLayout);
 
         function updateLayout(event, toState, toParams, fromState, fromParams) {
-          if(getLayoutName(toState.url) == "app" && currentLayout != "app") { // path - /app/xxxx
+          if(getLayoutName(toState.controller) == "app" && currentLayout != "app") { // path - /app/xxxx
             setLayout("app");
-          } else if(getLayoutName(toState.url) == "default" && currentLayout != "default") {
+          } else if(getLayoutName(toState.controller) == "default" && currentLayout != "default") {
             setLayout("default");
           }
         }
 
-        function getLayoutName(path) {
+        function getLayoutName(controllerName) {
           // TODO - config 변수로 뺄 것
-          if(path.indexOf("/app") == 0) {
+          if(controllerName.indexOf("App") == 0) {
             return "app";
           } else {
             return "default";
@@ -43,15 +44,15 @@ angular.module('bbNgApp')
           currentLayout = layout;
 
           var layoutUrl = "/views/layout/" + layout + ".html";
+          var controllerName = layout + "Ctrl";
+          controllerName = controllerName.charAt(0).toUpperCase() + controllerName.slice(1);
 
           if(cache[layoutUrl]) {
-            setElementHtml(cache[layoutUrl]);
+            setElementHtml($compile("<div ng-controller='" + controllerName + "'>" + cache[layoutUrl] + "</div>")(scope));
           } else {
             $http.get(layoutUrl).success(function(data) {
-              var controllerName = layout + "Ctrl";
-              controllerName = controllerName.charAt(0).toUpperCase() + controllerName.slice(1);
-              cache[layoutUrl] = $compile("<div ng-controller='" + controllerName + "'>" + data + "</div>")(scope);
-              setElementHtml(cache[layoutUrl]);
+              cache[layoutUrl] = data;
+              setElementHtml($compile("<div ng-controller='" + controllerName + "'>" + cache[layoutUrl] + "</div>")(scope));
             }).error(function(data, status, headers, config) {
               element.html("something wrong T_T");
             });

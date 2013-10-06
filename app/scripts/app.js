@@ -9,16 +9,26 @@ angular.module('bbNgApp', ['ngResource', 'ui.router'])
         templateUrl: '/views/welcome.html',
         controller: 'WelcomeCtrl'
       })
-      .state('my_timeline', {
+      .state('my', {
         url: '/app',
         templateUrl: '/views/app/timeline.html',
         controller: 'AppTimelineCtrl'
       })
-      .state('timeline', {
-        url: '/app/communitie/:community_id',
+        .state('my.timeline', {
+            url: '/timeline',
+            templateUrl: '/views/app/timelineDetail.html',
+            controller: 'AppTimelineDetailCtrl'
+          })
+      .state('community', {
+        url: '/app/communities',
         templateUrl: '/views/app/timeline.html',
         controller: 'AppTimelineCtrl'
-      });
+      })
+        .state('community.timeline', {
+          url: '/:community_id',
+          templateUrl: '/views/app/timelineDetail.html',
+          controller: 'AppTimelineDetailCtrl'
+        });
 
     // $routeProvider
     //   /** welcome page **/

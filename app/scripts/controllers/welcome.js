@@ -13,14 +13,14 @@ angular.module('bbNgApp')
     $scope.$location = $location;
 
     $scope.loginWithFacebook = function() {
-      $location.path("/app");
+      $state.go('my.timeline');
     }
 
     $scope.loginWithTwitter = function() {
-      $location.path("/app");
+      $state.go('my.timeline');
     }
 
     $scope.loginWithEmail = function() {
-      $location.path("/app");
+      $state.go('my.timeline');
     }
   });
