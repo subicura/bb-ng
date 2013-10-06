@@ -9,6 +9,7 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('GlobalCtrl', function ($scope) {
-
+  .controller('GlobalCtrl', function ($scope, $location, $state) {
+    $scope.$state = $state;
+    $scope.$location = $location;
   });

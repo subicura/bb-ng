@@ -9,9 +9,7 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('WelcomeCtrl', function ($scope, $location, $state) {
-    $scope.$location = $location;
-
+  .controller('WelcomeCtrl', function ($scope, $state) {
     $scope.loginWithFacebook = function() {
       $state.go('my.timeline');
     }

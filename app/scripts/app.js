@@ -37,12 +37,12 @@ angular.module('bbNgApp', ['ngResource', 'ui.router'])
           controller: 'AppTimelineItemCtrl'
         })
         .state('community.report', {
-          url: '/:community_id/setting',
+          url: '/:community_id/report',
           templateUrl: '/views/app/timelineReport.html',
           controller: 'AppTimelineReportCtrl'
         })
         .state('community.calendar', {
-          url: '/:community_id/setting',
+          url: '/:community_id/calendar',
           templateUrl: '/views/app/timelineCalendar.html',
           controller: 'AppTimelineCalendarCtrl'
         })
