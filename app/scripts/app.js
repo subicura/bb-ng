@@ -3,6 +3,7 @@
 angular.module('bbNgApp', ['ngResource'])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
+      /** welcome page **/
       .when('/', {
         templateUrl: 'views/welcome.html',
         controller: 'WelcomeCtrl'
@@ -10,6 +11,11 @@ angular.module('bbNgApp', ['ngResource'])
       .when('/join', {
         templateUrl: 'views/join.html',
         controller: 'JoinCtrl'
+      })
+      /** app **/
+      .when('/app', {
+        templateUrl: 'views/app/timeline.html',
+        controller: 'AppTimelineCtrl'
       })
       .otherwise({
         redirectTo: '/'
