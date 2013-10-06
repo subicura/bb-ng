@@ -2,16 +2,29 @@
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-{{ greeting }}
+<div class="ui fixed transparent inverted main menu">
+  <div class="container">
+    <a class="launch item" href="/app"><i class="rocket icon"></i> BudgetBook</a>
 
-<div class="top">
-  <a href="/">
-    BudgetBook
-  </a>
-  <a href="/join">
-    로그아웃
-  </a>
+    <div class="right menu">
+      <a ng-class="{active:$location.path() == '/app/notifications'}" class="popup developer icon item" href="/app/notifications">
+        <i class="bell outline icon"></i>
+      </a>
+      <a ng-class="{active:$location.path() == '/app/setting'}" class="popup developer icon item" href="/app/setting">
+        <i class="setting icon"></i>
+      </a>
+      <a class="popup icon github item" ng-click="logout()">
+        <i class="sign out icon"></i>
+        logout
+      </a>
+    </div>
+  </div>
 </div>
 
 <!-- Add your site or application content here -->
-<div class="container" ng-view=""></div>
+<div class="container main-content" ng-view=""></div>
+
+<div class="copyright">
+  <span class="ui black label">2013 © Dev-study</span>
+</div>
+

@@ -5,17 +5,25 @@ angular.module('bbNgApp', ['ngResource'])
     $routeProvider
       /** welcome page **/
       .when('/', {
-        templateUrl: 'views/welcome.html',
+        templateUrl: '/views/welcome.html',
         controller: 'WelcomeCtrl'
       })
       .when('/join', {
-        templateUrl: 'views/join.html',
+        templateUrl: '/views/join.html',
         controller: 'JoinCtrl'
       })
       /** app **/
       .when('/app', {
-        templateUrl: 'views/app/timeline.html',
+        templateUrl: '/views/app/timeline.html',
         controller: 'AppTimelineCtrl'
+      })
+      .when('/app/notifications', {
+        templateUrl: '/views/app/notification.html',
+        controller: 'AppNotificationCtrl'
+      })
+      .when('/app/setting', {
+        templateUrl: '/views/app/setting.html',
+        controller: 'AppSettingCtrl'
       })
       .otherwise({
         redirectTo: '/'

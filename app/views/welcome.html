@@ -1,1 +1,38 @@
-<p>This is the welcome view.</p>
+<div class="login-wrapper">
+  <a class="fluid ui facebook button" ng-click="loginWithFacebook()">
+    <i class="facebook icon"></i>
+    Log-in with Facebook
+  </a>
+  <a class="fluid ui twitter button" ng-click="loginWithTwitter()">
+    <i class="twitter icon"></i>
+    Sign-up with Twitter
+  </a>
+  <div class="ui inverted horizontal divider">
+    Or
+  </div>
+  <form class="ui form">
+    <div class="two fields">
+      <div class="field">
+        <div class="ui left labeled icon input">
+          <input type="text" placeholder="Username">
+          <i class="user icon"></i>
+          <div class="ui corner label">
+            <i class="icon asterisk"></i>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left labeled icon input">
+          <input type="password">
+          <i class="lock icon"></i>
+          <div class="ui corner label">
+            <i class="icon asterisk"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="fluid ui big red button" ng-click="loginWithEmail()">
+      Login
+    </a>
+  </form>
+</div>

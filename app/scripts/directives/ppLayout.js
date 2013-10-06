@@ -10,7 +10,7 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .directive('ppLayout', function ($location, $http, $compile) {
+  .directive('ppLayout', function ($location, $http, $compile, $route) {
     var cache = {};
 
     return {
@@ -47,18 +47,30 @@ angular.module('bbNgApp')
           currentLayout = layout;
 
           var layoutUrl = "/views/layout/" + layout + ".html";
+
           if(cache[layoutUrl]) {
-            element.html(cache[layoutUrl]);
+            setElementHtml(cache[layoutUrl]);
           } else {
             $http.get(layoutUrl).success(function(data) {
               var controllerName = layout + "Ctrl";
               controllerName = controllerName.charAt(0).toUpperCase() + controllerName.slice(1);
               cache[layoutUrl] = $compile("<div ng-controller='" + controllerName + "'>" + data + "</div>")(scope);
-              element.html(cache[layoutUrl]);
+              setElementHtml(cache[layoutUrl]);
             }).error(function(data, status, headers, config) {
               element.html("something wrong T_T");
             });
           }
+        }
+
+        function setElementHtml(compiledHtml) {
+          var classes = element.attr("class").split(" ");
+          angular.forEach(classes, function(value){
+            if(value.indexOf("-layout") > 0) {
+              element.removeClass(value);
+            }
+          });
+          element.addClass(currentLayout + "-layout");
+          element.html(compiledHtml);
         }
       }
     };

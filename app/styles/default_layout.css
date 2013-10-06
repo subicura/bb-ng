@@ -1,0 +1,33 @@
+.default-layout {
+  background-color:#333;
+  color:#F0F0F0;
+}
+
+.wrapper {
+  position:relative;
+  width:780px;
+  margin:0 auto;
+}
+
+.main-title {
+  padding-top:50px;
+}
+
+.signup {
+  position:absolute;
+  top:0;
+  right:0;
+  display:block;
+  padding:80px 30px 10px 30px;
+  background-color:#EFEFEF;
+}
+
+.login-wrapper {
+  padding-top:60px;
+  width:480px;
+  margin:0 auto;
+}
+
+.login-wrapper .button {
+  margin-bottom:20px;
+}
