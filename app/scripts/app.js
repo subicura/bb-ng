@@ -21,6 +21,10 @@ angular.module('bbNgApp', ['ngResource'])
         templateUrl: '/views/app/communityMember.html',
         controller: 'AppCommunityMemberCtrl'
       })
+      .when('/app/communities/:community_id/setting', {
+        templateUrl: '/views/app/communitySetting.html',
+        controller: 'AppCommunitySettingCtrl'
+      })
       .when('/app/communities/:community_id', {
         templateUrl: '/views/app/timeline.html',
         controller: 'AppTimelineCtrl'
