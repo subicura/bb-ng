@@ -1,12 +1,21 @@
-bb-ng
+BudgetBook AngularJS Application
 =========================
 
-BudgetBook-Angularjs
+## 설정방법 (console)
 
-설정방법 
-
-    git clone git@github.com:subicura/bb-ng.git
+    git clone git@github.com:subicura/bb-ng.git # clone source
     cd bb-ng
-    npm install
-    bower install
-    grunt server
+    npm install    # npm package install (grunt/karma/...)
+    bower install  # bower package install (angular/jquery/sematic-ui/...)
+    grunt server   # launch server!!
+
+## file naming convention
+
+- 소문자시작 + camel case
+  - ex) ngShow.js
+  - ex) userService.js
+
+## Server(BudgetBook API) repository
+
+- https://github.com/rorlab/bbapi.git (source)
+- https://github.com/rorlab/bbapi     (homepage)
