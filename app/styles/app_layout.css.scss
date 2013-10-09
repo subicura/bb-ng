@@ -1,6 +1,13 @@
 .app-layout {
   color:#333;
   background-color:#353D40;
+
+  .main-content {
+    margin-left:200px;
+    background-color:#F4F4F4;
+    padding:50px 10px;
+    min-height:640px;
+  }
 }
 
 .main.menu {
@@ -11,23 +18,13 @@
   transition: margin 0.3s ease;
 }
 
-.contents {
-}
-
-.app-layout .main-content {
-  margin-left:200px;
-  background-color:#F4F4F4;
-  padding:50px 10px;
-  min-height:640px;
-}
 
 .copyright {
   text-align:center;
   padding:15px;
-}
-
-.copyright .ui.label {
-  font-size:10px;
+  .ui.label {
+    font-size:10px;
+  }
 }
 
 .launch.item {

@@ -13,10 +13,9 @@ body {
     background-color: #eee;
     border-radius: 6px;
     padding: 60px;
-}
-
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+    h1 {
+        font-size: 60px;
+        line-height: 1;
+        letter-spacing: -1px;
+    }
 }
