@@ -10,7 +10,7 @@
 
 angular.module('bbNgApp')
   .controller('AppCtrl', function ($scope, $location, UserService, LoginInfo) {    
-    $scope.userInfo = LoginInfo.userInfo;
+    $scope.currentUser = LoginInfo.currentUser;
 
     $scope.logout = function() {
     	UserService.logout();
