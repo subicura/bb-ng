@@ -3,12 +3,12 @@ BudgetBook AngularJS Application
 
 ## 설정방법 (console)
 
-    git clone git@github.com:subicura/bb-ng.git # clone source
-    cd bb-ng
+    $ git clone git@github.com:subicura/bb-ng.git # clone source
+    $ cd bb-ng
 
-    npm install    # npm package install (grunt/karma/...)
-    bower install  # bower package install (angular/jquery/sematic-ui/...)
-    grunt server   # launch server!!
+    $ npm install    # npm package install (grunt/karma/...)
+    $ bower install  # bower package install (angular/jquery/sematic-ui/...)
+    $ grunt server   # launch server!!
 
 ## file naming convention
 

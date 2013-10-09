@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bbNgApp', ['ngResource', 'ui.router'])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     // default route
     $urlRouterProvider.otherwise("/");
 
@@ -107,4 +107,9 @@ angular.module('bbNgApp', ['ngResource', 'ui.router'])
       });
       body.addClass(className);
     }
+
+    // for CORS
+    $httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.withCredentials = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
   });

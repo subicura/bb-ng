@@ -26,24 +26,41 @@ angular.module('bbNgApp')
     };
   })
 
-  .factory('UserService', function($http, LoginInfo) {    
+  .factory('LoginService', function($http, $resource, UserService, LoginInfo) {    
     return {
       login:function(email, password, successCallback, failCallback) {
-        $http.post('http://localhost:3000/users/sign_in', { email: email, password: password })
-          .success(function(data, status){
-            LoginInfo.setUserInfo(data);
-            successCallback(data, status);
-          }).error(function(data, status) {
-            failCallback(data, status);
-          });
+        UserService.login({ email: email, password: password }, function(data, headers) {
+          LoginInfo.setUserInfo(data);
+          successCallback(data, headers);
+        }, function(httpResponse) {
+          failCallback(httpResponse);
+        });
       },
-      logout:function() {
-        $http.delete('http://localhost:3000/users/sign_out', { email: LoginInfo.currentUser.email })
-          .success(function(data, status){
-            LoginInfo.reset();
-          }).error(function(data, status){
-            LoginInfo.reset();
-          });
+      logout:function(successCallback, failCallback) {
+        UserService.logout(function(data, headers) {
+          LoginInfo.reset();
+          successCallback(data);
+        }, function(httpResponse) {
+          failCallback(httpResponse);
+        });
       }
     }
+  })
+
+  .factory('UserService', function($resource) {
+    return $resource('http://localhost\\:3000/users/:action.json', {
+    }, {
+      'login': {
+        method: 'POST',
+        params: {
+          action: 'sign_in'
+        }
+      },
+      'logout': {
+        method: 'DELETE',
+        params: {
+          action: 'sign_out'
+        }
+      }
+    })
   });
