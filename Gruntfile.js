@@ -301,14 +301,17 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'coffee:dist',
+        'compass:server',
         'copy:styles'
       ],
       test: [
         'coffee',
+        'compass',
         'copy:styles'
       ],
       dist: [
         'coffee',
+        'compass:dist',
         'copy:styles',
         'imagemin',
         'svgmin',
