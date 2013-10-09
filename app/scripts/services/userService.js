@@ -6,6 +6,7 @@ angular.module('bbNgApp')
     /**
      * info - id
      *      - email
+     *      - auth_token
      */
     this.localStorageKey = "__LOGIN_INFO";
     this.currentUser = JSON.parse(localStorage.getItem(this.localStorageKey) || "{}");
@@ -26,7 +27,7 @@ angular.module('bbNgApp')
     };
   })
 
-  .factory('LoginService', function($http, $resource, UserService, LoginInfo) {    
+  .factory('LoginService', function($http, $resource, UserService, LoginInfo) {
     return {
       login:function(email, password, successCallback, failCallback) {
         UserService.login({ email: email, password: password }, function(data, headers) {
@@ -47,7 +48,7 @@ angular.module('bbNgApp')
     }
   })
 
-  .factory('UserService', function($resource) {
+  .factory('UserService', function($resource, LoginInfo) {
     return $resource('http://localhost\\:3000/users/:action.json', {
     }, {
       'login': {

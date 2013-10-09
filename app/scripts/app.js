@@ -109,7 +109,8 @@ angular.module('bbNgApp', ['ngResource', 'ui.router'])
     }
 
     // for CORS
-    $httpProvider.defaults.useXDomain = true;
-    $httpProvider.defaults.withCredentials = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+    // for token authentication
+    $httpProvider.interceptors.push('tokenAuthFilter');
   });
