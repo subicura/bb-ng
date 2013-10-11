@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .factory('tokenAuthFilter', function ($q, LoginInfo) {
+  .factory('tokenAuthFilter', function ($q, LoginInfo, CONFIG) {
     return {
       request: function (config) {
-        if(config.url.indexOf("http://localhost:3000") == 0) {
+        if(config.url.indexOf("http://" + CONFIG["api_host"]) == 0) {
           config.headers["X-Auth-Email"] = LoginInfo.currentUser.email;
           config.headers["X-Auth-Token"] = LoginInfo.currentUser.auth_token;
         }

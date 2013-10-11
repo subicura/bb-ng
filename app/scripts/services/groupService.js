@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .factory('groupService', function ($resource) {
-    return $resource("http://localhost\\:3000/groups/:id.json", {
+  .factory('groupService', function ($resource, CONFIG) {
+    return $resource('http://' + CONFIG["api_host"] + '/groups/:id.json', {
       id:'@id'
     }, {
       update: {

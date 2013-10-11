@@ -8,7 +8,12 @@ BudgetBook AngularJS Application
 
     $ npm install    # npm package install (grunt/karma/...)
     $ bower install  # bower package install (angular/jquery/sematic-ui/...)
+    $ cp app/scripts/config.js.example app/scripts/config.js
     $ grunt server   # launch server!!
+
+## configuration
+
+- app/scripts/config.js 파일의 내용을 환경에 맞게 수정해주세요.
 
 ## file naming convention
 

@@ -48,8 +48,8 @@ angular.module('bbNgApp')
     }
   })
 
-  .factory('UserService', function($resource, LoginInfo) {
-    return $resource('http://localhost\\:3000/users/:action.json', {
+  .factory('UserService', function($resource, LoginInfo, CONFIG) {
+    return $resource('http://' + CONFIG["api_host"] + '/users/:action.json', {
     }, {
       'login': {
         method: 'POST',
