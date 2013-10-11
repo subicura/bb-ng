@@ -10,7 +10,12 @@ angular.module('bbNgApp')
 
     $scope.showNewGroup = function() {
       $scope.newGroupForm = {}
-      $('.new.group.modal').modal('show');
+      $('.new.group.modal')
+        .modal('setting', 'selector', {
+          close : '.close, .actions .cancel.button'
+        })
+        .modal('setting', 'transition', 'fade up')
+        .modal('show');
     }
 
     $scope.createGroup = function() {
