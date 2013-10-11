@@ -24,3 +24,11 @@ a {
 a:hover {
   color: #00BAFF;
 }
+
+/** semantic-ui **/
+.ui.form textarea, 
+.ui.form input[type=text], 
+.ui.form input[type=date], 
+.ui.form input[type=password] {
+  font-size:1em;
+}

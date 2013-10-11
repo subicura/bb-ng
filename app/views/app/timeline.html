@@ -13,7 +13,36 @@
       {{ community.name }}
     </a>
   </div>
-  <a class="ui fluid red small button" ng-click="createGroup()">New Group</a>
+  <a class="ui fluid red small button" ng-click="showNewGroup()">New Group</a>
+
+  <!-- modal -->
+  <div class="ui new group modal">
+    <i class="close icon"></i>
+    <div class="header">
+      새로운 그룹 생성
+    </div>
+    <div class="content">
+      <div class="ui form">
+        <div class="field">
+          <label>그룹명</label>
+          <input ng-model="newGroupForm.name" type="text">
+        </div>
+        <div class="field">
+          <label>설명</label>
+          <input ng-model="newGroupForm.description" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui black cancel button">
+        Cancel
+      </div>
+      <div class="ui green right labeled icon button" ng-click="createGroup()">
+        Create
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="main-content">
@@ -36,31 +65,4 @@
   </div>
 
   <ui-view class="timeline-detail"></ui-view>
-</div>
-
-<!-- modal -->
-<div class="ui test modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Profile Picture
-  </div>
-  <div class="content">
-    <div class="left">
-      <img class="ui fluid image" src="/images/demo/avatar2.jpg">
-    </div>
-    <div class="right">
-      <div class="ui header">Are you sure you want to upload that?</div>
-      <p>I mean it's not really the best profile photo.</p>
-      <p>It's resampled to like two times the size it's suppose to be. Our image detection software also says it might even be inappropriate.</p>
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui black button">
-      Cancel
-    </div>
-    <div class="ui green right labeled icon button">
-      Add Photo
-      <i class="checkmark icon"></i>
-    </div>
-  </div>
 </div>

@@ -1,24 +1,29 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppTimelineMenuCtrl', function ($scope, groupService) {
+  .controller('AppTimelineMenuCtrl', function ($scope, $state, groupService) {
+    $scope.newGroupForm = {}
+
     groupService.query(function(data) {
       $scope.communities = data;
     });
 
+    $scope.showNewGroup = function() {
+      $scope.newGroupForm = {}
+      $('.new.group.modal').modal('show');
+    }
+
     $scope.createGroup = function() {
-      /*
-      var name = prompt("새로운 그룹명을 입력해주세요.");
-      if(name) {
+      if($.trim($scope.newGroupForm.name) == "") {
+        alert("그룹명을 입력해주세요.");
+      } else {
         groupService.save({
-          group:{
-            name:name,
-            description:"description"
-          }
+          group:$scope.newGroupForm
         }, function(data) {
           $scope.communities.push(data);
+          $state.go('app.community.timeline', { community_id: data.id });
+          $('.new.group.modal').modal('hide');
         });
       }
-      */
     }
   });
