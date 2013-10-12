@@ -1,7 +1,37 @@
 <h1 class="ui dividing header">
   {{ community.name }}
+  <a class="ui small button" ng-click="showEditGroup(community)">EDIT</a>
   <div class="sub header">{{ community.description }}</div>
 </h1>
+<!-- new group modal -->
+<div class="ui edit group modal">
+  <i class="close icon"></i>
+  <div class="header">
+    그룹 정보 수정
+  </div>
+  <div class="content">
+    <div class="ui form">
+      <div class="field">
+        <label>그룹명</label>
+        <input ng-model="editGroupForm.name" type="text">
+      </div>
+      <div class="field">
+        <label>설명</label>
+        <input ng-model="editGroupForm.description" type="text">
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black cancel button">
+      Cancel
+    </div>
+    <div class="ui green right labeled icon button" ng-click="editGroup()">
+      Edit
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
 <div class="top-money-info ui connected items">
   <div class="three ui row">
     <div class="item">

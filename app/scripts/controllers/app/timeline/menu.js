@@ -22,13 +22,12 @@ angular.module('bbNgApp')
       if($.trim($scope.newGroupForm.name) == "") {
         alert("그룹명을 입력해주세요.");
       } else {
-        groupService.save({
-          group:$scope.newGroupForm
-        }, function(data) {
-          $scope.communities.push(data);
-          $state.go('app.community.timeline', { community_id: data.id });
-          $('.new.group.modal').modal('hideDimmer');
-        });
+        groupService.save($scope.newGroupForm,
+          function(data) {
+            $scope.communities.push(data);
+            $state.go('app.community.timeline', { community_id: data.id });
+            $('.new.group.modal').modal('hideDimmer');
+          });
       }
     }
   });
