@@ -27,7 +27,7 @@ angular.module('bbNgApp')
         }, function(data) {
           $scope.communities.push(data);
           $state.go('app.community.timeline', { community_id: data.id });
-          $('.new.group.modal').modal('hide');
+          $('.new.group.modal').modal('hideDimmer');
         });
       }
     }
