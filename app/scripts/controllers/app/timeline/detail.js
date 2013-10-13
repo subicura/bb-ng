@@ -24,7 +24,7 @@ angular.module('bbNgApp')
           alert("그룹명을 입력해주세요.");
         } else {
           $scope.editGroupForm.$update(function(data) {
-            $scope.community = angular.copy($scope.editGroupForm);
+            $scope.community = data;
             $('.edit.group.modal').modal('hideDimmer');
           });
         }
