@@ -82,7 +82,7 @@ angular.module('bbNgApp', ['config', 'ngResource', 'ui.router', 'ui.date'])
           })
           .state('app.group.timeline', {
             url: '/:community_id',
-            templateUrl: '/views/app/group/detail.html',
+            templateUrl: '/views/app/group/timeline.html',
             controller: 'AppGroupTimelineCtrl'
           })
 
