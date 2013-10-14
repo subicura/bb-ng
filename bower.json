@@ -10,7 +10,8 @@
     "angular-sanitize": "~1.2.0-rc.2",
     "angular-ui-router": "~0.2.0",
     "angular-ui-date": "latest",
-    "jquery": "~2.0.3"
+    "jquery": "~2.0.3",
+    "moment": "~2.3.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0-rc.2",
