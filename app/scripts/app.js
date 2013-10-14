@@ -36,53 +36,57 @@ angular.module('bbNgApp', ['config', 'ngResource', 'ui.router', 'ui.date'])
           setBodyClass("app-layout");
         }
       })
+        // my
         .state('app.my', {
           url: '/app',
-          templateUrl: '/views/app/timeline.html',
-          controller: 'AppTimelineCtrl',
+          templateUrl: '/views/app/main.html',
+          controller: 'AppMainCtrl',
           abstract: true
         })
           .state('app.my.timeline', {
               url: '/timeline',
-              templateUrl: '/views/app/timeline/detail.html',
-              controller: 'AppTimelineDetailCtrl'
+              templateUrl: '/views/app/my/timeline.html',
+              controller: 'AppMyTimelineCtrl'
             })
-        .state('app.community', {
+        // group
+        .state('app.group', {
           url: '/app/communities',
-          templateUrl: '/views/app/timeline.html',
-          controller: 'AppTimelineCtrl',
+          templateUrl: '/views/app/main.html',
+          controller: 'AppMainCtrl',
           abstract: true
         })
-          .state('app.community.item', {
+          .state('app.group.item', {
             url: '/:community_id/items',
-            templateUrl: '/views/app/timeline/items.html',
-            controller: 'AppTimelineItemCtrl'
+            templateUrl: '/views/app/group/items.html',
+            controller: 'AppGroupItemCtrl'
           })
-          .state('app.community.report', {
+          .state('app.group.report', {
             url: '/:community_id/report',
-            templateUrl: '/views/app/timeline/report.html',
-            controller: 'AppTimelineReportCtrl'
+            templateUrl: '/views/app/group/report.html',
+            controller: 'AppGroupReportCtrl'
           })
-          .state('app.community.calendar', {
+          .state('app.group.calendar', {
             url: '/:community_id/calendar',
-            templateUrl: '/views/app/timeline/calendar.html',
-            controller: 'AppTimelineCalendarCtrl'
+            templateUrl: '/views/app/group/calendar.html',
+            controller: 'AppGroupCalendarCtrl'
           })
-          .state('app.community.member', {
+          .state('app.group.member', {
             url: '/:community_id/members',
-            templateUrl: '/views/app/timeline/member.html',
-            controller: 'AppTimelineMemberCtrl'
+            templateUrl: '/views/app/group/member.html',
+            controller: 'AppGroupMemberCtrl'
           })
-          .state('app.community.setting', {
+          .state('app.group.setting', {
             url: '/:community_id/setting',
-            templateUrl: '/views/app/timeline/setting.html',
-            controller: 'AppTimelineSettingCtrl'
+            templateUrl: '/views/app/group/setting.html',
+            controller: 'AppGroupSettingCtrl'
           })
-          .state('app.community.timeline', {
+          .state('app.group.timeline', {
             url: '/:community_id',
-            templateUrl: '/views/app/timeline/detail.html',
-            controller: 'AppTimelineDetailCtrl'
+            templateUrl: '/views/app/group/detail.html',
+            controller: 'AppGroupTimelineCtrl'
           })
+
+        // notification & setting
         .state('app.notification', {
           url: '/app/notifications',
           templateUrl: '/views/app/notification.html',

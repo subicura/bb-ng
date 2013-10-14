@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppTimelineDetailCtrl', function ($scope, $http, $state, groupService) {
+  .controller('AppGroupTimelineCtrl', function ($scope, $http, $state, groupService) {
     $scope.editGroupForm = {};
     $scope.form = {};
     $scope.stats = $http.get('http://localhost:3000/groups/'+ $state.params.community_id +'/bookkeepings/2013-10-01/2013-10-31/calculate').then(function(result) {return result.data});
