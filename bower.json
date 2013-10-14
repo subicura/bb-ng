@@ -9,6 +9,7 @@
     "angular-cookies": "~1.2.0-rc.2",
     "angular-sanitize": "~1.2.0-rc.2",
     "angular-ui-router": "~0.2.0",
+    "angular-ui-date": "latest",
     "jquery": "~2.0.3"
   },
   "devDependencies": {
