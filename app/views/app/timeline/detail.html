@@ -32,6 +32,23 @@
   </div>
 </div>
 
+<form class="ui form segment">
+  <div class='four fields'>
+    <div class='date field' style="margin-bottom:0;">
+      <input ng-model="term.start_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="시작일자" type="text">
+    </div>
+    <div class='date field' style="margin-bottom:0;">
+      <input ng-model="term.end_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="종료일자" type="text">
+    </div>
+    <div class="ui buttons">
+      <div class="ui blue large submit button" ng-click="termSubmit()">기간별</div>
+      <div class="ui blue large submit button" ng-click="thisMonth()">이번달</div>
+      <div class="ui blue large submit button" ng-click="thisYear()">올해</div>
+      <div class="ui positive large submit button" ng-click="monthlyBalance()">월말정산</div>
+    </div>
+  </div>
+</form>
+
 <div class="top-money-info ui connected items">
   <div class="three ui row">
     <div class="item">
@@ -41,7 +58,7 @@
           수입
         </div>
         <div class="number">
-          <i class="korean won icon"></i> 1,000,000
+          <i class="korean won icon"></i> {{stats.income | number}}
         </div>
       </div>
     </div>
@@ -52,7 +69,7 @@
           지출
         </div>
         <div class="number">
-          <i class="korean won icon"></i> 1,000,000
+          <i class="korean won icon"></i> {{stats.outlay | number}}
         </div>
       </div>
     </div>
@@ -62,44 +79,86 @@
           <i class="money icon"></i>
           잔액
         </div>
-        <div class="number">
-          <i class="korean won icon"></i> 1,000,000
+        <div class="number {{ stats.total > 0 ? 'blue' : 'red'}}">
+          <i class="korean won icon"></i> {{stats.total | number}}
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="ui positive button">
-  <i class="cloud download icon"></i>
-  수입입력
-</div>
-<div class="ui negative button">
-  <i class="cloud upload icon"></i>
-  지출입력
-</div>
-
-<form class="timeline-form ui form segment">
-  <p>수입/지출내역을 입력해주세요.</p>
+<h3>거래내역입력하기</h3>
+<form class="timeline-form ui small form segment">
+  <div class='field'>
+    <textarea ng-model='form.content' placeholder="Your message"></textarea>
+  </div>
   <div class="three fields">
-    <div class="field">
-      <label>Type</label>
-      <input ng-model="form.item_type" placeholder="예) 식비/여가비" type="text">
+    <div class="date field">
+      <label>거래일자</label>
+      <input ng-model="form.issue_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="거래일자" type="text">
+      <!-- https://github.com/angular-ui/ui-date -->
+      <!-- https://github.com/angular-ui/angular-ui-OLDREPO/issues/47 -->
     </div>
     <div class="field">
-      <label>Name</label>
-      <input ng-model="form.name" placeholder="예) 떡볶이" type="text">
+      <label>계정항목</label>
+      <select ng-model="form.account_title_id">
+          <option value="">Select</option>
+          <option ng-repeat="account in account_titles" value="{{account.id}}">{{account.title}}</option>
+      </select>
     </div>
     <div class="field">
-      <label>Price</label>
-      <input ng-model="form.price" placeholder="금액입력" type="text">
+      <label>수입/지출</label>
+      <select ng-model="form.operator">
+          <option value="">Select</option>
+          <option value="+" ng-selected="+">수입</option>
+          <option value="-" ng-selected="-">지출</option>
+      </select>
     </div>
   </div>
-  <div class="field">
-    <label>Memo</label>
-    <input ng-model="form.memo" placeholder="메모입력" type="text">
+  <div class="three fields">
+    <div class="field">
+      <label>적요</label>
+      <input ng-model="form.remark" placeholder="적요란" type="text">
+    </div>
+    <div class="field">
+      <label>거래금액</label>
+      <input ng-model="form.amount" placeholder="거래금액" type="text">
+    </div>
+    <div class="field">
+      <label>거래자</label>
+      <select ng-model="form.issuer_id">
+          <option value="">Select</option>
+          <option ng-repeat="member in group_members" value="{{member.id}}">{{member.email}}</option>
+      </select>
+    </div>
   </div>
   <div class="ui blue submit button" ng-click="formSubmit()">Submit</div>
   <div class="ui submit button" ng-click="formCancel()">Cancel</div>
 </form>
-
+<ul class='bookkeepings'>
+  <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings">
+    <div>{{bookkeeping.writer.email}}님이 {{bookkeeping.created_at | timeago}}에 작성한 글입니다. <a ng-click="removeBookkeeping($index)"><i class='cloud remove circle icon'></i></a> <a ng-click="editBookkeeping($index)"><i class='cloud edit circle icon'></i></a> </div>
+    <div class='content'>{{bookkeeping.content}}</div>
+    <fielset>
+      <legend>거래내역 >></legend>
+      <table class='ui celled four table segment'>
+        <tr>
+          <td class='one wide'>{{bookkeeping.issue_date}}</td>
+          <td class='two wide'>{{bookkeeping.issuer.email}}</td>
+          <td class='five wide'><span class='green'>[{{bookkeeping.account_title.title}}]</span> {{bookkeeping.remark}}</td>
+          <td class='two wide'>
+            <div class='number {{ bookkeeping.operator == "-" ? "red" : "blue"}}' style='text-align:right;'>
+              {{bookkeeping.operator}} <i class="korean won icon"></i> {{bookkeeping.amount | number}}
+            </div>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>###TODO : 인증샷업로드하기</legend>
+    </fieldset>    
+    <fieldset>
+      <legend>###TODO : 댓글추가하기</legend>
+    </fieldset>
+  </li>
+</ul>

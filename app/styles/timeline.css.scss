@@ -1,3 +1,25 @@
 .timeline-top-menu {
   padding-bottom:10px;
 }
+
+ul.bookkeepings {
+  margin-bottom:1em;
+}
+li.bookkeeping {
+  margin-bottom:2em;
+   td {
+    padding:.8em !important;
+   }
+   
+  .content {
+    border:1px solid #eaeaea;
+    background-color: white;
+    padding:1em;
+    margin-bottom:1em;
+    margin-top:1em;
+  }
+}
+
+.red { color:red;}
+.blue { color:blue;}
+.green { color:green;}
