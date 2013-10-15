@@ -350,12 +350,21 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('install_dependencies', 'install the backend and frontend dependencies', function() {
+    var exec = require('child_process').exec;
+    var cb = this.async();
+    exec('bower install', function(err, stdout, stderr) {
+      cb();
+    });
+  });
+
   grunt.registerTask('server', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
     }
 
     grunt.task.run([
+      'install_dependencies',
       'clean:server',
       'concurrent:server',
       'autoprefixer',
