@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bbNgApp', ['config', 'ngResource', 'ui.router', 'ui.date'])
+angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 'ui.date'])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     // default route
     $urlRouterProvider.otherwise("/");
