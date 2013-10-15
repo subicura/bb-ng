@@ -39,8 +39,8 @@ angular.module('bbNgApp', ['config', 'ngResource', 'ui.router', 'ui.date'])
         // my
         .state('app.my', {
           url: '/app',
-          templateUrl: '/views/app/main.html',
-          controller: 'AppMainCtrl',
+          templateUrl: '/views/app/my.html',
+          controller: 'AppMyCtrl',
           abstract: true
         })
           .state('app.my.timeline', {
@@ -51,8 +51,8 @@ angular.module('bbNgApp', ['config', 'ngResource', 'ui.router', 'ui.date'])
         // group
         .state('app.group', {
           url: '/app/communities',
-          templateUrl: '/views/app/main.html',
-          controller: 'AppMainCtrl',
+          templateUrl: '/views/app/group.html',
+          controller: 'AppGroupCtrl',
           abstract: true
         })
           .state('app.group.item', {

@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: AppMainCtrl', function () {
+describe('Controller: AppGroupCtrl', function () {
 
   // load the controller's module
   beforeEach(module('bbNgApp'));
 
-  var AppMainCtrl,
+  var AppGroupCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    AppMainCtrl = $controller('AppMainCtrl', {
+    AppGroupCtrl = $controller('AppGroupCtrl', {
       $scope: scope
     });
   }));
