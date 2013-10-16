@@ -7,9 +7,9 @@ ul.bookkeepings {
 }
 li.bookkeeping {
   margin-bottom:2em;
-   td {
+  td {
     padding:.8em !important;
-   }
+  }
    
   .content {
     border:1px solid #eaeaea;
@@ -17,6 +17,14 @@ li.bookkeeping {
     padding:1em;
     margin-bottom:1em;
     margin-top:1em;
+  }
+
+  &.ng-enter {
+    animation: fadeInDown 1s;
+  }
+  
+  &.ng-leave {
+    animation: fadeOutRight 1s;
   }
 }
 

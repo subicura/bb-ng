@@ -1,37 +1,3 @@
-<h1 class="ui dividing header">
-  {{ community.name }}
-  <a class="ui small button" ng-click="showEditGroup(community)">EDIT</a>
-  <div class="sub header">{{ community.description }}</div>
-</h1>
-<!-- new group modal -->
-<div class="ui edit group modal">
-  <i class="close icon"></i>
-  <div class="header">
-    그룹 정보 수정
-  </div>
-  <div class="content">
-    <div class="ui form">
-      <div class="field">
-        <label>그룹명</label>
-        <input ng-model="editGroupForm.name" type="text">
-      </div>
-      <div class="field">
-        <label>설명</label>
-        <input ng-model="editGroupForm.description" type="text">
-      </div>
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui black cancel button">
-      Cancel
-    </div>
-    <div class="ui green right labeled icon button" ng-click="editGroup()">
-      Edit
-      <i class="checkmark icon"></i>
-    </div>
-  </div>
-</div>
-
 <form class="ui form segment">
   <div class='four fields'>
     <div class='date field' style="margin-bottom:0;">
@@ -110,8 +76,8 @@
       <label>수입/지출</label>
       <select ng-model="form.operator">
           <option value="">Select</option>
-          <option value="+" ng-selected="+">수입</option>
-          <option value="-" ng-selected="-">지출</option>
+          <option value="+">수입</option>
+          <option value="-">지출</option>
       </select>
     </div>
   </div>

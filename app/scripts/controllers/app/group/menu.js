@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppTimelineMenuCtrl', function ($scope, $state, groupService) {
+  .controller('AppGroupMenuCtrl', function ($scope, $state, groupService) {
     $scope.newGroupForm = {}
 
     groupService.query(function(data) {
@@ -25,7 +25,7 @@ angular.module('bbNgApp')
         groupService.save($scope.newGroupForm,
           function(data) {
             $scope.communities.push(data);
-            $state.go('app.community.timeline', { community_id: data.id });
+            $state.go('app.group.timeline', { community_id: data.id });
             $('.new.group.modal').modal('hideDimmer');
           });
       }

@@ -17,6 +17,8 @@
 
       <!-- build:css(.tmp) styles/main.css -->
       <link rel="stylesheet" href="/styles/base.css">
+      <link rel="stylesheet" href="/styles/angular.css">
+      <link rel="stylesheet" href="/styles/animate.css">
       <link rel="stylesheet" href="/styles/default_layout.css">
       <link rel="stylesheet" href="/styles/app_layout.css">
       <link rel="stylesheet" href="/styles/timeline.css">
@@ -25,16 +27,18 @@
   <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
-  <![endif]-->
-  <script src="/bower_components/jquery/jquery.js"></script>
-  <script src="/bower_components/jquery-ui/ui/jquery-ui.js"></script>
-  <script src="/bower_components/angular/angular.js"></script>
-  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
-  <script src="/plugins/semantic-ui/javascript/semantic.min.js"></script>
-  
+  <![endif]-->  
 
       <!-- build:js scripts/modules.js -->
+      <script src="/bower_components/jquery/jquery.js"></script>
+      <script src="/bower_components/jquery-ui/ui/jquery-ui.js"></script>
+      <script src="/bower_components/moment/moment.js"></script>
+      <script src="/bower_components/angular/angular.js"></script>
+      <script src="/bower_components/angular-animate/angular-animate.js"></script>
+      <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+      <script src="/plugins/semantic-ui/javascript/semantic.min.js"></script>
+
       <script src="/bower_components/angular-resource/angular-resource.js"></script>
       <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -51,20 +55,28 @@
       <script src="/scripts/controllers/global.js"></script>
 
       <script src="/scripts/controllers/app.js"></script>
-      <script src="/scripts/controllers/app/timeline.js"></script>
-      <script src="/scripts/controllers/app/timeline/menu.js"></script>
-      <script src="/scripts/controllers/app/timeline/detail.js"></script>
-      <script src="/scripts/controllers/app/timeline/item.js"></script>
-      <script src="/scripts/controllers/app/timeline/report.js"></script>
-      <script src="/scripts/controllers/app/timeline/calendar.js"></script>
-      <script src="/scripts/controllers/app/timeline/member.js"></script>
-      <script src="/scripts/controllers/app/timeline/setting.js"></script>
+
+      <script src="/scripts/controllers/app/my.js"></script>
+      <script src="/scripts/controllers/app/my/timeline.js"></script>
+      
+      <script src="/scripts/controllers/app/group.js"></script>
+      <script src="/scripts/controllers/app/group/menu.js"></script>
+      <script src="/scripts/controllers/app/group/timeline.js"></script>
+      <script src="/scripts/controllers/app/group/item.js"></script>
+      <script src="/scripts/controllers/app/group/report.js"></script>
+      <script src="/scripts/controllers/app/group/calendar.js"></script>
+      <script src="/scripts/controllers/app/group/member.js"></script>
+      <script src="/scripts/controllers/app/group/setting.js"></script>
       <script src="/scripts/controllers/app/setting.js"></script>
       <script src="/scripts/controllers/app/notification.js"></script>
 
       <script src="/scripts/services/tokenAuthFilter.js"></script>
       <script src="/scripts/services/userService.js"></script>
       <script src="/scripts/services/groupService.js"></script>
+      <script src="/scripts/services/bookkeepingService.js"></script>
+      <script src="/scripts/services/accountTitleService.js"></script>
+
+      <script src="/scripts/filters/timeago.js"></script>
       <!-- endbuild -->
 
 </head>
