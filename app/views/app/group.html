@@ -1,17 +1,17 @@
 <div class="main-content">
   <div class="timeline-top-menu" ng-show="$state.includes('app.group')">
     <div class="ui mini black buttons">
-      <a class="ui button" ng-class="{active:$state.is('app.group.timeline')}" ui-sref=".timeline({community_id:$state.params.community_id})">TIMELINE</a>
-      <a class="ui button" ng-class="{active:$state.is('app.group.item')}" ui-sref=".item({community_id:$state.params.community_id})">ITEMS</a>
-      <a class="ui button" ng-class="{active:$state.is('app.group.report')}" ui-sref=".report({community_id:$state.params.community_id})">REPORT</a>
-      <a class="ui button" ng-class="{active:$state.is('app.group.calendar')}" ui-sref=".calendar({community_id:$state.params.community_id})">CALENDAR</a>
+      <a class="ui button" ng-class="{active:$state.is('app.group.timeline')}" ui-sref=".timeline({group_id:$state.params.group_id})">TIMELINE</a>
+      <a class="ui button" ng-class="{active:$state.is('app.group.item')}" ui-sref=".item({group_id:$state.params.group_id})">ITEMS</a>
+      <a class="ui button" ng-class="{active:$state.is('app.group.report')}" ui-sref=".report({group_id:$state.params.group_id})">REPORT</a>
+      <a class="ui button" ng-class="{active:$state.is('app.group.calendar')}" ui-sref=".calendar({group_id:$state.params.group_id})">CALENDAR</a>
     </div>
 
     <div class="ui right floated icon mini black buttons">
-      <a class="ui button" ng-class="{active:$state.is('app.group.member')}" ui-sref=".member({community_id:$state.params.community_id})">
+      <a class="ui button" ng-class="{active:$state.is('app.group.member')}" ui-sref=".member({group_id:$state.params.group_id})">
         <i class="users icon"></i>
       </a>
-      <a class="ui button" ng-class="{active:$state.is('app.group.setting')}" ui-sref=".setting({community_id:$state.params.community_id})">
+      <a class="ui button" ng-class="{active:$state.is('app.group.setting')}" ui-sref=".setting({group_id:$state.params.group_id})">
         <i class="setting icon"></i>
       </a>
     </div>
@@ -19,9 +19,9 @@
 
   <div class="timeline-detail">
     <h1 class="ui dividing header">
-      {{ community.name }}
-      <a class="ui small button" ng-click="showEditGroup(community)">EDIT</a>
-      <div class="sub header">{{ community.description }}</div>
+      {{ group.name }}
+      <a class="ui small button" ng-click="showEditGroup(group)">EDIT</a>
+      <div class="sub header">{{ group.description }}</div>
     </h1>
     <!-- new group modal -->
     <div class="ui edit group modal">

@@ -50,38 +50,38 @@ angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 'ui
             })
         // group
         .state('app.group', {
-          url: '/app/communities',
+          url: '/app/groups',
           templateUrl: '/views/app/group.html',
           controller: 'AppGroupCtrl',
           abstract: true
         })
           .state('app.group.item', {
-            url: '/:community_id/items',
+            url: '/:group_id/items',
             templateUrl: '/views/app/group/items.html',
             controller: 'AppGroupItemCtrl'
           })
           .state('app.group.report', {
-            url: '/:community_id/report',
+            url: '/:group_id/report',
             templateUrl: '/views/app/group/report.html',
             controller: 'AppGroupReportCtrl'
           })
           .state('app.group.calendar', {
-            url: '/:community_id/calendar',
+            url: '/:group_id/calendar',
             templateUrl: '/views/app/group/calendar.html',
             controller: 'AppGroupCalendarCtrl'
           })
           .state('app.group.member', {
-            url: '/:community_id/members',
+            url: '/:group_id/members',
             templateUrl: '/views/app/group/member.html',
             controller: 'AppGroupMemberCtrl'
           })
           .state('app.group.setting', {
-            url: '/:community_id/setting',
+            url: '/:group_id/setting',
             templateUrl: '/views/app/group/setting.html',
             controller: 'AppGroupSettingCtrl'
           })
           .state('app.group.timeline', {
-            url: '/:community_id',
+            url: '/:group_id',
             templateUrl: '/views/app/group/timeline.html',
             controller: 'AppGroupTimelineCtrl'
           })

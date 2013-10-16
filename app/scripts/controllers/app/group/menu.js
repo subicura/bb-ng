@@ -5,7 +5,7 @@ angular.module('bbNgApp')
     $scope.newGroupForm = {}
 
     groupService.query(function(data) {
-      $scope.communities = data;
+      $scope.groups = data;
     });
 
     $scope.showNewGroup = function() {
@@ -24,8 +24,8 @@ angular.module('bbNgApp')
       } else {
         groupService.save($scope.newGroupForm,
           function(data) {
-            $scope.communities.push(data);
-            $state.go('app.group.timeline', { community_id: data.id });
+            $scope.groups.push(data);
+            $state.go('app.group.timeline', { group_id: data.id });
             $('.new.group.modal').modal('hideDimmer');
           });
       }

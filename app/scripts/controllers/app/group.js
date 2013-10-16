@@ -2,12 +2,12 @@
 
 angular.module('bbNgApp')
   .controller('AppGroupCtrl', function ($scope, $state, groupService) {
-    $scope.community = groupService.get({ id:$state.params.community_id });
+    $scope.group = groupService.get({ id:$state.params.group_id });
 
     // 그룹 정보 편집
     $scope.editGroupForm = {};
     $scope.showEditGroup = function(group) {
-      $scope.editGroupForm = angular.copy($scope.community);
+      $scope.editGroupForm = angular.copy($scope.group);
       $('.edit.group.modal')
         .modal('setting', 'selector', {
           close : '.close, .actions .cancel.button'
@@ -17,11 +17,11 @@ angular.module('bbNgApp')
     }
 
     $scope.editGroup = function() {
-      if($.trim($scope.community.name) == "") {
+      if($.trim($scope.group.name) == "") {
         alert("그룹명을 입력해주세요.");
       } else {
         $scope.editGroupForm.$update(function(data) {
-          $scope.community = data;
+          $scope.group = data;
           $('.edit.group.modal').modal('hideDimmer');
         });
       }
