@@ -33,9 +33,9 @@
       <i class="users icon"></i>
     </div>
     <div class="ui vertical inverted text menu">
-      <a class="item" ng-class="{active:community.id == $state.params.community_id}" ui-sref="app.group.timeline({community_id:community.id})" ng-repeat="community in communities">
+      <a class="item" ng-class="{active:group.id == $state.params.group_id}" ui-sref="app.group.timeline({group_id:group.id})" ng-repeat="group in groups">
         <i class="gittip icon"></i>
-        {{ community.name }}
+        {{ group.name }}
       </a>
     </div>
     <a class="ui fluid red small button" ng-click="showNewGroup()">New Group</a>
