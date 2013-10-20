@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 'ui.date'])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 'ui.date', 'facebook'])
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, FacebookProvider, CONFIG) {
     // default route
     $urlRouterProvider.otherwise("/");
 
@@ -117,4 +117,6 @@ angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 'ui
 
     // for token authentication
     $httpProvider.interceptors.push('tokenAuthFilter');
+
+    FacebookProvider.init(CONFIG["facebook_key"]);
   });

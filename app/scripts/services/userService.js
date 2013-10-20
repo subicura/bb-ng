@@ -37,6 +37,14 @@ angular.module('bbNgApp')
           failCallback(httpResponse);
         });
       },
+      loginWithAuth:function(provider, access_token, successCallback, failCallback){
+        UserService.login({ provider: provider, access_token: access_token}, function(data, headers){
+          LoginInfo.setUserInfo(data);
+          successCallback(data, headers);
+        }, function(httpResponse){
+          failCallback(httpResponse);
+        });
+      },
       logout:function(successCallback, failCallback) {
         UserService.logout(function(data, headers) {
           LoginInfo.reset();
