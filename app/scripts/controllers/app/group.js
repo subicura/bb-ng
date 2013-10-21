@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppGroupCtrl', function ($scope, $state, groupService) {
-    $scope.group = groupService.get({ id:$state.params.group_id });
+  .controller('AppGroupCtrl', function ($scope, $state, GroupService) {
+    $scope.group = GroupService.get({ id:$state.params.group_id });
 
     // 그룹 정보 편집
     $scope.editGroupForm = {};

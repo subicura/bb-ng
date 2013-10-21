@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: accountTitleService', function () {
+describe('Service: AccountTitleService', function () {
 
   // load the service's module
   beforeEach(module('bbNgApp'));
 
   // instantiate service
-  var accountTitleService;
-  beforeEach(inject(function (_accountTitleService_) {
-    accountTitleService = _accountTitleService_;
+  var AccountTitleService;
+  beforeEach(inject(function (_AccountTitleService_) {
+    AccountTitleService = _AccountTitleService_;
   }));
 
   it('should do something', function () {
-    expect(!!accountTitleService).toBe(true);
+    expect(!!AccountTitleService).toBe(true);
   });
 
 });

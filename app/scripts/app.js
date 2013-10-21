@@ -116,7 +116,7 @@ angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 'ui
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
     // for token authentication
-    $httpProvider.interceptors.push('tokenAuthFilter');
+    $httpProvider.interceptors.push('TokenAuthFilter');
 
     FacebookProvider.init(CONFIG["facebook_key"]);
   });

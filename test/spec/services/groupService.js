@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: groupService', function () {
+describe('Service: GroupService', function () {
 
   // load the service's module
   beforeEach(module('bbNgApp'));
 
   // instantiate service
-  var groupService;
-  beforeEach(inject(function (_groupService_) {
-    groupService = _groupService_;
+  var GroupService;
+  beforeEach(inject(function (_GroupService_) {
+    GroupService = _GroupService_;
   }));
 
   it('should do something', function () {
-    expect(!!groupService).toBe(true);
+    expect(!!GroupService).toBe(true);
   });
 
 });

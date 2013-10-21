@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppMenuCtrl', function ($scope, $state, groupService) {
+  .controller('AppMenuCtrl', function ($scope, $state, GroupService) {
     $scope.newGroupForm = {}
 
-    groupService.query(function(data) {
+    GroupService.query(function(data) {
       $scope.groups = data;
     });
     
@@ -22,7 +22,7 @@ angular.module('bbNgApp')
       if($.trim($scope.newGroupForm.name) == "") {
         alert("그룹명을 입력해주세요.");
       } else {
-        groupService.save($scope.newGroupForm,
+        GroupService.save($scope.newGroupForm,
           function(data) {
             $scope.groups.push(data);
             $state.go('app.group.timeline', { group_id: data.id });

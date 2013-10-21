@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: tokenAuthFilter', function () {
+describe('Service: TokenAuthFilter', function () {
 
   // load the service's module
   beforeEach(module('bbNgApp'));
 
   // instantiate service
-  var tokenAuthFilter;
-  beforeEach(inject(function (_tokenAuthFilter_) {
-    tokenAuthFilter = _tokenAuthFilter_;
+  var TokenAuthFilter;
+  beforeEach(inject(function (_TokenAuthFilter_) {
+    TokenAuthFilter = _TokenAuthFilter_;
   }));
 
   it('should do something', function () {
-    expect(!!tokenAuthFilter).toBe(true);
+    expect(!!TokenAuthFilter).toBe(true);
   });
 
 });
