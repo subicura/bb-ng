@@ -11,7 +11,7 @@
     "angular-animate": "~1.2.0-rc.3",
     "angular-ui-router": "~0.2.0",
     "angular-ui-date": "latest",
-    "jquery": "~2.0.3",
+    "jquery": "~1.10.2",
     "moment": "~2.3.1"
   },
   "devDependencies": {

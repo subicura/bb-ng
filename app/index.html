@@ -1,8 +1,8 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="bbNgApp"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" id="ng-app" ng-app="bbNgApp"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" id="ng-app" ng-app="bbNgApp"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="bbNgApp"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,8 +27,10 @@
   <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
-  <![endif]-->  
-
+    <script>
+      document.createElement('ui-view');
+    </script>
+  <![endif]-->
       <!-- build:js scripts/modules.js -->
       <script src="/bower_components/jquery/jquery.js"></script>
       <script src="/bower_components/jquery-ui/ui/jquery-ui.js"></script>
@@ -55,12 +57,12 @@
       <script src="/scripts/controllers/global.js"></script>
 
       <script src="/scripts/controllers/app.js"></script>
-
+      <script src="/scripts/controllers/app/menu.js"></script>
+      
       <script src="/scripts/controllers/app/my.js"></script>
       <script src="/scripts/controllers/app/my/timeline.js"></script>
       
       <script src="/scripts/controllers/app/group.js"></script>
-      <script src="/scripts/controllers/app/group/menu.js"></script>
       <script src="/scripts/controllers/app/group/timeline.js"></script>
       <script src="/scripts/controllers/app/group/item.js"></script>
       <script src="/scripts/controllers/app/group/report.js"></script>
@@ -80,7 +82,7 @@
       <!-- endbuild -->
 
 </head>
-<body ng-app="bbNgApp" ng-controller="GlobalCtrl">
+<body ng-controller="GlobalCtrl">
   <ui-view></ui-view>
 </body>
 </html>

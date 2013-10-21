@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppGroupMenuCtrl', function ($scope, $state, groupService) {
+  .controller('AppMenuCtrl', function ($scope, $state, groupService) {
     $scope.newGroupForm = {}
 
     groupService.query(function(data) {
       $scope.groups = data;
     });
-
+    
     $scope.showNewGroup = function() {
       $scope.newGroupForm = {}
       $('.new.group.modal')
