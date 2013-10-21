@@ -9,15 +9,30 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('WelcomeCtrl', function ($scope, $state, LoginService) {       
+  .controller('WelcomeCtrl', function ($scope, $state, LoginService, Facebook) {       
     $scope.username = 'tester1@bbapi.com';
     $scope.password = '12341234';
 
-    $scope.loginWithFacebook = function() {
+    $scope.loginWithEmail = function() {
       LoginService.login(this.username, this.password, function(data, status){
         $state.go('app.my.timeline');
       }, function(data, status){      
         alert(data['message']);
+      });
+    }
+
+    $scope.loginWithFacebook = function() {
+
+      Facebook.getLoginStatus(function(response) {
+        if (response.status == 'connected') {
+          loginWithAuth('facebook', response.authResponse.accessToken);
+        } else {
+          Facebook.login(function(response) {
+            if (response.status == 'connected') {
+              loginWithAuth('facebook', response.authResponse.accessToken);
+            }
+          });
+        }
       });
     }
 
@@ -29,11 +44,14 @@ angular.module('bbNgApp')
       });
     }
 
-    $scope.loginWithEmail = function() {
-      LoginService.login(this.username, this.password, function(data, status){
+    // private method 
+    
+    function loginWithAuth(provider, accessToken){
+      LoginService.loginWithAuth(provider, accessToken, function(data, status){
         $state.go('app.my.timeline');
-      }, function(data, status){      
+      }, function(data, status){
         alert(data['message']);
       });
-    }
+    }    
+
   });
