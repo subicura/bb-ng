@@ -350,7 +350,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('install_dependencies', 'install the backend and frontend dependencies', function() {
+  grunt.registerTask('bower_install', 'bower install', function() {
     var exec = require('child_process').exec;
     var cb = this.async();
     exec('bower install', function(err, stdout, stderr) {
@@ -364,7 +364,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'install_dependencies',
+      'bower_install',
       'clean:server',
       'concurrent:server',
       'autoprefixer',
