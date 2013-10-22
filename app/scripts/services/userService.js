@@ -22,7 +22,7 @@ angular.module('bbNgApp')
     };
     this.setUserInfo = function(info) {
       localStorage.setItem(this.localStorageKey, JSON.stringify(info));
-      this.currentUser = info;
+      angular.extend(this.currentUser, info);
     };
     this.reset = function() {
       this.setUserInfo({});
