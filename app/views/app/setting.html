@@ -1,6 +1,6 @@
 <div class="main-content">
   <h3>User Profile</h3>
-  <form name="userForm" novalidate>
+  <form name="userForm" ng-submit="userFormSubmit()" novalidate>
     <div class="ui form segment">
       <div class="three fields">
         <div class="field" ng-class="{ error: (userForm.submitted || userForm.username.$dirty) && userForm.username.$invalid }">
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <a class="ui blue submit button" ng-click="userFormSubmit()">수정</a>
+      <input type="submit" class="ui blue submit button" value="수정" />
     </div>
   </form>
 </div>
