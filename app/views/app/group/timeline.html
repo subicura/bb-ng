@@ -98,6 +98,12 @@
       </select>
     </div>
   </div>
+  <div class="fields" ng-init="form.proofs_attributes =[{'picture':null}]">
+    <div class="field" ng-repeat="proofs_attribute in form.proofs_attributes">
+      <label>첨부파일</label>
+      <input ng-model="proofs_attribute.picture" type="file">
+    </div>
+  </div>
   <div class="ui blue submit button" ng-click="formSubmit()">Submit</div>
   <div class="ui submit button" ng-click="formCancel()">Cancel</div>
 </form>
