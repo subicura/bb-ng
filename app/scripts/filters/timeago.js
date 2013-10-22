@@ -2,7 +2,11 @@
 
 angular.module('bbNgApp')
   .filter('timeago', function () {
-    return function (input) {
-      return moment(input).fromNow();
+    return function (input, current) {
+      if(current) {
+        return moment(input).from(current);
+      } else {
+        return moment(input).fromNow();
+      }
     };
   });

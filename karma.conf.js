@@ -18,6 +18,7 @@ module.exports = function(config) {
       'app/bower_components/angular-ui-router/release/angular-ui-router.js',
       'app/bower_components/angular-ui-date/src/date.js',
       'app/bower_components/angular-facebook/lib/angular-facebook.js',
+      'app/bower_components/moment/moment.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
