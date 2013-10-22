@@ -3,10 +3,6 @@
 angular.module('bbNgApp')
   .controller('AppMenuCtrl', function ($scope, $state, GroupService) {
     $scope.newGroupForm = {}
-
-    GroupService.query(function(data) {
-      $scope.groups = data;
-    });
     
     $scope.showNewGroup = function() {
       $scope.newGroupForm = {}

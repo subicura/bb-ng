@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 'restangular', 'ui.date', 'facebook'])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, FacebookProvider, CONFIG) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, RestangularProvider, FacebookProvider, CONFIG) {
     // default route
     $urlRouterProvider.otherwise("/");
 
@@ -32,6 +32,11 @@ angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 're
         templateUrl: '/views/layout/app.html',
         controller: 'AppCtrl',
         abstract: true,
+        resolve:{
+          groups:function(Restangular) {
+            return Restangular.all('groups').getList();
+          }
+        },
         onEnter: function() {
           setBodyClass("app-layout");
         }
@@ -118,5 +123,10 @@ angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 're
     // for token authentication
     $httpProvider.interceptors.push('TokenAuthFilter');
 
+    // Restangular
+    RestangularProvider.setBaseUrl('http://' + CONFIG["api_host"]);
+    RestangularProvider.setRequestSuffix('.json');
+
+    // Facebook
     FacebookProvider.init(CONFIG["facebook_key"]);
   });

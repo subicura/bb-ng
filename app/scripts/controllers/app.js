@@ -9,8 +9,9 @@
  'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppCtrl', function ($scope, $location, LoginService, LoginInfo, Facebook) {    
+  .controller('AppCtrl', function ($scope, $location, groups, LoginService, LoginInfo, Facebook) {
     $scope.currentUser = LoginInfo.currentUser;
+    $scope.groups = groups;
 
     $scope.logout = function() {    	
     	if(this.currentUser.provider == 'facebook')
