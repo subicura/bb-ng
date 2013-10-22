@@ -1,3 +1,18 @@
 <div class="main-content">
-  <p>This is the app/setting view.</p>
+  <h3>User Profile</h3>
+  <div class="ui form segment">
+    <div class="three fields">
+      <div class="field">
+        <label>UserName</label>
+        <input type="text" ng-model="form.username">
+      </div>
+    </div>
+    <div class="three fields">
+      <div class="field">
+        <label>Current Password</label>
+        <input type="password" ng-model="form.current_password">
+      </div>
+    </div>
+    <div class="ui blue submit button" ng-click="formSubmit()">Submit</div>
+  </div>
 </div>

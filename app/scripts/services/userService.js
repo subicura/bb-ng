@@ -5,7 +5,9 @@ angular.module('bbNgApp')
   .service('LoginInfo', function() {
     /**
      * info - id
+     *      - username
      *      - email
+     *      - avatar
      *      - auth_token
      */
     this.localStorageKey = "__LOGIN_INFO";
@@ -59,13 +61,16 @@ angular.module('bbNgApp')
   .factory('UserService', function($resource, LoginInfo, CONFIG) {
     return $resource('http://' + CONFIG["api_host"] + '/users/:action.json', {
     }, {
-      'login': {
+      update: {
+        method: "PUT"
+      },
+      login: {
         method: 'POST',
         params: {
           action: 'sign_in'
         }
       },
-      'logout': {
+      logout: {
         method: 'DELETE',
         params: {
           action: 'sign_out'

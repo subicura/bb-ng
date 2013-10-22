@@ -26,7 +26,6 @@ angular.module('bbNgApp')
     	}    	
     }
 
-
     /**
      * Watch for Facebook to be ready.
      * There's also the event that could be used

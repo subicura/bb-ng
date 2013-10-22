@@ -11,7 +11,7 @@
         <i class="bell outline icon"></i>
       </a>
       <a ng-class="{active:$state.is('app.setting')}" class="popup developer icon item" ui-sref="app.setting">
-        {{ currentUser.email }}
+        {{ currentUser.username }}
         <i class="setting icon"></i>
       </a>
       <a class="popup icon github item" ng-click="logout()">
