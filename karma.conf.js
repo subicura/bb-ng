@@ -16,6 +16,8 @@ module.exports = function(config) {
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/bower_components/angular-animate/angular-animate.js',
       'app/bower_components/angular-ui-router/release/angular-ui-router.js',
+      'app/bower_components/lodash/dist/lodash.js',
+      'app/bower_components/restangular/dist/restangular.js',
       'app/bower_components/angular-ui-date/src/date.js',
       'app/bower_components/angular-facebook/lib/angular-facebook.js',
       'app/bower_components/moment/moment.js',
