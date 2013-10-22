@@ -2,14 +2,18 @@
 
 angular.module('bbNgApp')
   .controller('AppSettingCtrl', function ($scope, $timeout, LoginInfo, UserService) {
-    $scope.currentUser = LoginInfo.currentUser;
+    function initForm() {
+      $scope.user = angular.copy(LoginInfo.currentUser);
+      $scope.userForm.$setPristine();
+      $scope.userForm.submitted = false;
+    }
 
     $scope.user = angular.copy(LoginInfo.currentUser);
     $scope.userFormSubmit = function() {
       if($scope.userForm.$valid) {
         UserService.update({ user:$scope.user }, function(data) {
           LoginInfo.setUserInfo(data);
-          $scope.user = angular.copy(LoginInfo.currentUser);
+          initForm();
           $timeout(function() { // alert때문에 $scope 반영이 안되서 timeout으로 뺌!
             alert("프로필 정보를 수정하였습니다.");
           }, 0);

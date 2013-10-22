@@ -11,8 +11,12 @@ describe('Service: UserService', function () {
     UserService = _UserService_;
   }));
 
-  it('should do something', function () {
-    expect(!!UserService).toBe(true);
+  it('should have a UserService service', function() {
+    expect(UserService).toBeDefined();
+  });
+
+  it('should have a update method', function() {
+    expect(UserService.update).toBeDefined();
   });
 
 });
