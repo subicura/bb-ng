@@ -91,9 +91,20 @@ module.exports = function (grunt) {
           }
         }
       },
-      test: {
+      test_unit: {
         options: {
           port: 9001,
+          middleware: function (connect) {
+            return [
+              mountFolder(connect, '.tmp'),
+              mountFolder(connect, 'test')
+            ];
+          }
+        }
+      },
+      test_e2e: {
+        options: {
+          port: 9002,
           middleware: function (connect) {
             return [
               mountFolder(connect, '.tmp'),
@@ -383,7 +394,7 @@ module.exports = function (grunt) {
     'clean:server',
     'concurrent:test',
     'autoprefixer',
-    'connect:test',
+    'connect:test_unit',
     'karma:unit'
   ]);
 
@@ -391,7 +402,7 @@ module.exports = function (grunt) {
     'clean:server',
     'concurrent:test',
     'autoprefixer',
-    'connect:test',
+    'connect:test_e2e',
     'karma:e2e'
   ]);
 
