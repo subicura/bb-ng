@@ -11,7 +11,11 @@ angular.module('bbNgApp')
      *      - auth_token
      */
     this.localStorageKey = "__LOGIN_INFO";
-    this.currentUser = JSON.parse(localStorage.getItem(this.localStorageKey) || "{}");
+    try {
+      this.currentUser = JSON.parse(localStorage.getItem(this.localStorageKey) || "{}");
+    } catch(e) {
+      this.currentUser = {};
+    }
 
     this.isUserSignedIn = function() {
       if(this.currentUser && this.currentUser.id) {
@@ -62,7 +66,12 @@ angular.module('bbNgApp')
     return $resource('http://' + CONFIG["api_host"] + '/users/:action.json', {
     }, {
       update: {
-        method: "PUT"
+        method: "PUT",
+        interceptor:{
+          response:function(data) {
+            LoginInfo.setUserInfo(data.data);
+          }
+        }
       },
       login: {
         method: 'POST',

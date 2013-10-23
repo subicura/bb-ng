@@ -122,6 +122,7 @@ angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 'ui
 
     // for token authentication
     $httpProvider.interceptors.push('TokenAuthInterceptor');
+    $httpProvider.interceptors.push('RestServiceInterceptor');
 
     // Facebook
     FacebookProvider.init(CONFIG["facebook_key"]);
