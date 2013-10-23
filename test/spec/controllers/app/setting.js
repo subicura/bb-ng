@@ -10,8 +10,8 @@ describe('Controller: AppSettingCtrl', function () {
     LoginInfo;
 
   // set LoginInfo
-  beforeEach(inject(function ($injector, mockedLoginService) {
-    LoginInfo = $injector.get("LoginInfo");
+  beforeEach(inject(function (_LoginInfo_, mockedLoginService) {
+    LoginInfo = _LoginInfo_;
     LoginInfo.setUserInfo(mockedLoginService.default);
   }));
 
@@ -26,10 +26,6 @@ describe('Controller: AppSettingCtrl', function () {
   // cleanup LoginInfo
   afterEach(function () {
     LoginInfo.reset();
-  });
-
-  it('should have a user', function() {
-    expect(scope.user).toBeDefined();
   });
 
   it('should user equals to LoginInfo.currentUser', function() {

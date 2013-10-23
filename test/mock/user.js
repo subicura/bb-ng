@@ -8,5 +8,12 @@ angular.module('mockedUser', [])
       email:"subicura@subicura.com",
       avatar:"/public/default.png",
       auth_token:"abcdefg"  
+    },
+    update:{
+      id:2,
+      username:"subicura",
+      email:"subicura@subicura.com",
+      avatar:"/public/default.png",
+      auth_token:"abcdefg"  
     }
   });

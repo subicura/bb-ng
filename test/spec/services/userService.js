@@ -3,15 +3,18 @@
 describe('Service: UserService', function () {
 
   // load the service's module
-  beforeEach(module('bbNgApp'));
+  beforeEach(module('bbNgApp', 'mockedUser'));
 
   // instantiate service
   var UserService,
     httpBackend,
+    mockedLoginService,
     CONFIG;
-  beforeEach(inject(function (_UserService_, $httpBackend, _CONFIG_) {
+    
+  beforeEach(inject(function (_UserService_, $httpBackend, _mockedLoginService_, _CONFIG_) {
     UserService = _UserService_;
     httpBackend = $httpBackend;
+    mockedLoginService = _mockedLoginService_;
     CONFIG = _CONFIG_;
   }));
 
@@ -29,9 +32,13 @@ describe('Service: UserService', function () {
   });
 
   it('should update user info', function() {
-    httpBackend.expectPUT('http://' + CONFIG.api_host + '/users.json').respond({});
-    
-    UserService.update();
+    var sampleData = {username: "subicura2", password:"12341234"};
+
+    httpBackend
+      .expectPUT('http://' + CONFIG.api_host + '/users.json', sampleData)
+      .respond({});
+
+    UserService.update(sampleData);
 
     httpBackend.flush();
   });
