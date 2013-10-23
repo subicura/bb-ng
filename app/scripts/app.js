@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 'restangular', 'ui.date', 'facebook'])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, RestangularProvider, FacebookProvider, CONFIG) {
+angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 'ui.date', 'facebook'])
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, FacebookProvider, CONFIG) {
     // default route
     $urlRouterProvider.otherwise("/");
 
@@ -33,8 +33,8 @@ angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 're
         controller: 'AppCtrl',
         abstract: true,
         resolve:{
-          groups:function(Restangular) {
-            return Restangular.all('groups').getList();
+          groups:function(GroupService) {
+            return GroupService.query();
           }
         },
         onEnter: function() {
@@ -121,11 +121,7 @@ angular.module('bbNgApp', ['config', 'ngResource', 'ngAnimate', 'ui.router', 're
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
     // for token authentication
-    $httpProvider.interceptors.push('TokenAuthFilter');
-
-    // Restangular
-    RestangularProvider.setBaseUrl('http://' + CONFIG["api_host"]);
-    RestangularProvider.setRequestSuffix('.json');
+    $httpProvider.interceptors.push('TokenAuthInterceptor');
 
     // Facebook
     FacebookProvider.init(CONFIG["facebook_key"]);

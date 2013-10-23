@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .factory('TokenAuthFilter', function ($q, LoginInfo, CONFIG) {
+  .factory('TokenAuthInterceptor', function ($q, LoginInfo, CONFIG) {
     return {
       request: function (config) {
         if(config.url.indexOf("http://" + CONFIG["api_host"]) == 0) {
