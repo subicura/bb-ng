@@ -3,22 +3,16 @@
 describe('Controller: AppSettingCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('bbNgApp'));
+  beforeEach(module('bbNgApp', 'mockedUser'));
 
   var AppSettingCtrl,
     scope,
     LoginInfo;
 
   // set LoginInfo
-  beforeEach(inject(function ($injector) {
+  beforeEach(inject(function ($injector, defaultLoginInfo) {
     LoginInfo = $injector.get("LoginInfo");
-    LoginInfo.setUserInfo({
-      id:1,
-      username:"subicura",
-      email:"subicura@subicura.com",
-      avatar:"/public/default.png",
-      auth_token:"abcdefg"
-    });
+    LoginInfo.setUserInfo(defaultLoginInfo);
   }));
 
   // Initialize the controller and a mock scope
@@ -34,19 +28,11 @@ describe('Controller: AppSettingCtrl', function () {
     LoginInfo.reset();
   });
 
-  it('should have a AppSettingCtrl controller', function() {
-    expect(AppSettingCtrl).toBeDefined();
-  });
-
-  it('should be defined $scope.user', function() {
+  it('should have a user', function() {
     expect(scope.user).toBeDefined();
   });
 
-  it('should be defined $scope.userFormSubmit', function() {
-    expect(scope.userFormSubmit).toBeDefined();
-  });
-
-  it('$scope.user should equal to LoginInfo.currentUser', function() {
+  it('should user equals to LoginInfo.currentUser', function() {
     expect(scope.user).toEqual(LoginInfo.currentUser);
   });
 });
