@@ -10,9 +10,9 @@ describe('Controller: AppSettingCtrl', function () {
     LoginInfo;
 
   // set LoginInfo
-  beforeEach(inject(function (_LoginInfo_, mockedLoginService) {
+  beforeEach(inject(function (_LoginInfo_, mockedLoginInfo) {
     LoginInfo = _LoginInfo_;
-    LoginInfo.setUserInfo(mockedLoginService.default);
+    LoginInfo.setUserInfo(mockedLoginInfo.default);
   }));
 
   // Initialize the controller and a mock scope

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mockedUser', [])
-  .value('mockedLoginService', {
+  .value('mockedLoginInfo', {
     default:{
       id:1,
       username:"subicura",
@@ -9,9 +9,9 @@ angular.module('mockedUser', [])
       avatar:"/public/default.png",
       auth_token:"abcdefg"  
     },
-    update:{
-      id:2,
-      username:"subicura",
+    updateUsername:{
+      id:1,
+      username:"subicura2",
       email:"subicura@subicura.com",
       avatar:"/public/default.png",
       auth_token:"abcdefg"  

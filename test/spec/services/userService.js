@@ -8,13 +8,13 @@ describe('Service: UserService', function () {
   // instantiate service
   var UserService,
     httpBackend,
-    mockedLoginService,
+    mockedLoginInfo,
     CONFIG;
     
-  beforeEach(inject(function (_UserService_, $httpBackend, _mockedLoginService_, _CONFIG_) {
+  beforeEach(inject(function (_UserService_, $httpBackend, _mockedLoginInfo_, _CONFIG_) {
     UserService = _UserService_;
     httpBackend = $httpBackend;
-    mockedLoginService = _mockedLoginService_;
+    mockedLoginInfo = _mockedLoginInfo_;
     CONFIG = _CONFIG_;
   }));
 
