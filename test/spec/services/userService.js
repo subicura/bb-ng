@@ -3,7 +3,7 @@
 describe('Service: UserService', function () {
 
   // load the service's module
-  beforeEach(module('bbNgApp', 'mockedUser'));
+  beforeEach(module('bbNgApp', 'mock'));
 
   // instantiate service
   var UserService,

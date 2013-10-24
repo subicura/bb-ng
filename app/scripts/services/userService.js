@@ -62,8 +62,8 @@ angular.module('bbNgApp')
     }
   })
 
-  .factory('UserService', function($resource, LoginInfo, CONFIG) {
-    return $resource('http://' + CONFIG["api_host"] + '/users/:action.json', {
+  .factory('UserService', function(ResourcePlus, LoginInfo, CONFIG) {
+    var resource = ResourcePlus('http://' + CONFIG["api_host"] + '/users/:action.json', {
     }, {
       update: {
         method: "PUT",
@@ -85,5 +85,6 @@ angular.module('bbNgApp')
           action: 'sign_out'
         }
       }
-    })
+    });
+    return resource;
   });
