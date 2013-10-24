@@ -67,6 +67,20 @@ describe('Controller: AppSettingCtrl', function () {
     expect(UserService.update).toHaveBeenCalled();
   });
 
+  it('should not user update with invalid', function() {
+    // set invalid
+    scope.userForm = { 
+      $valid:false
+    };
+
+    spyOn(UserService, 'update');
+
+    scope.user = mockedLoginInfo.updateUsername;
+    scope.userFormSubmit();
+
+    expect(UserService.update).not.toHaveBeenCalled();
+  });
+
   it('should setPristine form when user update', function() {
     // set valid
     scope.userForm = { 
@@ -106,17 +120,4 @@ describe('Controller: AppSettingCtrl', function () {
     expect(scope.userForm.submitted).toEqual(false);
   });
 
-  it('should not user update with invalid', function() {
-    // set invalid
-    scope.userForm = { 
-      $valid:false
-    };
-
-    spyOn(UserService, 'update');
-
-    scope.user = mockedLoginInfo.updateUsername;
-    scope.userFormSubmit();
-
-    expect(UserService.update).not.toHaveBeenCalled();
-  });
 });
