@@ -10,8 +10,7 @@ describe('Controller: AppSettingCtrl', function () {
     httpBackend,
     LoginInfo,
     UserService,
-    mockedLoginInfo,
-    CONFIG;
+    mockedLoginInfo;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, $injector) {
@@ -19,7 +18,6 @@ describe('Controller: AppSettingCtrl', function () {
     LoginInfo = $injector.get("LoginInfo");
     UserService = $injector.get("UserService");
     mockedLoginInfo = $injector.get("mockedLoginInfo");
-    CONFIG = $injector.get("CONFIG");
 
     LoginInfo.setUserInfo(mockedLoginInfo.default);
 
@@ -81,43 +79,47 @@ describe('Controller: AppSettingCtrl', function () {
     expect(UserService.update).not.toHaveBeenCalled();
   });
 
-  it('should setPristine form when user update', function() {
-    // set valid
-    scope.userForm = { 
-      $valid:true,
-      $setPristine:function(){}
-    };
+  it('should setPristine form when user update', inject(['CONFIG',
+    function(CONFIG) {
+      // set valid
+      scope.userForm = { 
+        $valid:true,
+        $setPristine:function(){}
+      };
 
-    httpBackend
-      .expectPUT("http://" + CONFIG["api_host"] + "/users.json")
-      .respond(mockedLoginInfo.updateUsername);
+      httpBackend
+        .expectPUT("http://" + CONFIG["api_host"] + "/users.json")
+        .respond(mockedLoginInfo.updateUsername);
 
-    spyOn(scope.userForm, '$setPristine');
+      spyOn(scope.userForm, '$setPristine');
 
-    scope.user = mockedLoginInfo.updateUsername;
-    scope.userFormSubmit();
-    httpBackend.flush();
+      scope.user = mockedLoginInfo.updateUsername;
+      scope.userFormSubmit();
+      httpBackend.flush();
 
-    expect(scope.userForm.$setPristine).toHaveBeenCalled();
-  });
+      expect(scope.userForm.$setPristine).toHaveBeenCalled();
+    }
+  ]));
 
-  it('should userForm.submitted equals to false when user update', function() {
-    // set valid
-    scope.userForm = { 
-      submitted:true,
-      $valid:true,
-      $setPristine:function(){}
-    };
+  it('should userForm.submitted equals to false when user update', inject(['CONFIG',
+    function(CONFIG) {
+      // set valid
+      scope.userForm = { 
+        submitted:true,
+        $valid:true,
+        $setPristine:function(){}
+      };
 
-    httpBackend
-      .expectPUT("http://" + CONFIG["api_host"] + "/users.json")
-      .respond(mockedLoginInfo.updateUsername);
+      httpBackend
+        .expectPUT("http://" + CONFIG["api_host"] + "/users.json")
+        .respond(mockedLoginInfo.updateUsername);
 
-    scope.user = mockedLoginInfo.updateUsername;
-    scope.userFormSubmit();
-    httpBackend.flush();
+      scope.user = mockedLoginInfo.updateUsername;
+      scope.userFormSubmit();
+      httpBackend.flush();
 
-    expect(scope.userForm.submitted).toEqual(false);
-  });
+      expect(scope.userForm.submitted).toEqual(false);
+    }
+  ]));
 
 });
