@@ -26,10 +26,9 @@
       <div class="column">
         <div style="text-align:center">
           <div>
-            <img ng-src="{{ user.avatar_url.medium }}" />
+            <img ng-src="{{ user.avatar_url.medium }}" class="avatar" />
           </div>
-          <a class="ui button">프로필 이미지 등록</a>
-
+          <a id="addAvatarBtn" class="ui button" avatar-upload>프로필 이미지 등록</a>
         </div>
       </div>
 
