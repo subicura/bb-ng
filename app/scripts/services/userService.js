@@ -37,7 +37,6 @@ angular.module('bbNgApp')
     return {
       login:function(email, password, successCallback, failCallback) {
         UserService.login({ email: email, password: password }, function(data, headers) {
-          console.log(data);
           LoginInfo.setUserInfo(data);
           successCallback(data, headers);
         }, function(httpResponse) {
