@@ -7,8 +7,8 @@ angular.module('bbNgApp')
      * info - id
      *      - username
      *      - email
-     *      - avatar
      *      - auth_token
+     *      - avatar_url - original, medium, thumb
      */
     this.localStorageKey = "__LOGIN_INFO";
     try {
@@ -37,6 +37,7 @@ angular.module('bbNgApp')
     return {
       login:function(email, password, successCallback, failCallback) {
         UserService.login({ email: email, password: password }, function(data, headers) {
+          console.log(data);
           LoginInfo.setUserInfo(data);
           successCallback(data, headers);
         }, function(httpResponse) {

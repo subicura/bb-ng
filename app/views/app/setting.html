@@ -1,8 +1,8 @@
 <div class="main-content">
   <h3>User Profile</h3>
   <form name="userForm" ng-submit="userFormSubmit()" novalidate>
-    <div class="ui form segment">
-      <div class="three fields">
+    <div class="ui two column middle aligned grid basic form segment">
+      <div class="column">
         <div class="field" ng-class="{ error: (userForm.submitted || userForm.username.$dirty) && userForm.username.$invalid }">
           <label>UserName</label>
           <input type="text" name="username" ng-model="user.username" required>
@@ -10,8 +10,6 @@
             Enter UserName
           </div>
         </div>
-      </div>
-      <div class="three fields">
         <div class="field" ng-class="{ error: (userForm.submitted || userForm.current_password.$dirty) && userForm.current_password.$invalid }">
           <label>Current Password</label>
           <input type="password" name="current_password" ng-model="user.current_password" required>
@@ -20,8 +18,24 @@
           </div>
         </div>
       </div>
+
+      <div class="ui vertical divider hide-for-small">
+        <i class="circle icon"></i>
+      </div>
+
+      <div class="column">
+        <div style="text-align:center">
+          <div>
+            <img ng-src="{{ user.avatar_url.medium }}" />
+          </div>
+          <a class="ui button">프로필 이미지 등록</a>
+
+        </div>
+      </div>
+
       <input type="submit" class="ui blue submit button" value="수정" />
     </div>
   </form>
+  {{ cuser }}
 </div>
 
