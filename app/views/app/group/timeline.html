@@ -130,7 +130,31 @@
       <legend>###TODO : 인증샷업로드하기</legend>
     </fieldset>    
     <fieldset>
-      <legend>###TODO : 댓글추가하기</legend>
+      <div class="ui comments">
+        <div class="comment" ng-repeat="comment in bookkeeping.comments">
+          <div class="content">
+            <a class="author">{{ comment.writer.email }}</a>
+            <div class="metadata">
+              <div class="date">{{ comment.created_at | timeago }}</div>
+            </div>
+            <div class="text">
+              {{ comment.content }}
+            </div>
+            <div class="actions">
+              <a class="reply">Edit</a>
+              <a class="delete">Delete</a>
+            </div>
+          </div>
+        </div>
+        <form class="ui reply form commentForm">
+          <div class="field">
+            <textarea ng-model="form.content" placeholder="Your comment"></textarea>
+          </div>
+          <div class="ui button teal submit labeled icon" ng-click="commentSubmit(bookkeeping.id)">
+            <i class="icon edit"></i> Add Comment
+          </div>
+        </form>
+      </div>
     </fieldset>
   </li>
 </ul>

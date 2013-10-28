@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppGroupTimelineCtrl', function ($scope, $state, GroupService, BookkeepingService, AccountTitleService) {
+  .controller('AppGroupTimelineCtrl', function ($scope, $state, GroupService, BookkeepingService, AccountTitleService, CommentService) {
     $scope.form = {};
     $scope.stats = BookkeepingService.calculate({ 
       group_id:$state.params.group_id,
@@ -45,6 +45,18 @@ angular.module('bbNgApp')
           start_date:moment().startOf('month').format("YYYY-MM-DD"),
           end_date:moment().endOf('month').format("YYYY-MM-DD")
         });
+      });
+    };
+
+    $scope.commentSubmit = function(commentable_id) {
+      console.log($scope.form);
+      CommentService.save({
+        group_id: $state.params.group_id,
+        commentable_type: 'bookkeepings',
+        commentable_id: commentable_id,
+        comment: $scope.form
+      }, function(data) {
+        $scope.form = {};
       });
     };
   });
