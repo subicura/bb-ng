@@ -11,7 +11,7 @@
         <i class="bell outline icon"></i>
       </a>
       <a ng-class="{active:$state.is('app.setting')}" class="popup developer icon item top-user-info" ui-sref="app.setting">
-        <img src="{{ currentUser.avatar_url.thumb }}" class="user-avatar" />
+        <img ng-src="{{ currentUser.avatar_url.thumb }}" class="user-avatar" />
         {{ currentUser.username }}
         <i class="setting icon"></i>
       </a>
