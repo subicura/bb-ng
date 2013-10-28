@@ -48,15 +48,15 @@ angular.module('bbNgApp')
       });
     };
 
-    $scope.commentSubmit = function(commentable_id) {
-      console.log($scope.form);
+    $scope.commentSubmit = function(commentable_id, commentForm) {
+      console.log(commentForm)
       CommentService.save({
         group_id: $state.params.group_id,
         commentable_type: 'bookkeepings',
         commentable_id: commentable_id,
-        comment: $scope.form
+        comment: commentForm
       }, function(data) {
-        $scope.form = {};
+        $scope.commentForm = {};
       });
     };
   });

@@ -148,9 +148,9 @@
         </div>
         <form class="ui reply form commentForm">
           <div class="field">
-            <textarea ng-model="form.content" placeholder="Your comment"></textarea>
+            <textarea ng-model="commentForm.content" placeholder="Your comment"></textarea>
           </div>
-          <div class="ui button teal submit labeled icon" ng-click="commentSubmit(bookkeeping.id)">
+          <div class="ui button teal submit labeled icon" ng-click="commentSubmit(bookkeeping.id, commentForm)">
             <i class="icon edit"></i> Add Comment
           </div>
         </form>
