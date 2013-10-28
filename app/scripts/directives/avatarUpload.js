@@ -30,7 +30,9 @@ angular.module('bbNgApp')
         });
         uploader.bind('FileUploaded', function(uploader, file, response) {
             var res = $.parseJSON(response.response);
-            $('.avatar').attr('src', res.avatar_url.medium);
+            scope.$apply(function() {
+              LoginInfo.setAvatar(res.avatar_url);
+            });
         });
         uploader.bind('Error', function(uploader, error) {
             alert(error.message);
