@@ -9,6 +9,8 @@ angular.module('bbNgApp')
      *      - email
      *      - auth_token
      *      - avatar_url - original, medium, thumb
+     * References (added by hyoseong)
+     *      - http://shahjadatalukdar.wordpress.com/2013/09/27/using-html5-localstorage-with-angularjs/
      */
     this.localStorageKey = "__LOGIN_INFO";
     try {
