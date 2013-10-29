@@ -49,14 +49,24 @@ angular.module('bbNgApp')
     };
 
     $scope.commentSubmit = function(commentable_id, commentForm) {
-      console.log(commentForm)
       CommentService.save({
         group_id: $state.params.group_id,
         commentable_type: 'bookkeepings',
         commentable_id: commentable_id,
         comment: commentForm
       }, function(data) {
-        $scope.commentForm = {};
+        location.reload();
+      });
+    };
+
+    $scope.removeComment = function(commentable_id, comment_id) {
+      CommentService.remove({
+        group_id: $state.params.group_id,
+        commentable_type: 'bookkeepings',
+        commentable_id: commentable_id,
+        comment_id: comment_id
+      }, function(data) {
+        location.reload();
       });
     };
   });

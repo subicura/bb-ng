@@ -5,6 +5,7 @@ angular.module('bbNgApp')
     return $resource('http://' + CONFIG["api_host"] + '/groups/:group_id/:commentable_type/:commentable_id/comments/:comment_id.json', {
       group_id: '@group_id',
       commentable_id: '@commentable_id',
-      commentable_type: '@commentable_type'
+      commentable_type: '@commentable_type',
+      comment_id: '@comment_id'
     });
   });
