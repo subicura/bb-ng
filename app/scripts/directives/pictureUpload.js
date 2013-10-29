@@ -18,7 +18,6 @@ angular.module('bbNgApp')
           flash_swf_url: '/plugins/plupload/Moxie.swf',
           silverlight_xap_url: '/plugins/plupload/Moxie.xap',
 
-//          url: 'http://' + CONFIG['api_host'] + '/groups/:group_id/bookkeepings/:id/add_proof.json',
           url: 'http://' + CONFIG['api_host'] + '/groups/' + group_id + '/bookkeepings/' + bookkeeping_id + '/add_proof.json',
           browse_button: button_id,
 

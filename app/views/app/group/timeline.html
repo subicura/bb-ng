@@ -123,15 +123,15 @@
     <fieldset>
       <legend>인증샷 >></legend>
       <div ng-show="bookkeeping.proofs.length > 0">
-        <p>사진보기 {{ bookkeeping.id }}</p>
-        <ul>
-          <li ng-repeat="proof in bookkeeping.proofs">
-            <img id="picture_{{ proof.id }}" src="{{ proof.picture_url.thumb }}">
+        <p>사진보기 ({{ bookkeeping.proofs.length }})</p>
+        <ul class="proofs">
+          <li class="proof" ng-repeat="proof in bookkeeping.proofs">
+            <a ng-href='{{ proof.picture_url }}'><img src="{{ proof.picture_url.thumb }}"></a>
           </li>
         </ul>
       </div>
       <div class="fields">
-        <div style="text-align:center">
+        <div>
           <a class="ui button" bookkeeping_id="{{bookkeeping.id}}"
              picture-upload>업로드</a>
         </div>
