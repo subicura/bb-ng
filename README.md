@@ -3,6 +3,8 @@ BudgetBook AngularJS Application
 
 ## 설정방법 (console)
 
+    $ npm install -g generator-angular
+
     $ git clone git@github.com:subicura/bb-ng.git # clone source
     $ cd bb-ng
 
