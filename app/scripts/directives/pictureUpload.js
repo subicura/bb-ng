@@ -5,8 +5,10 @@ angular.module('bbNgApp')
     return {
       link: function postLink(scope, element, attrs) {
         var group_id = $state.params.group_id;
-        var bookkeeping_id =  attrs.bookkeepingId;
-        var button_id = "addPictureBtn_" + attrs.bookkeepingId;
+        var bookkeeping = scope.bookkeeping;
+        console.log(bookkeeping);
+        var button_id = "addPictureBtn_" + bookkeeping.id;
+
         element.attr('id', button_id);
         var options = {
           runtimes:'html5, flash, silverlight, html4',
@@ -14,11 +16,11 @@ angular.module('bbNgApp')
           filters: [
             {title: "Image files", extensions: "jpg,jpeg,gif,png"}
           ],
-          multi_selection:true,
+          multi_selection: true,
           flash_swf_url: '/plugins/plupload/Moxie.swf',
           silverlight_xap_url: '/plugins/plupload/Moxie.xap',
 
-          url: 'http://' + CONFIG['api_host'] + '/groups/' + group_id + '/bookkeepings/' + bookkeeping_id + '/add_proof.json',
+          url: 'http://' + CONFIG['api_host'] + '/groups/' + group_id + '/bookkeepings/' + bookkeeping.id + '/add_proof.json',
           browse_button: button_id,
 
           headers: {
@@ -34,9 +36,9 @@ angular.module('bbNgApp')
         });
         uploader.bind('FileUploaded', function(uploader, file, response) {
           var res = $.parseJSON(response.response);
-          console.log(res);
-          scope.bookkeeping.proofs.push(res);
-          console.log( scope.bookkeeping.proofs);
+          scope.$apply(function() {
+            scope.bookkeeping.proofs.push(res);
+          });
         });
         uploader.bind('Error', function(uploader, error) {
           alert(error.message);
