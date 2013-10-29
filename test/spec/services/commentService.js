@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: Commentservice', function () {
+describe('Service: CommentService', function () {
 
   // load the service's module
-  beforeEach(module('BbngApp'));
+  beforeEach(module('bbNgApp'));
 
   // instantiate service
-  var Commentservice;
-  beforeEach(inject(function (_Commentservice_) {
-    Commentservice = _Commentservice_;
+  var CommentService;
+  beforeEach(inject(function (_CommentService_) {
+    CommentService = _CommentService_;
   }));
 
   it('should do something', function () {
-    expect(!!Commentservice).toBe(true);
+    expect(!!CommentService).toBe(true);
   });
 
 });
