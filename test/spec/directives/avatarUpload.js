@@ -12,4 +12,8 @@ describe('Directive: avatarUpload', function () {
     scope = $rootScope.$new();
   }));
 
+  it('should have plupload', function() {
+    expect(plupload).toBeDefined();
+  });
+
 });

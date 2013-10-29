@@ -10,7 +10,8 @@
       <a ng-class="{active:$state.is('app.notification')}" class="popup developer icon item" ui-sref="app.notification">
         <i class="bell outline icon"></i>
       </a>
-      <a ng-class="{active:$state.is('app.setting')}" class="popup developer icon item" ui-sref="app.setting">
+      <a ng-class="{active:$state.is('app.setting')}" class="popup developer icon item top-user-info" ui-sref="app.setting">
+        <img ng-src="{{ currentUser.avatar_url.thumb }}" class="user-avatar" />
         {{ currentUser.username }}
         <i class="setting icon"></i>
       </a>

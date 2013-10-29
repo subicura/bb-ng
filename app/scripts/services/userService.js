@@ -33,6 +33,9 @@ angular.module('bbNgApp')
     this.reset = function() {
       this.setUserInfo({});
     };
+    this.setAvatar = function(avatar_url) {
+      this.setUserInfo(angular.extend(this.currentUser, { avatar_url:avatar_url }));
+    }
   })
 
   .factory('LoginService', function($http, $resource, UserService, LoginInfo) {

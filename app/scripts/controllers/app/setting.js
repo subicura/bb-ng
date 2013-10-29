@@ -8,6 +8,7 @@ angular.module('bbNgApp')
       $scope.userForm.submitted = false;
     }
 
+    $scope.currentUser = LoginInfo.currentUser;
     $scope.user = angular.copy(LoginInfo.currentUser);
     $scope.userFormSubmit = function() {
       if($scope.userForm.$valid) {
