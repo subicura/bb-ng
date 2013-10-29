@@ -6,7 +6,6 @@ angular.module('bbNgApp')
       link: function postLink(scope, element, attrs) {
         var group_id = $state.params.group_id;
         var bookkeeping = scope.bookkeeping;
-        console.log(bookkeeping);
         var button_id = "addPictureBtn_" + bookkeeping.id;
 
         element.attr('id', button_id);
