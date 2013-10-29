@@ -34,13 +34,13 @@ angular.module('bbNgApp')
       });
     };
     $scope.formSubmit = function() {
-      BookkeepingService.save({ 
+      BookkeepingService.save({
         group_id: $state.params.group_id,
         bookkeeping: $scope.form
       }, function(data) {
-        $scope.Bookkeepings.unshift(data);
+        $scope.bookkeepings.unshift(data);
         $scope.form = {};
-        $scope.stats = bookkeepingService.calculate({ 
+        $scope.stats = BookkeepingService.calculate({
           group_id:$state.params.group_id,
           start_date:moment().startOf('month').format("YYYY-MM-DD"),
           end_date:moment().endOf('month').format("YYYY-MM-DD")

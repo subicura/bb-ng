@@ -98,12 +98,6 @@
       </select>
     </div>
   </div>
-  <div class="fields" ng-init="form.proofs_attributes =[{'picture':null}]">
-    <div class="field" ng-repeat="proofs_attribute in form.proofs_attributes">
-      <label>첨부파일</label>
-      <input ng-model="proofs_attribute.picture" type="file">
-    </div>
-  </div>
   <div class="ui blue submit button" ng-click="formSubmit()">Submit</div>
   <div class="ui submit button" ng-click="formCancel()">Cancel</div>
 </form>
@@ -111,7 +105,7 @@
   <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings">
     <div>{{bookkeeping.writer.email}}님이 {{bookkeeping.created_at | timeago}}에 작성한 글입니다. <a ng-click="removeBookkeeping($index)"><i class='cloud remove circle icon'></i></a> <a ng-click="editBookkeeping($index)"><i class='cloud edit circle icon'></i></a> </div>
     <div class='content'>{{bookkeeping.content}}</div>
-    <fielset>
+    <fieldset>
       <legend>거래내역 >></legend>
       <table class='ui celled four table segment'>
         <tr>
@@ -127,8 +121,23 @@
       </table>
     </fieldset>
     <fieldset>
-      <legend>###TODO : 인증샷업로드하기</legend>
-    </fieldset>    
+      <legend>인증샷 >></legend>
+      <div ng-show="bookkeeping.proofs.length > 0">
+        <p>사진보기 {{ bookkeeping.id }}</p>
+        <ul>
+          <li ng-repeat="proof in bookkeeping.proofs">
+            <img id="picture_{{ proof.id }}" src="{{ proof.picture_url.thumb }}">
+          </li>
+        </ul>
+      </div>
+      <div class="fields">
+        <div style="text-align:center">
+          <a class="ui button" bookkeeping_id="{{bookkeeping.id}}"
+             picture-upload>업로드</a>
+        </div>
+      </div>
+    </fieldset>
+      <br />
     <fieldset>
       <legend>###TODO : 댓글추가하기</legend>
     </fieldset>
