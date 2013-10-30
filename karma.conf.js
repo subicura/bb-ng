@@ -19,6 +19,7 @@ module.exports = function(config) {
       'app/bower_components/angular-ui-date/src/date.js',
       'app/bower_components/angular-facebook/lib/angular-facebook.js',
       'app/bower_components/moment/moment.js',
+      'app/bower_components/bower-ngx/ngx.js',
       'app/plugins/plupload/plupload.full.min.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
