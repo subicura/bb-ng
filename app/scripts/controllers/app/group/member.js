@@ -22,6 +22,7 @@ angular.module('bbNgApp')
           })
           
           if(existUser == null){
+            console.log($scope.users[i].id);
             GroupService.addUser({id: $state.params.group_id, member_action_id:$scope.users[i].id});
             $scope.members.push($scope.users[i]);
           }

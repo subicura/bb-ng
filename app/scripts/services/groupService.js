@@ -2,8 +2,9 @@
 
 angular.module('bbNgApp')
   .factory('GroupService', function ($resource, CONFIG) {
-    return $resource('http://' + CONFIG["api_host"] + '/groups/:id/:member_action/:member_action_id/:member_action2.json', {
-      id: '@id'
+    return $resource('http://' + CONFIG["api_host"] + '/groups/:id/:member_action/:member_action_id.json', {
+      id: '@id',
+      member_action_id: '@member_action_id'
     }, {
       update: {
         method: "PUT"
@@ -16,10 +17,9 @@ angular.module('bbNgApp')
         isArray: true
       },
       addUser: {
-        method: "GET",
+        method: "POST",
         params: {
-          member_action: "users",
-          member_action2: "add"
+          member_action: "users"
         }
       }
     });
