@@ -1,1 +1,11 @@
 <p>{{ $state.params.group_id }} - members</p>
+<input type="text" ng-model="search" placeholder="멤버찾기">
+<ui>
+<li ng-repeat="member in members | filter:search">{{member.email}}</li>
+</ui>
+
+<input type="text" ng-model="searchText" ng-change="searchUsers()" size="30" placeholder="add search text">
+<ui>
+<li ng-repeat="user in users">{{user.email}}<input type="checkbox" ng-model="user.checked"></li>
+</ui>
+<input type="submit" value="join" ng-click="joinUsers()">
