@@ -8,9 +8,13 @@ angular.module('bbNgApp')
   	$scope.members = GroupService.members({ id: $state.params.group_id });  	  	
 
   	$scope.searchUsers = function(){
-  		UserService.search({search: $scope.searchText}, function(data){
-  			$scope.users = data;        
-  		});
+      if($scope.searchText == ""){
+        window.alert('Enter the search text!');
+      } else {
+    		UserService.search({search: $scope.searchText}, function(data){
+    			$scope.users = data;        
+    		});
+      }
   	}
 
     $scope.addUsers = function(){
