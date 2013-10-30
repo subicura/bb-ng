@@ -12,8 +12,22 @@
 
 <p></p>
 
+<div class="ui items">
+  <div class="item" style="width:200px; min-height:260px" ng-repeat="member in members  | filter:search | orderBy:'email'">
+    <div class="image">
+      <img src="{{ member.avatar_url }}">
+      <a class="star ui corner label">
+        <i class="star icon"></i>
+      </a>
+    </div>
+    <div class="content">
+      <div class="name">{{ member.username }}</div>
+      <p class="description">{{ member.email }}</p>
+    </div>
+  </div>
+</div>
 
-<div class="ui five column grid">
+<!-- <div class="ui five column grid">
 	<div class="column" ng-repeat="member in members  | filter:search | orderBy:'email'">
     <div class="ui segment">
       <div class="ui meduim image">
@@ -22,7 +36,7 @@
 			<p align="center">{{ member.email }}<p>			
     </div>
   </div>
-</div>
+</div> -->
 
 
 <!-- new group modal -->
