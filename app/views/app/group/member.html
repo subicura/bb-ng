@@ -1,11 +1,61 @@
-<p>{{ $state.params.group_id }} - members</p>
-<input type="text" ng-model="search" placeholder="멤버찾기">
-<ui>
-<li ng-repeat="member in members | filter:search">{{member.email}}</li>
-</ui>
 
-<input type="text" ng-model="searchText" ng-change="searchUsers()" size="30" placeholder="add search text">
-<ui>
-<li ng-repeat="user in users">{{user.email}}<input type="checkbox" ng-model="user.checked"></li>
-</ui>
-<input type="submit" value="join" ng-click="joinUsers()">
+
+<div class="ui left floated icon input">
+  <input type="text" ng-model="search" placeholder="Search users...">
+  <i class="users icon"></i>
+</div>		
+
+<div class="ui right floated active button green" ng-click="showAddUserForm()">
+	<i class="user icon"></i>
+	Add Member
+</div>
+
+<p></p>
+
+
+<div class="ui five column grid">
+	<div class="column" ng-repeat="member in members  | filter:search | orderBy:'email'">
+    <div class="ui segment">
+      <div class="ui meduim image">
+				<img src="{{ member.avatar_url }}">
+			</div>
+			<p align="center">{{ member.email }}<p>			
+    </div>
+  </div>
+</div>
+
+
+<!-- new group modal -->
+<div class="ui new member modal">
+  <i class="close icon"></i>
+  <div class="header">
+    새로운 멤버 추가
+  </div>
+  <div class="content">
+
+  	<div class="ui action input">
+  		<input type="text" placeholder="Search..." ng-model="searchText">
+  		<div class="ui button" ng-click="searchUsers()">Search</div>
+		</div>	
+  </div>
+
+	<div class="ui divided list">
+	  <div class="item" ng-repeat="user in users">
+	    <img src="{{ user.avatar_url }}">
+	    <div class="content">
+	      <div class="header">{{ user.email }}</div>	      
+	    </div>
+	    <input type="checkbox" ng-model="user.checked">
+	  </div>
+	</div>
+
+  <div class="actions">
+    <div class="ui black cancel button">
+      Cancel
+    </div>
+    <div class="ui green right labeled icon button" ng-click="addUsers()">
+      Add
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
