@@ -89,6 +89,13 @@ angular.module('bbNgApp')
         params: {
           action: 'sign_out'
         }
+      },
+      'search': {
+        method: 'GET',
+        params: {
+          action: 'search'
+        },
+        isArray: true
       }
     });
     return resource;
