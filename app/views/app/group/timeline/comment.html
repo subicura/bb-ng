@@ -1,0 +1,25 @@
+<div class="ui comments" ng-controller="AppGroupTimelineCommentCtrl">
+  <div class="comment" ng-repeat="comment in bookkeeping.comments">
+    <div class="content">
+      <a class="author">{{ comment.writer.email }}</a>
+      <div class="metadata">
+        <div class="date">{{ comment.created_at | timeago }}</div>
+      </div>
+      <div class="text">
+        {{ comment.content }}
+      </div>
+      <div class="actions">
+        <a class="reply">Edit</a>
+        <a class="delete" ng-click="removeComment($index)">Delete</a>
+      </div>
+    </div>
+  </div>
+  <form class="ui reply form commentForm" name="commentForm" ng-submit="addComment()" novalidate>
+    <div class="field" ng-class="{ error: (commentForm.submitted || commentForm.content.$dirty) && commentForm.content.$invalid }">
+      <input type="text" ng-model="newComment.content" name="content" placeholder="Your comment" required />
+    </div>
+    <div class="ui button teal submit labeled icon" ng-click="addComment()">
+      <i class="icon edit"></i> Add Comment
+    </div>
+  </form>
+</div>
