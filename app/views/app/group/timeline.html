@@ -126,7 +126,8 @@
         <p>사진보기 ({{ bookkeeping.proofs.length }})</p>
         <ul class="proofs">
           <li class="proof" ng-repeat="proof in bookkeeping.proofs">
-            <a ng-href='{{ proof.picture_url }}'><img ng-src="{{ proof.picture_url.thumb }}"></a>
+            <a class="fancybox" ng-href='{{ proof.picture_url.medium }}'
+               ngx-lightbox="gallery" title="여기는 사진의 제목입니다."><img ng-src="{{ proof.picture_url.thumb }}"></a>
           </li>
         </ul>
       </div>
