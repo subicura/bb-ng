@@ -3,7 +3,7 @@
 describe('Controller: AppSettingCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('bbNgApp', 'mock'));
+  beforeEach(module('bbNgApp', 'mock.logininfo'));
 
   var AppSettingCtrl,
     scope,

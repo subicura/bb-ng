@@ -137,32 +137,7 @@
       </div>
     </fieldset>
       <br />
-    <fieldset>
-      <div class="ui comments">
-        <div class="comment" ng-repeat="comment in bookkeeping.comments">
-          <div class="content">
-            <a class="author">{{ comment.writer.email }}</a>
-            <div class="metadata">
-              <div class="date">{{ comment.created_at | timeago }}</div>
-            </div>
-            <div class="text">
-              {{ comment.content }}
-            </div>
-            <div class="actions">
-              <a class="reply">Edit</a>
-              <a class="delete" ng-click="removeComment(bookkeeping.id, comment.id)">Delete</a>
-            </div>
-          </div>
-        </div>
-        <form class="ui reply form commentForm">
-          <div class="field">
-            <textarea ng-model="commentForm.content" placeholder="Your comment"></textarea>
-          </div>
-          <div class="ui button teal submit labeled icon" ng-click="commentSubmit(bookkeeping.id, commentForm)">
-            <i class="icon edit"></i> Add Comment
-          </div>
-        </form>
-      </div>
+    <fieldset ng-include="'/views/app/group/timeline/comment.html'">
     </fieldset>
   </li>
 </ul>

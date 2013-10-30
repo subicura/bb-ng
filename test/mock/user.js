@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mock', [])
+angular.module('mock.logininfo', [])
   .value('mockedLoginInfo', {
     default:{
       id:1,
