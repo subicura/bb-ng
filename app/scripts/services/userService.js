@@ -7,8 +7,10 @@ angular.module('bbNgApp')
      * info - id
      *      - username
      *      - email
-     *      - avatar
      *      - auth_token
+     *      - avatar_url - original, medium, thumb
+     * References (added by hyoseong)
+     *      - http://shahjadatalukdar.wordpress.com/2013/09/27/using-html5-localstorage-with-angularjs/
      */
     this.localStorageKey = "__LOGIN_INFO";
     try {
@@ -31,6 +33,9 @@ angular.module('bbNgApp')
     this.reset = function() {
       this.setUserInfo({});
     };
+    this.setAvatar = function(avatar_url) {
+      this.setUserInfo(angular.extend(this.currentUser, { avatar_url:avatar_url }));
+    }
   })
 
   .factory('LoginService', function($http, $resource, UserService, LoginInfo) {

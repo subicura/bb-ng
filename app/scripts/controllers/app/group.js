@@ -2,7 +2,9 @@
 
 angular.module('bbNgApp')
   .controller('AppGroupCtrl', function ($scope, $state, GroupService) {
-    $scope.group = GroupService.get({ id:$state.params.group_id });
+    $scope.$watch('$state.params.group_id', function(group_id) {
+      $scope.group = GroupService.get({ id:group_id });
+    });
 
     // 그룹 정보 편집
     $scope.editGroupForm = {};

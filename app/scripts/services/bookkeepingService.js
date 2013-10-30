@@ -14,6 +14,12 @@ angular.module('bbNgApp')
         params: {
           collection_action: "calculate"
         }
+      },
+      add_proof: {
+        method: "POST",
+        params: {
+          member_action: "add_proof"
+        }
       }
     });
   });
