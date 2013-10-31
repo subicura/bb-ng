@@ -40,6 +40,7 @@ ul.proofs {
     border: 5px solid white;
     border-spacing: 2px;
     background-color: white;
-    display: table-cell; }
+    display: table-cell;
+    position: relative; }
     ul.proofs li.proof img {
       vertical-align: middle; }

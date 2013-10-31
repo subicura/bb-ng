@@ -1,8 +1,11 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppGroupTimelineCtrl', function ($scope, $state, GroupService, BookkeepingService, AccountTitleService, CommentService) {
+  .controller('AppGroupTimelineCtrl', function ($scope, $state, GroupService, LoginInfo, BookkeepingService, AccountTitleService, CommentService) {
     $scope.form = {};
+    $scope.canUpdate = function(id) {
+      return LoginInfo.currentUser.id == id
+    };
     $scope.stats = BookkeepingService.calculate({ 
       group_id:$state.params.group_id,
       start_date:moment().startOf('month').format("YYYY-MM-DD"),
@@ -46,5 +49,17 @@ angular.module('bbNgApp')
           end_date:moment().endOf('month').format("YYYY-MM-DD")
         });
       });
+    };
+    $scope.removeProof = function(proof_index, bookkeeping) {
+      var proof_id = bookkeeping.proofs[proof_index].id;
+      if(confirm("Are you sure?")) {
+        BookkeepingService.remove_proof({
+          group_id: $state.params.group_id,
+          id: bookkeeping.id,
+          proof_id: proof_id
+        }, function(data) {
+          bookkeeping.proofs.splice(proof_index, 1);
+        });
+      }
     };
   });

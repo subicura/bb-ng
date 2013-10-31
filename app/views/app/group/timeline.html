@@ -120,25 +120,7 @@
         </tr>
       </table>
     </fieldset>
-    <fieldset>
-      <legend>인증샷 >></legend>
-      <div ng-show="bookkeeping.proofs.length > 0">
-        <p>사진보기 ({{ bookkeeping.proofs.length }})</p>
-        <ul class="proofs">
-          <li class="proof" ng-repeat="proof in bookkeeping.proofs">
-            <a class="fancybox" ng-href='{{ proof.picture_url.medium }}'
-               ngx-lightbox="gallery" title="여기는 사진의 제목입니다."><img ng-src="{{ proof.picture_url.thumb }}"></a>
-          </li>
-        </ul>
-      </div>
-      <div class="fields">
-        <div>
-          <a class="ui button" picture-upload>업로드</a>
-        </div>
-      </div>
-    </fieldset>
-      <br />
-    <fieldset ng-include="'/views/app/group/timeline/comment.html'">
-    </fieldset>
+    <fieldset ng-include="'/views/app/group/timeline/proof.html'"></fieldset>
+    <fieldset ng-include="'/views/app/group/timeline/comment.html'"></fieldset>
   </li>
 </ul>
