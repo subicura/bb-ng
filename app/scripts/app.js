@@ -129,11 +129,19 @@ angular.module('bbNgApp', ['config', 'ngResource', 'resource.plus', 'ngAnimate',
   })
   .run(function($rootScope) {
     NProgress.configure({ showSpinner: false });
-    // page loading
-    $rootScope.$on('$stateChangeSuccess', function(event, viewConfig) { 
+
+    function startLoading() {
       NProgress.start();
-    });
-    $rootScope.$on('$viewContentLoaded', function(event) {
+    }
+    function stopLoading() {
       NProgress.done();
+    }
+
+    // page loading
+    $rootScope.$on('$stateChangeStart', function(event, viewConfig) { 
+      startLoading();
     });
+    $rootScope.$on('$stateNotFound', stopLoading);
+    $rootScope.$on('$stateChangeError', stopLoading);
+    $rootScope.$on('$viewContentLoaded', stopLoading);
   });
