@@ -45,8 +45,10 @@ ul.proofs {
     border-spacing: 2px;
     background-color: white;
     display:table-cell;
+    position:relative;
     img {
       vertical-align: middle;
     }
   }
 }
+
