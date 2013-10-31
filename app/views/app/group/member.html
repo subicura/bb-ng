@@ -1,1 +1,64 @@
-<p>{{ $state.params.group_id }} - members</p>
+
+
+<div class="ui left floated icon input">
+  <input type="text" ng-model="search" placeholder="Search users...">
+  <i class="users icon"></i>
+</div>		
+
+<div class="ui right floated active button green" ng-click="showAddUserForm()">
+	<i class="user icon"></i>
+	Add Member
+</div>
+
+<p></p>
+
+<div class="ui items">
+  <div class="item" style="width:200px; min-height:260px" ng-repeat="member in members  | filter:search | orderBy:'email'">
+    <div class="image">
+      <img src="{{ member.avatar_url }}">
+      <!-- currentUser가 owner인 경우만 삭제 아이콘을 보여줌 -->
+      <a class="star ui corner label" ng-click="removeUser(member.id)" ng-hide="!isOwner">
+        <i class="remove sign icon" data-content="Hello, I am a pop-up."></i>
+      </a>
+    </div>
+    <div class="content">
+      <div class="name">{{ member.username }}</div>
+      <p class="description">{{ member.email }}</p>
+    </div>    
+  </div>
+</div>
+
+<!-- new group modal -->
+<div class="ui new member modal">
+  <i class="close icon"></i>
+  <div class="header">
+    새로운 멤버 추가
+  </div>
+  <div class="content">
+
+  	<div class="ui action input">
+  		<input type="text" placeholder="Search..." ng-model="searchText">
+  		<div class="ui button" ng-click="searchUsers()">Search</div>
+		</div>	
+  </div>
+
+	<div class="ui divided list">
+	  <div class="item" ng-repeat="user in users">
+	    <img src="{{ user.avatar_url }}">
+	    <div class="content">
+	      <div class="header">{{ user.email }}</div>	      
+	    </div>
+	    <input type="checkbox" ng-model="user.checked">
+	  </div>
+	</div>
+
+  <div class="actions">
+    <div class="ui black cancel button">
+      Cancel
+    </div>
+    <div class="ui green right labeled icon button" ng-click="addUsers()">
+      Add
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>

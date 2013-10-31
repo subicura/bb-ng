@@ -102,7 +102,7 @@ angular.module('bbNgApp', ['config', 'ngResource', 'resource.plus', 'ngAnimate',
           templateUrl: '/views/app/setting.html',
           controller: 'AppSettingCtrl'
         });
-    
+
     $locationProvider.html5Mode(true).hashPrefix('!');
 
     // layout마다 {name}-layout class를 body에 넣어줌
@@ -126,4 +126,14 @@ angular.module('bbNgApp', ['config', 'ngResource', 'resource.plus', 'ngAnimate',
 
     // Facebook
     FacebookProvider.init(CONFIG["facebook_key"]);
+  })
+  .run(function($rootScope) {
+    NProgress.configure({ showSpinner: false });
+    // page loading
+    $rootScope.$on('$stateChangeSuccess', function(event, viewConfig) { 
+      NProgress.start();
+    });
+    $rootScope.$on('$viewContentLoaded', function(event) {
+      NProgress.done();
+    });
   });

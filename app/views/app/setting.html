@@ -25,10 +25,12 @@
 
       <div class="column">
         <div style="text-align:center">
-          <div>
+          <div class="avatar-layer">
             <img ng-src="{{ currentUser.avatar_url.medium }}" class="avatar" />
           </div>
-          <a id="addAvatarBtn" class="ui button" avatar-upload>프로필 이미지 등록</a>
+          <a id="addAvatarBtn" class="ui black button" avatar-upload>
+            <span class="ladda-label">프로필 이미지 등록</span>
+          </a>
         </div>
       </div>
 
