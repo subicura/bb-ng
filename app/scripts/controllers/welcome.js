@@ -16,6 +16,7 @@ angular.module('bbNgApp')
     $scope.loginWithEmail = function() {
       LoginService.login(this.username, this.password, function(data, status){
         $state.go('app.my.timeline');
+        toastr.success('Signed in successfully.')
       }, function(data, status){      
         alert(data['message']);
       });
@@ -39,6 +40,7 @@ angular.module('bbNgApp')
     $scope.loginWithTwitter = function() {
       LoginService.login(this.username, this.password, function(data, status){
         $state.go('app.my.timeline');
+        toastr.success('Signed in successfully.')
       }, function(data, status){      
         alert(data['message']);
       });
@@ -49,6 +51,7 @@ angular.module('bbNgApp')
     function loginWithAuth(provider, accessToken){
       LoginService.loginWithAuth(provider, accessToken, function(data, status){
         $state.go('app.my.timeline');
+        toastr.success('Signed in successfully.')
       }, function(data, status){
         alert(data['message']);
       });

@@ -18,11 +18,13 @@ angular.module('bbNgApp')
     		Facebook.logout(function(){
     			LoginService.logout(function(){
     				$location.path("/");
+            toastr.success('Signed out successfully.')
     			})
     		})
     	else{
 				LoginService.logout(function() {
 				  $location.path("/");  
+          toastr.success('Signed out successfully.')
 				});   	
     	}    	
     }
