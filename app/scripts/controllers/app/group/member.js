@@ -1,11 +1,16 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppGroupMemberCtrl', function ($scope, $state, GroupService, UserService) {
+  .controller('AppGroupMemberCtrl', function ($scope, $state, GroupService, UserService, LoginInfo) {
 
   	$scope.search = "";
   	$scope.searchText = "";
-  	$scope.members = GroupService.members({ id: $state.params.group_id });  	  	
+  	$scope.members = GroupService.members({ id: $state.params.group_id }); 
+
+    // 현재 사용자가 그룹의 owner인지 아닌지 $scope.isOwner에 저장
+    GroupService.get({ id: $state.params.group_id }, function(data){
+      $scope.isOwner = data.owner.id == LoginInfo.currentUser.id;      
+    });
 
   	$scope.searchUsers = function(){
       if($scope.searchText == ""){

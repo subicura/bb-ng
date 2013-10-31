@@ -16,7 +16,8 @@
   <div class="item" style="width:200px; min-height:260px" ng-repeat="member in members  | filter:search | orderBy:'email'">
     <div class="image">
       <img src="{{ member.avatar_url }}">
-      <a class="star ui corner label" ng-click="removeUser(member.id)">
+      <!-- currentUser가 owner인 경우만 삭제 아이콘을 보여줌 -->
+      <a class="star ui corner label" ng-click="removeUser(member.id)" ng-hide="!isOwner">
         <i class="remove sign icon" data-content="Hello, I am a pop-up."></i>
       </a>
     </div>
@@ -26,18 +27,6 @@
     </div>    
   </div>
 </div>
-
-<!-- <div class="ui five column grid">
-	<div class="column" ng-repeat="member in members  | filter:search | orderBy:'email'">
-    <div class="ui segment">
-      <div class="ui meduim image">
-				<img src="{{ member.avatar_url }}">
-			</div>
-			<p align="center">{{ member.email }}<p>			
-    </div>
-  </div>
-</div> -->
-
 
 <!-- new group modal -->
 <div class="ui new member modal">
