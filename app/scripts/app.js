@@ -138,9 +138,7 @@ angular.module('bbNgApp', ['config', 'ngResource', 'resource.plus', 'ngAnimate',
     }
 
     // page loading
-    $rootScope.$on('$stateChangeStart', function(event, viewConfig) { 
-      startLoading();
-    });
+    $rootScope.$on('$stateChangeStart', startLoading);
     $rootScope.$on('$stateNotFound', stopLoading);
     $rootScope.$on('$stateChangeError', stopLoading);
     $rootScope.$on('$viewContentLoaded', stopLoading);
