@@ -11,6 +11,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'app/bower_components/jquery/jquery.js',
+      'app/bower_components/jquery-ui/ui/jquery-ui.js',
+      'app/bower_components/moment/moment.js',
+      'app/bower_components/nprogress/nprogress.js',
       'app/bower_components/angular/angular.js',
       'app/bower_components/angular-resource/angular-resource.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
@@ -18,9 +22,10 @@ module.exports = function(config) {
       'app/bower_components/angular-ui-router/release/angular-ui-router.js',
       'app/bower_components/angular-ui-date/src/date.js',
       'app/bower_components/angular-facebook/lib/angular-facebook.js',
-      'app/bower_components/moment/moment.js',
       'app/bower_components/bower-ngx/ngx.js',
       'app/plugins/plupload/plupload.full.min.js',
+      'app/plugins/ladda/spin.js',
+      'app/plugins/ladda/ladda.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
