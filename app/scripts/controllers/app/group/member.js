@@ -45,4 +45,13 @@ angular.module('bbNgApp')
         .modal('show');
     }
 
+    $scope.removeUser = function(member_id){
+      if(window.confirm("Are you sure?")){
+        GroupService.removeUser({ id: $state.params.group_id, member_action_id:member_id });
+        $scope.members = _.reject($scope.members, function(member){
+          return member.id == member_id;
+        });
+      }
+    }
+
   });
