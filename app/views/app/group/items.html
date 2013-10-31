@@ -1,1 +1,84 @@
-<p>{{ $state.params.group_id }} - items</p>
+<form class="ui form segment">
+  <div class='four fields'>
+    <div class='date field' style="margin-bottom:0;">
+      <input ng-model="term.start_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="시작일자" type="text">
+    </div>
+    <div class='date field' style="margin-bottom:0;">
+      <input ng-model="term.end_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="종료일자" type="text">
+    </div>
+    <div class="ui buttons">
+      <div class="ui blue large submit button" ng-click="termSubmit()">기간별</div>
+      <div class="ui blue large submit button" ng-click="thisMonth()">이번달</div>
+      <div class="ui blue large submit button" ng-click="thisYear()">올해</div>
+      <div class="ui positive large submit button" ng-click="monthlyBalance()">월말정산</div>
+    </div>
+  </div>
+</form>
+
+<div class="top-money-info ui connected items">
+  <div class="three ui row">
+    <div class="item">
+      <div class="content">
+        <div class="name">
+          <i class="cloud download icon"></i>
+          수입
+        </div>
+        <div class="number">
+          <i class="korean won icon"></i> {{stats.income | number}}
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="content">
+        <div class="name">
+          <i class="cloud upload icon"></i>
+          지출
+        </div>
+        <div class="number">
+          <i class="korean won icon"></i> {{stats.outlay | number}}
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="content">
+        <div class="name">
+          <i class="money icon"></i>
+          잔액
+        </div>
+        <div class="number {{ stats.total > 0 ? 'blue' : 'red'}}">
+          <i class="korean won icon"></i> {{stats.total | number}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>거래내역</h3>
+<ul class='bookkeepings'>
+  <li class='bookkeeping' ># 계정항목 별 sort
+
+    <fieldset>
+
+    	<legend><span class='green'>[자산]</span> {{bookkeeping.writer.email}}</legend>
+
+      <table class='ui celled four table segment' ng-repeat="bookkeeping in bookkeepings" ng-show="bookkeeping.account_title.title == '자산'">
+        <tr>
+          <td class='one wide'>{{bookkeeping.issue_date}}</td>
+          <td class='two wide'>{{bookkeeping.issuer.email}}</td>
+          <td class='five wide'>{{bookkeeping.remark}}</td>
+          <td class='two wide'>
+            <div class='number {{ bookkeeping.operator == "-" ? "red" : "blue"}}' style='text-align:right;'>
+              {{bookkeeping.operator}} <i class="korean won icon"></i> {{bookkeeping.amount | number}}
+            </div>
+          </td>
+        </tr>
+      </table>
+
+    </fieldset>
+
+  </li>
+</ul>
+
+# 계정항목 별 계산??
+
+
