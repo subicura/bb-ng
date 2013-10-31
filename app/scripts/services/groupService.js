@@ -21,6 +21,12 @@ angular.module('bbNgApp')
         params: {
           member_action: "users"
         }
+      },
+      removeUser: {
+        method: "DELETE",
+        params: {
+          member_action: "users"
+        }
       }
     });
   });
