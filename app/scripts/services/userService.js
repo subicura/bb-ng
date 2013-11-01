@@ -68,7 +68,7 @@ angular.module('bbNgApp')
   })
 
   .factory('UserService', function(ResourcePlus, LoginInfo, CONFIG) {
-    var resource = ResourcePlus('http://' + CONFIG["api_host"] + '/users/:action.json', {
+    var resource = ResourcePlus('http://' + CONFIG["api_host"] + '/users/:id/:action.json', {
     }, {
       update: {
         method: "PUT",
@@ -94,6 +94,14 @@ angular.module('bbNgApp')
         method: 'GET',
         params: {
           action: 'search'
+        },
+        isArray: true
+      },
+      membered_groups: {
+        method: 'GET',
+        params: {
+          id: '@id',
+          action: 'membered_groups'
         },
         isArray: true
       }

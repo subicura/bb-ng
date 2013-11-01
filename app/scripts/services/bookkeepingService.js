@@ -24,7 +24,11 @@ angular.module('bbNgApp')
       },
       remove_proof: {
         method: "DELETE",
-        url: "http://localhost:3000/groups/:group_id/bookkeepings/:id/proofs/remove_proof/:proof_id"
+        url: 'http://' + CONFIG["api_host"] + '/groups/:group_id/bookkeepings/:id/proofs/remove_proof/:proof_id'
+      },
+      get_first_issue_date: {
+        method: "GET",
+        url: 'http://' + CONFIG["api_host"] + '/bookkeepings/get_first_issue_date'
       }
     });
   });

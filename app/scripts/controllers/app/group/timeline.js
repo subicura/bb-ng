@@ -6,13 +6,17 @@ angular.module('bbNgApp')
     $scope.canUpdate = function(id) {
       return LoginInfo.currentUser.id == id
     };
-    $scope.stats = BookkeepingService.calculate({ 
+    // 수입/지출/잔액 계산
+    $scope.stats = BookkeepingService.calculate({
       group_id:$state.params.group_id,
       start_date:moment().startOf('month').format("YYYY-MM-DD"),
       end_date:moment().endOf('month').format("YYYY-MM-DD")
     });
+
     $scope.bookkeepings = BookkeepingService.query({ group_id:$state.params.group_id });
+
     $scope.account_titles = AccountTitleService.query();
+
     $scope.group_members = GroupService.members({ id:$state.params.group_id });
 
     $scope.removeBookkeeping = function(idx) {
