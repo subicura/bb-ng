@@ -12,7 +12,7 @@ angular.module('bbNgApp')
       end_date:moment().endOf('month').format("YYYY-MM-DD")
     });
     $scope.bookkeepings = BookkeepingService.query({ group_id:$state.params.group_id });
-    $scope.account_titles = AccountTitleService.query();
+    $scope.account_titles = AccountTitleService.query({ group_id:$state.params.group_id });
     $scope.group_members = GroupService.members({ id:$state.params.group_id });
 
     $scope.removeBookkeeping = function(idx) {
