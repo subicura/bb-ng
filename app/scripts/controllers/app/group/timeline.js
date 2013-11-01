@@ -7,10 +7,14 @@ angular.module('bbNgApp')
       return LoginInfo.currentUser.id == id
     };
     // 수입/지출/잔액 계산
-    $scope.stats = BookkeepingService.calculate({
-      group_id:$state.params.group_id,
-      start_date:moment().startOf('month').format("YYYY-MM-DD"),
-      end_date:moment().endOf('month').format("YYYY-MM-DD")
+    var first_issue_date = moment().startOf('month').format("YYYY-MM-DD");
+    BookkeepingService.get_first_issue_date(function(data) {
+      first_issue_date = data.issue_date;
+      $scope.stats = BookkeepingService.calculate({
+        group_id:$state.params.group_id,
+        start_date:first_issue_date,
+        end_date:moment().endOf('month').format("YYYY-MM-DD")
+      });
     });
 
     $scope.bookkeepings = BookkeepingService.query({ group_id:$state.params.group_id });
