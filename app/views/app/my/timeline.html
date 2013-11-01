@@ -1,1 +1,65 @@
-// TODO - my timeline
+<div ng-controller="AppMyTimelineCtrl">
+
+<h2>{{ today.getFullYear() }}년 {{ today.getMonth() + 1 }}월 <small>내 그룹 현황</small></h2>
+
+  <div class="ui items">
+    <div class="item" style="width:99%; min-height:200px" ng-repeat="group in membered_groups">
+      <div class="image">
+
+        <!-- currentUser가 owner인 경우만 삭제 아이콘을 보여줌 -->
+        <a class="star ui corner label" ng-click="removeUser(member.id)" ng-hide="!isOwner">
+          <i class="remove sign icon" data-content="Hello, I am a pop-up."></i>
+        </a>
+      </div>
+      <div class="content">
+        <h2 style="margin:0;">
+          <a ui-sref="app.group.timeline({group_id:group.id})">
+            <i class="users icon"></i>
+            {{ group.name }}
+          </a>
+        </h2>
+      </div>
+
+      <div class="top-money-info ui connected items">
+        <div class="three ui row">
+          <div class="item">
+            <div class="content">
+              <div class="name">
+                <i class="cloud download icon"></i>
+                수입
+              </div>
+              <div class="number">
+                <i class="korean won icon"></i> {{group.stats.income | number}}
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <div class="name">
+                <i class="cloud upload icon"></i>
+                지출
+              </div>
+              <div class="number">
+                <i class="korean won icon"></i> {{group.stats.outlay | number}}
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <div class="name">
+                <i class="money icon"></i>
+                잔액
+              </div>
+              <div class="number {{ stats.total > 0 ? 'blue' : 'red'}}">
+                <i class="korean won icon"></i> {{group.stats.total | number}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="description">{{ group.description }}</p>
+
+    </div>
+  </div>
+
+</div>
