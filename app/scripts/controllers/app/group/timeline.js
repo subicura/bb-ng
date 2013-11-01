@@ -15,7 +15,7 @@ angular.module('bbNgApp')
 
     $scope.bookkeepings = BookkeepingService.query({ group_id:$state.params.group_id });
 
-    $scope.account_titles = AccountTitleService.query();
+    $scope.account_titles = AccountTitleService.query({ group_id:$state.params.group_id });
 
     $scope.group_members = GroupService.members({ id:$state.params.group_id });
 

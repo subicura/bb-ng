@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppGroupCtrl', function ($scope, $state, GroupService) {
+  .controller('AppGroupCtrl', function ($scope, $state, $timeout, GroupService) {
     $scope.$watch('$state.params.group_id', function(group_id) {
-      $scope.group = GroupService.get({ id:group_id });
+      GroupService.get({ id:group_id }, function(data) {
+        $scope.group = data;
+      });
     });
 
     // 그룹 정보 편집

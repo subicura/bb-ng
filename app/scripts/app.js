@@ -128,12 +128,34 @@ angular.module('bbNgApp', ['config', 'ngResource', 'resource.plus', 'ngAnimate',
     FacebookProvider.init(CONFIG["facebook_key"]);
   })
   .run(function($rootScope) {
+    // set page loading animation
     NProgress.configure({ showSpinner: false });
-    // page loading
-    $rootScope.$on('$stateChangeSuccess', function(event, viewConfig) { 
+
+    function startLoading() {
       NProgress.start();
-    });
-    $rootScope.$on('$viewContentLoaded', function(event) {
+    }
+    function stopLoading() {
       NProgress.done();
-    });
+    }
+
+    $rootScope.$on('$stateChangeStart', startLoading);
+    $rootScope.$on('$stateNotFound', stopLoading);
+    $rootScope.$on('$stateChangeError', stopLoading);
+    $rootScope.$on('$viewContentLoaded', stopLoading);
+
+    // set default toastr option
+    toastr.options = {
+      "closeButton": false,
+      "debug": false,
+      "positionClass": "toast-top-right",
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
   });

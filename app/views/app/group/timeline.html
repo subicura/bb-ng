@@ -69,7 +69,9 @@
       <label>계정항목</label>
       <select ng-model="form.account_title_id">
           <option value="">Select</option>
-          <option ng-repeat="account in account_titles" value="{{account.id}}">{{account.title}}</option>
+          <optgroup ng-repeat="account_category in account_titles" label="{{account_category.category}}">
+            <option ng-repeat="account_title in account_category.titles" value="{{account_title.id}}">{{account_title.title}}</option>  
+          </optgroup>
       </select>
     </div>
     <div class="field">

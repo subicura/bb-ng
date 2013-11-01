@@ -4,6 +4,8 @@ angular.module('bbNgApp')
   .directive('avatarUpload', function (CONFIG, LoginInfo) {
     return {
       link: function postLink(scope, element, attrs) {
+        var button_id = attrs.id;
+
         var options = {
           runtimes:'html5, flash, silverlight, html4',
           max_file_size:'2mb',
@@ -15,7 +17,7 @@ angular.module('bbNgApp')
           silverlight_xap_url: '/plugins/plupload/Moxie.xap',
 
           url: 'http://' + CONFIG['api_host'] + '/users/add_avatar.json',
-          browse_button: "addAvatarBtn",
+          browse_button: button_id,
 
           headers: {
             "X-Auth-Email":LoginInfo.currentUser.email,
@@ -26,7 +28,7 @@ angular.module('bbNgApp')
         // ladda setting
         element.addClass("ladda-button");
         element.attr("data-style", "expand-left");
-        var ladda = Ladda.create( document.querySelector( '#addAvatarBtn' ) );
+        var ladda = Ladda.create( document.querySelector( '#'+button_id ) );
 
         // uploader setting
         var uploader = new plupload.Uploader(options);
