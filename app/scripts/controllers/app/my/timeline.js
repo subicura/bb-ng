@@ -7,7 +7,6 @@ angular.module('bbNgApp')
     var first_issue_date;
     BookkeepingService.get_first_issue_date(function(data) {
       first_issue_date = data.issue_date;
-      console.log(first_issue_date);
     });
     UserService.membered_groups({
       id: LoginInfo.currentUser.id
@@ -18,7 +17,6 @@ angular.module('bbNgApp')
         for(var i=0; i<$scope.membered_groups.length; i++) {
           var bookkeeping_stats = BookkeepingService.calculate({
             group_id:$scope.membered_groups[i].id,
-//            start_date:moment().startOf('month').format("YYYY-MM-DD"),
             start_date:first_issue_date,
             end_date:moment().endOf('month').format("YYYY-MM-DD")
           });
