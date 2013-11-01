@@ -9,13 +9,16 @@
   <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-  <link rel="stylesheet" href="/bower_components/jquery-ui/themes/smoothness/jquery-ui.css"/>
-  <!-- semantic-ui css  -->
-  <link rel="stylesheet" href="/plugins/semantic-ui/css/semantic.min.css">
 
       <!-- build:css(.tmp) styles/main.css -->
+      <link rel="stylesheet" href="/bower_components/jquery-ui/themes/smoothness/jquery-ui.css"/>
+      <link rel="stylesheet" href="/bower_components/bower-ngx/styles/ngx.min.css">
+      <link rel="stylesheet" href="/bower_components/bower-ngx/libs/jquery.fancybox/css/fancybox.css">
+      <link rel="stylesheet" href="/bower_components/nprogress/nprogress.css">
+      <link rel="stylesheet" href="/bower_components/toastr/toastr.css">
+      <link rel="stylesheet" href="/plugins/ladda/ladda-themeless.min.css">
+      <link rel="stylesheet" href="/plugins/semantic-ui/css/semantic.min.css">
+
       <link rel="stylesheet" href="/styles/base.css">
       <link rel="stylesheet" href="/styles/angular.css">
       <link rel="stylesheet" href="/styles/animate.css">
@@ -23,11 +26,6 @@
       <link rel="stylesheet" href="/styles/app_layout.css">
       <link rel="stylesheet" href="/styles/timeline.css">
       <link rel="stylesheet" href="/styles/setting.css">
-      <link rel="stylesheet" href="/bower_components/bower-ngx/styles/ngx.min.css">
-      <link rel="stylesheet" href="/bower_components/bower-ngx/libs/jquery.fancybox/css/fancybox.css">
-      <link rel="stylesheet" href="/bower_components/nprogress/nprogress.css">
-      <link rel="stylesheet" href="/bower_components/toastr/toastr.css">
-      <link rel="stylesheet" href="/plugins/ladda/ladda-themeless.min.css">
       <!-- endbuild -->
 
   <!--[if lt IE 9]>
@@ -40,28 +38,30 @@
       <!-- build:js scripts/modules.js -->
       <script src="/bower_components/jquery/jquery.js"></script>
       <script src="/bower_components/jquery-ui/ui/jquery-ui.js"></script>
-      <script src="/bower_components/moment/min/moment-with-langs.js"></script>
-      <script src="/bower_components/nprogress/nprogress.js"></script>
-      <script src="/bower_components/toastr/toastr.js"></script>
+      
       <script src="/bower_components/angular/angular.js"></script>
       <script src="/bower_components/angular-animate/angular-animate.js"></script>
       <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
-      <script src="/plugins/plupload/plupload.full.min.js"></script>
-      <script src="/plugins/semantic-ui/javascript/semantic.min.js"></script>
-      <script src="/plugins/ladda/spin.js"></script>
-      <script src="/plugins/ladda/ladda.js"></script>
-
       <script src="/bower_components/angular-resource/angular-resource.js"></script>
       <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
       <script src="/bower_components/angular-ui-date/src/date.js"></script>
       <script src="/bower_components/angular-facebook/lib/angular-facebook.js"></script>
-      <script src="/bower_components/underscore/underscore-min.js"></script>
-      <script src="/bower_components/bower-ngx/ngx.js"></script>
-
       <script src="/scripts/vendor/angular-resource-plus.js"></script>
+
+      <script src="/plugins/plupload/plupload.full.min.js"></script>
+      <script src="/plugins/semantic-ui/javascript/semantic.min.js"></script>
+      <script src="/bower_components/moment/min/moment-with-langs.js"></script>
+      <script src="/bower_components/nprogress/nprogress.js"></script>
+      <script src="/bower_components/toastr/toastr.js"></script>
+
+      <script src="/plugins/ladda/spin.js"></script>
+      <script src="/plugins/ladda/ladda.js"></script>
+
+      <script src="/bower_components/underscore/underscore-min.js"></script>
       <!-- endbuild -->
+      
+      <script src="/bower_components/bower-ngx/ngx.min.js"></script>
 
       <!-- build:js({.tmp,app}) scripts/scripts.js -->
       <script src="/scripts/config.js"></script>
