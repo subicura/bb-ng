@@ -15,6 +15,7 @@ module.exports = function(config) {
       'app/bower_components/jquery-ui/ui/jquery-ui.js',
       'app/bower_components/moment/moment.js',
       'app/bower_components/nprogress/nprogress.js',
+      'app/bower_components/toastr/toastr.js',
       'app/bower_components/angular/angular.js',
       'app/bower_components/angular-resource/angular-resource.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
