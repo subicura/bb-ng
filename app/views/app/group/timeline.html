@@ -61,13 +61,13 @@
   <div class="three fields">
     <div class="date field">
       <label>거래일자</label>
-      <input ng-model="form.issue_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="거래일자" type="text">
+      <input ng-model="edit_form.issue_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="거래일자" type="text">
       <!-- https://github.com/angular-ui/ui-date -->
       <!-- https://github.com/angular-ui/angular-ui-OLDREPO/issues/47 -->
     </div>
     <div class="field">
       <label>계정항목</label>
-      <select ng-model="form.account_title_id">
+      <select ng-model="edit_form.account_title_id">
           <option value="">Select</option>
           <optgroup ng-repeat="account_category in account_titles" label="{{account_category.category}}">
             <option ng-repeat="account_title in account_category.titles" value="{{account_title.id}}">{{account_title.title}}</option>  
@@ -76,7 +76,7 @@
     </div>
     <div class="field">
       <label>수입/지출</label>
-      <select ng-model="form.operator">
+      <select ng-model="edit_form.operator">
           <option value="">Select</option>
           <option value="+">수입</option>
           <option value="-">지출</option>
@@ -86,15 +86,15 @@
   <div class="three fields">
     <div class="field">
       <label>적요</label>
-      <input ng-model="form.remark" placeholder="적요란" type="text">
+      <input ng-model="edit_form.remark" placeholder="적요란" type="text">
     </div>
     <div class="field">
       <label>거래금액</label>
-      <input ng-model="form.amount" placeholder="거래금액" type="text">
+      <input ng-model="edit_form.amount" placeholder="거래금액" type="text">
     </div>
     <div class="field">
       <label>거래자</label>
-      <select ng-model="form.issuer_id">
+      <select ng-model="edit_form.issuer_id">
           <option value="">Select</option>
           <option ng-repeat="member in group_members" value="{{member.id}}">{{member.email}}</option>
       </select>
@@ -105,7 +105,14 @@
 </form>
 <ul class='bookkeepings'>
   <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings">
-    <div>{{bookkeeping.writer.email}}님이 {{bookkeeping.created_at | timeago}}에 작성한 글입니다. <a ng-click="removeBookkeeping($index)"><i class='cloud remove circle icon'></i></a> <a ng-click="editBookkeeping($index)"><i class='cloud edit circle icon'></i></a> </div>
+    <div>{{bookkeeping.writer.email}}님이 {{bookkeeping.created_at | timeago}}에 작성한 글입니다.
+      <a ng-click="removeBookkeeping($index)" ng-show="canUpdate({{ bookkeeping.writer.id }})">
+        <i class='cloud remove circle icon'></i>
+      </a>
+      <a ng-click="editBookkeeping(bookkeeping)" ng-show="canUpdate({{ bookkeeping.writer.id }})">
+        <i class='cloud edit circle icon'></i>
+      </a>
+    </div>
     <div class='content'>{{bookkeeping.content}}</div>
     <fieldset>
       <legend>거래내역 >></legend>
@@ -113,7 +120,9 @@
         <tr>
           <td class='one wide'>{{bookkeeping.issue_date}}</td>
           <td class='two wide'>{{bookkeeping.issuer.email}}</td>
-          <td class='five wide'><span class='green'>[{{bookkeeping.account_title.title}}]</span> {{bookkeeping.remark}}</td>
+          <td class='five wide'><span class='green'>[{{bookkeeping.account_title.title}}]</span>
+            {{bookkeeping.remark}}
+          </td>
           <td class='two wide'>
             <div class='number {{ bookkeeping.operator == "-" ? "red" : "blue"}}' style='text-align:right;'>
               {{bookkeeping.operator}} <i class="korean won icon"></i> {{bookkeeping.amount | number}}
@@ -126,3 +135,70 @@
     <fieldset ng-include="'/views/app/group/timeline/comment.html'"></fieldset>
   </li>
 </ul>
+
+
+<!-- modal for edit bookkeeping -->
+<div class="ui edit bookkeeping modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Bookkeeping 수정
+  </div>
+  <div class="content">
+    <form class="timeline-form ui small form segment">
+      <div class='field'>
+        <textarea ng-model='edit_form.content' placeholder="Your message"></textarea>
+      </div>
+      <div class="three fields">
+        <div class="date field">
+          <label>거래일자</label>
+          <input ng-model="edit_form.issue_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="거래일자" type="text">
+          <!-- https://github.com/angular-ui/ui-date -->
+          <!-- https://github.com/angular-ui/angular-ui-OLDREPO/issues/47 -->
+        </div>
+        <div class="field">
+          <label>계정항목</label>
+          <select ng-model="edit_form.account_title_id">
+            <option value="">Select</option>
+            <optgroup ng-repeat="account_category in account_titles" label="{{account_category.category}}">
+              <option ng-repeat="account_title in account_category.titles" value="{{account_title.id}}">{{account_title.title}}</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="field">
+          <label>수입/지출</label>
+          <select ng-model="edit_form.operator">
+            <option value="">Select</option>
+            <option value="+">수입</option>
+            <option value="-">지출</option>
+          </select>
+        </div>
+      </div>
+      <div class="three fields">
+        <div class="field">
+          <label>적요</label>
+          <input ng-model="edit_form.remark" placeholder="적요란" type="text">
+        </div>
+        <div class="field">
+          <label>거래금액</label>
+          <input ng-model="edit_form.amount" placeholder="거래금액" type="text">
+        </div>
+        <div class="field">
+          <label>거래자</label>
+          <select ng-model="edit_form.issuer_id">
+            <option value="">Select</option>
+            <option ng-repeat="member in group_members" value="{{member.id}}">{{member.email}}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="actions">
+    <div class="ui black cancel button">
+      Cancel
+    </div>
+    <div class="ui green right labeled icon button" ng-click="editBookkeeping()">
+      Edit
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>

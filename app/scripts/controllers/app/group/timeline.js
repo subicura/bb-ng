@@ -3,6 +3,7 @@
 angular.module('bbNgApp')
   .controller('AppGroupTimelineCtrl', function ($scope, $state, GroupService, LoginInfo, BookkeepingService, AccountTitleService, CommentService) {
     $scope.form = {};
+    $scope.edit_form = {};
     $scope.canUpdate = function(id) {
       return LoginInfo.currentUser.id == id
     };
@@ -30,6 +31,20 @@ angular.module('bbNgApp')
         });
       }
     };
+//    $scope.showEditBookkeeping = function() {
+//      $('.edit.bookkeeping.modal')
+//        .modal('setting', 'selector', {
+//          close : '.close, .actions .cancel.button'
+//        })
+//        .modal('setting', 'transition', 'fade up')
+//        .modal('show');
+//    };
+//    $scope.editBookkeeping = function(bookkkeeping) {
+//      $scope.edit_form.$update(function(data) {
+//        $scope.group = data;
+//        $('.edit.group.modal').modal('hideDimmer');
+//      });
+//    }
     $scope.termSubmit = function() {
       var start_date = moment($scope.term.start_date).format("YYYY-MM-DD");
       var end_date = moment($scope.term.end_date).format("YYYY-MM-DD");
@@ -71,3 +86,4 @@ angular.module('bbNgApp')
       }
     };
   });
+
