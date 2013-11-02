@@ -27,7 +27,11 @@
       <link rel="stylesheet" href="/styles/timeline.css">
       <link rel="stylesheet" href="/styles/setting.css">
       <!-- endbuild -->
-
+</head>
+<body ng-controller="GlobalCtrl">
+  <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
   <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -35,77 +39,76 @@
       document.createElement('ui-view');
     </script>
   <![endif]-->
-      <!-- build:js /scripts/modules.js -->
-      <script src="/bower_components/jquery/jquery.js"></script>
-      <script src="/bower_components/jquery-ui/ui/jquery-ui.js"></script>
-      
-      <script src="/bower_components/angular/angular.js"></script>
-      <script src="/bower_components/angular-animate/angular-animate.js"></script>
-      <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-      <script src="/bower_components/angular-resource/angular-resource.js"></script>
-      <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
-      <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="/bower_components/angular-ui-date/src/date.js"></script>
-      <script src="/bower_components/angular-facebook/lib/angular-facebook.js"></script>
-      <script src="/scripts/vendor/angular-resource-plus.js"></script>
 
-      <script src="/bower_components/underscore/underscore.js"></script>
-      <script src="/plugins/plupload/plupload.full.min.js"></script>
-      <script src="/plugins/semantic-ui/javascript/semantic.min.js"></script>
-      <script src="/bower_components/moment/min/moment-with-langs.js"></script>
-      <script src="/bower_components/nprogress/nprogress.js"></script>
-      <script src="/bower_components/toastr/toastr.js"></script>
-
-      <script src="/plugins/ladda/spin.js"></script>
-      <script src="/plugins/ladda/ladda.js"></script>
-      <!-- endbuild -->
-      
-      <script src="/bower_components/bower-ngx/ngx.js"></script>
-
-      <!-- build:js({.tmp,app}) /scripts/scripts.js -->
-      <script src="/scripts/config.js"></script>
-      <script src="/scripts/app.js"></script>
-
-      <script src="/scripts/controllers/default.js"></script>
-      <script src="/scripts/controllers/welcome.js"></script>
-      <script src="/scripts/controllers/join.js"></script>
-      <script src="/scripts/controllers/global.js"></script>
-
-      <script src="/scripts/controllers/app.js"></script>
-      <script src="/scripts/controllers/app/menu.js"></script>
-      
-      <script src="/scripts/controllers/app/my.js"></script>
-      <script src="/scripts/controllers/app/my/timeline.js"></script>
-      
-      <script src="/scripts/controllers/app/group.js"></script>
-      <script src="/scripts/controllers/app/group/timeline.js"></script>
-      <script src="/scripts/controllers/app/group/item.js"></script>
-      <script src="/scripts/controllers/app/group/report.js"></script>
-      <script src="/scripts/controllers/app/group/calendar.js"></script>
-      <script src="/scripts/controllers/app/group/member.js"></script>
-      <script src="/scripts/controllers/app/group/setting.js"></script>
-      <script src="/scripts/controllers/app/group/timeline/comment.js"></script>
-      
-      <script src="/scripts/controllers/app/setting.js"></script>
-      <script src="/scripts/controllers/app/notification.js"></script>
-
-      <script src="/scripts/services/interceptors/tokenAuthInterceptor.js"></script>
-      <script src="/scripts/services/interceptors/restServiceInterceptor.js"></script>
-
-      <script src="/scripts/services/userService.js"></script>
-      <script src="/scripts/services/groupService.js"></script>
-      <script src="/scripts/services/bookkeepingService.js"></script>
-      <script src="/scripts/services/accountTitleService.js"></script>
-      <script src="/scripts/services/commentService.js"></script>
-
-      <script src="/scripts/filters/timeago.js"></script>      
-      <script src="/scripts/directives/avatarUpload.js"></script>
-      
-      <script src="/scripts/directives/pictureUpload.js"></script>
-      <!-- endbuild -->
-
-</head>
-<body ng-controller="GlobalCtrl">
   <ui-view></ui-view>
+
+  <!-- build:js /scripts/modules.js -->
+  <script src="/bower_components/jquery/jquery.js"></script>
+  <script src="/bower_components/jquery-ui/ui/jquery-ui.js"></script>
+  
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/bower_components/angular-resource/angular-resource.js"></script>
+  <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="/bower_components/angular-ui-date/src/date.js"></script>
+  <script src="/bower_components/angular-facebook/lib/angular-facebook.js"></script>
+  <script src="/scripts/vendor/angular-resource-plus.js"></script>
+
+  <script src="/bower_components/underscore/underscore.js"></script>
+  <script src="/plugins/plupload/plupload.full.min.js"></script>
+  <script src="/plugins/semantic-ui/javascript/semantic.min.js"></script>
+  <script src="/bower_components/moment/min/moment-with-langs.js"></script>
+  <script src="/bower_components/nprogress/nprogress.js"></script>
+  <script src="/bower_components/toastr/toastr.js"></script>
+
+  <script src="/plugins/ladda/spin.js"></script>
+  <script src="/plugins/ladda/ladda.js"></script>
+  <!-- endbuild -->
+  
+  <script src="/bower_components/bower-ngx/ngx.js"></script>
+
+  <!-- build:js({.tmp,app}) /scripts/scripts.js -->
+  <script src="/scripts/config.js"></script>
+  <script src="/scripts/app.js"></script>
+
+  <script src="/scripts/controllers/default.js"></script>
+  <script src="/scripts/controllers/welcome.js"></script>
+  <script src="/scripts/controllers/join.js"></script>
+  <script src="/scripts/controllers/global.js"></script>
+
+  <script src="/scripts/controllers/app.js"></script>
+  <script src="/scripts/controllers/app/menu.js"></script>
+  
+  <script src="/scripts/controllers/app/my.js"></script>
+  <script src="/scripts/controllers/app/my/timeline.js"></script>
+  
+  <script src="/scripts/controllers/app/group.js"></script>
+  <script src="/scripts/controllers/app/group/timeline.js"></script>
+  <script src="/scripts/controllers/app/group/item.js"></script>
+  <script src="/scripts/controllers/app/group/report.js"></script>
+  <script src="/scripts/controllers/app/group/calendar.js"></script>
+  <script src="/scripts/controllers/app/group/member.js"></script>
+  <script src="/scripts/controllers/app/group/setting.js"></script>
+  <script src="/scripts/controllers/app/group/timeline/comment.js"></script>
+  
+  <script src="/scripts/controllers/app/setting.js"></script>
+  <script src="/scripts/controllers/app/notification.js"></script>
+
+  <script src="/scripts/services/interceptors/tokenAuthInterceptor.js"></script>
+  <script src="/scripts/services/interceptors/restServiceInterceptor.js"></script>
+
+  <script src="/scripts/services/userService.js"></script>
+  <script src="/scripts/services/groupService.js"></script>
+  <script src="/scripts/services/bookkeepingService.js"></script>
+  <script src="/scripts/services/accountTitleService.js"></script>
+  <script src="/scripts/services/commentService.js"></script>
+
+  <script src="/scripts/filters/timeago.js"></script>      
+  <script src="/scripts/directives/avatarUpload.js"></script>
+  
+  <script src="/scripts/directives/pictureUpload.js"></script>
+  <!-- endbuild -->
 </body>
 </html>
