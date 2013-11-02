@@ -117,6 +117,11 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
+              modRewrite([
+                /*'!\\.html|\\.js|\\.css|\\.png$ /index.html [L]'*/
+                '^(/|/join|/login|/logout)$ /index.html [L]',
+                '^/app(.*)$ /index.html [L]'
+              ]),
               mountFolder(connect, yeomanConfig.dist)
             ];
           }
@@ -274,7 +279,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>',
-          src: ['*.html', 'views/*.html'],
+          src: ['*.html', 'views/**/*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -291,6 +296,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             'bower_components/**/*',
+            'plugins/**/*',
             'images/{,*/}*.{gif,webp}',
             'styles/fonts/*'
           ]
