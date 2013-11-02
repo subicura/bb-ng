@@ -33,9 +33,9 @@ angular.module('bbNgApp', ['config', 'ngResource', 'resource.plus', 'ngAnimate',
         controller: 'AppCtrl',
         abstract: true,
         resolve:{
-          groups:function(GroupService) {
+          groups:["GroupService", function(GroupService) { // fix ngmin bug
             return GroupService.query();
-          }
+          }]
         },
         onEnter: function() {
           setBodyClass("app-layout");
