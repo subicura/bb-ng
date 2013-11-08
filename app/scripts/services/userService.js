@@ -104,6 +104,20 @@ angular.module('bbNgApp')
           action: 'membered_groups'
         },
         isArray: true
+      },
+      like: {
+        method: 'POST',
+        params: {
+          id: '@id',
+          action: 'like'
+        }
+      },
+      dislike: {
+        method: 'DELETE',
+        params: {
+          id: '@id',
+          action: 'like'
+        }
       }
     });
     return resource;
