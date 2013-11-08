@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bbNgApp')
-  .controller('AppGroupTimelineCtrl', function ($scope, $state, GroupService, LoginInfo, BookkeepingService, AccountTitleService, CommentService, UserService) {
+  .controller('AppGroupTimelineCtrl', function ($scope, $state, GroupService, LoginInfo, BookkeepingService, AccountTitleService, CommentService) {
     $scope.form = {};
     $scope.currentUser = LoginInfo.currentUser;
 
@@ -73,13 +73,13 @@ angular.module('bbNgApp')
       }
     };
     $scope.likeBookkeeping = function(bookkeeping){
-      UserService.like({ id: LoginInfo.currentUser.id, likeable_type: 'bookkeeping', likeable_id: bookkeeping.id }, function(data, headers){
+      BookkeepingService.like({ group_id: $state.params.group_id, id: bookkeeping.id }, function(data, headers){
         bookkeeping.liker_ids.push(LoginInfo.currentUser.id);
         bookkeeping.likes_count++;
       });
     }
     $scope.dislikeBookkeeping = function(bookkeeping){
-      UserService.dislike({ id: LoginInfo.currentUser.id, likeable_type: 'bookkeeping', likeable_id: bookkeeping.id }, function(data, headers){
+      BookkeepingService.dislike({ group_id: $state.params.group_id, id: bookkeeping.id }, function(data, headers){
         bookkeeping.liker_ids = _.without(bookkeeping.liker_ids, LoginInfo.currentUser.id);
         bookkeeping.likes_count--;
       });
