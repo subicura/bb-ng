@@ -105,7 +105,13 @@
 </form>
 <ul class='bookkeepings'>
   <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings">
-    <div>{{bookkeeping.writer.email}}님이 {{bookkeeping.created_at | timeago}}에 작성한 글입니다. <a ng-click="removeBookkeeping($index)"><i class='cloud remove circle icon'></i></a> <a ng-click="editBookkeeping($index)"><i class='cloud edit circle icon'></i></a> </div>
+    <div>{{bookkeeping.writer.email}}님이 {{bookkeeping.created_at | timeago}}에 작성한 글입니다. 
+    <a ng-click="removeBookkeeping($index)"><i class='cloud remove circle icon'></i></a> 
+    <a ng-click="editBookkeeping($index)"><i class='cloud edit circle icon'></i></a>
+    <a ng-click="likeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) < 0"><i class='thumbs up outline icon'></i></a>
+    <a ng-click="dislikeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) >= 0"><i class='thumbs down outline icon'></i></a> 
+    <span ng-show="bookkeeping.likes_count > 0">{{ bookkeeping.likes_count }} 명이 좋아합니다.</span>
+    </div>
     <div class='content'>{{bookkeeping.content}}</div>
     <fieldset>
       <legend>거래내역 >></legend>

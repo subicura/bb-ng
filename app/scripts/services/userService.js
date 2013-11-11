@@ -104,7 +104,7 @@ angular.module('bbNgApp')
           action: 'membered_groups'
         },
         isArray: true
-      }
+      },
     });
     return resource;
   });

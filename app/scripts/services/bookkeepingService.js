@@ -29,6 +29,18 @@ angular.module('bbNgApp')
       get_first_issue_date: {
         method: "GET",
         url: 'http://' + CONFIG["api_host"] + '/bookkeepings/get_first_issue_date'
+      },
+      like: {
+        method: "POST",
+        params: {
+          member_action: "like"
+        }
+      },
+      dislike: {
+        method: "DELETE",
+        params: {
+          member_action: "like"
+        }
       }
     });
   });
