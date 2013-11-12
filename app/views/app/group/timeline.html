@@ -112,6 +112,9 @@
       <a ng-click="showEditBookkeeping(bookkeeping)" ng-show="canUpdate({{ bookkeeping.writer.id }})">
         <i class='cloud edit circle icon'></i>
       </a>
+      <a ng-click="likeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) < 0"><i class='thumbs up outline icon'></i></a>
+      <a ng-click="dislikeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) >= 0"><i class='thumbs down outline icon'></i></a>
+      <span ng-show="bookkeeping.likes_count > 0">{{ bookkeeping.likes_count }} 명이 좋아합니다.</span>
     </div>
     <div class='content'>{{bookkeeping.content}}</div>
     <fieldset>

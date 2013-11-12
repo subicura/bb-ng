@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bbNgApp', ['config', 'ngResource', 'resource.plus', 'ngAnimate', 'ui.router', 'ui.date', 'facebook', 'ngx'])
+angular.module('bbNgApp', ['config', 'ngResource', 'resource.plus', 'ngAnimate', 'ui.router', 'ui.date', 'facebook', 'ngx', 'ui.calendar'])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, FacebookProvider, CONFIG) {
     // default route
     $urlRouterProvider.otherwise("/");

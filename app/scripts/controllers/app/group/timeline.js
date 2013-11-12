@@ -4,8 +4,9 @@ angular.module('bbNgApp')
   .controller('AppGroupTimelineCtrl', function ($scope, $state, GroupService, LoginInfo, BookkeepingService, AccountTitleService, CommentService) {
     $scope.form = {};
     $scope.add_form = {};
-    $scope.edit_form = {};
     $scope.bookkeeping = {};
+    $scope.currentUser = LoginInfo.currentUser;
+
     $scope.canUpdate = function(id) {
       return LoginInfo.currentUser.id == id
     };
@@ -102,5 +103,17 @@ angular.module('bbNgApp')
       }
     };
 
+    $scope.likeBookkeeping = function(bookkeeping){
+      BookkeepingService.like({ group_id: $state.params.group_id, id: bookkeeping.id }, function(data, headers){
+        bookkeeping.liker_ids.push(LoginInfo.currentUser.id);
+        bookkeeping.likes_count++;
+      });
+    }
+    $scope.dislikeBookkeeping = function(bookkeeping){
+      BookkeepingService.dislike({ group_id: $state.params.group_id, id: bookkeeping.id }, function(data, headers){
+        bookkeeping.liker_ids = _.without(bookkeeping.liker_ids, LoginInfo.currentUser.id);
+        bookkeeping.likes_count--;
+      });
+    }
   });
 
