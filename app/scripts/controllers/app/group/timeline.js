@@ -3,7 +3,9 @@
 angular.module('bbNgApp')
   .controller('AppGroupTimelineCtrl', function ($scope, $state, GroupService, LoginInfo, BookkeepingService, AccountTitleService, CommentService) {
     $scope.form = {};
+    $scope.add_form = {};
     $scope.edit_form = {};
+    $scope.bookkeeping = {};
     $scope.canUpdate = function(id) {
       return LoginInfo.currentUser.id == id
     };
@@ -31,20 +33,32 @@ angular.module('bbNgApp')
         });
       }
     };
-//    $scope.showEditBookkeeping = function() {
-//      $('.edit.bookkeeping.modal')
-//        .modal('setting', 'selector', {
-//          close : '.close, .actions .cancel.button'
-//        })
-//        .modal('setting', 'transition', 'fade up')
-//        .modal('show');
-//    };
-//    $scope.editBookkeeping = function(bookkkeeping) {
-//      $scope.edit_form.$update(function(data) {
-//        $scope.group = data;
-//        $('.edit.group.modal').modal('hideDimmer');
-//      });
-//    }
+
+    $scope.showEditBookkeeping = function(bookkeeping) {
+      $scope.edit_form = angular.copy(bookkeeping);
+      $scope.edit_form.issue_date = new Date(bookkeeping.issue_date);
+      $scope.bookkeeping = bookkeeping;
+      $('.edit.bookkeeping.modal')
+        .modal('setting', 'selector', {
+          close : '.close, .actions .cancel.button'
+        })
+        .modal('setting', 'transition', 'fade up')
+        .modal('show');
+    };
+
+    $scope.editBookkeeping = function() {
+      var idx = $scope.bookkeepings.indexOf($scope.bookkeeping);
+      $scope.bookkeeping = $scope.edit_form;
+      $scope.bookkeeping.$update({group_id: $state.params.group_id, id: $scope.bookkeeping.id}, function(data) {
+        var issue_year = data.issue_date.getFullYear();
+        var issue_month = data.issue_date.getMonth() + 1;
+        var issue_date = data.issue_date.getDate();
+        data.issue_date = issue_year + "-" + issue_month + "-" + issue_date;
+        $scope.bookkeepings[idx] = data;
+        $('.edit.group.modal').modal('hideDimmer');
+      });
+    }
+
     $scope.termSubmit = function() {
       var start_date = moment($scope.term.start_date).format("YYYY-MM-DD");
       var end_date = moment($scope.term.end_date).format("YYYY-MM-DD");
@@ -59,13 +73,14 @@ angular.module('bbNgApp')
         end_date:end_date
       });
     };
+
     $scope.formSubmit = function() {
       BookkeepingService.save({
         group_id: $state.params.group_id,
-        bookkeeping: $scope.form
+        bookkeeping: $scope.add_form
       }, function(data) {
         $scope.bookkeepings.unshift(data);
-        $scope.form = {};
+        $scope.add_form = {};
         $scope.stats = BookkeepingService.calculate({
           group_id:$state.params.group_id,
           start_date:moment().startOf('month').format("YYYY-MM-DD"),
@@ -73,6 +88,7 @@ angular.module('bbNgApp')
         });
       });
     };
+
     $scope.removeProof = function(proof_index, bookkeeping) {
       var proof_id = bookkeeping.proofs[proof_index].id;
       if(confirm("Are you sure?")) {
@@ -85,5 +101,6 @@ angular.module('bbNgApp')
         });
       }
     };
+
   });
 

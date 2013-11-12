@@ -56,18 +56,18 @@
 <h3>거래내역입력하기</h3>
 <form class="timeline-form ui small form segment">
   <div class='field'>
-    <textarea ng-model='form.content' placeholder="Your message"></textarea>
+    <textarea ng-model='add_form.content' placeholder="Your message"></textarea>
   </div>
   <div class="three fields">
     <div class="date field">
       <label>거래일자</label>
-      <input ng-model="edit_form.issue_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="거래일자" type="text">
+      <input ng-model="add_form.issue_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="거래일자" type="text">
       <!-- https://github.com/angular-ui/ui-date -->
       <!-- https://github.com/angular-ui/angular-ui-OLDREPO/issues/47 -->
     </div>
     <div class="field">
       <label>계정항목</label>
-      <select ng-model="edit_form.account_title_id">
+      <select ng-model="add_form.account_title_id">
           <option value="">Select</option>
           <optgroup ng-repeat="account_category in account_titles" label="{{account_category.category}}">
             <option ng-repeat="account_title in account_category.titles" value="{{account_title.id}}">{{account_title.title}}</option>  
@@ -76,7 +76,7 @@
     </div>
     <div class="field">
       <label>수입/지출</label>
-      <select ng-model="edit_form.operator">
+      <select ng-model="add_form.operator">
           <option value="">Select</option>
           <option value="+">수입</option>
           <option value="-">지출</option>
@@ -86,15 +86,15 @@
   <div class="three fields">
     <div class="field">
       <label>적요</label>
-      <input ng-model="edit_form.remark" placeholder="적요란" type="text">
+      <input ng-model="add_form.remark" placeholder="적요란" type="text">
     </div>
     <div class="field">
       <label>거래금액</label>
-      <input ng-model="edit_form.amount" placeholder="거래금액" type="text">
+      <input ng-model="add_form.amount" placeholder="거래금액" type="text">
     </div>
     <div class="field">
       <label>거래자</label>
-      <select ng-model="edit_form.issuer_id">
+      <select ng-model="add_form.issuer_id">
           <option value="">Select</option>
           <option ng-repeat="member in group_members" value="{{member.id}}">{{member.email}}</option>
       </select>
@@ -109,7 +109,7 @@
       <a ng-click="removeBookkeeping($index)" ng-show="canUpdate({{ bookkeeping.writer.id }})">
         <i class='cloud remove circle icon'></i>
       </a>
-      <a ng-click="editBookkeeping(bookkeeping)" ng-show="canUpdate({{ bookkeeping.writer.id }})">
+      <a ng-click="showEditBookkeeping(bookkeeping)" ng-show="canUpdate({{ bookkeeping.writer.id }})">
         <i class='cloud edit circle icon'></i>
       </a>
     </div>
