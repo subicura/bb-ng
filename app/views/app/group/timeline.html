@@ -106,10 +106,10 @@
 <ul class='bookkeepings'>
   <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings">
     <div>{{bookkeeping.writer.email}}님이 {{bookkeeping.created_at | timeago}}에 작성한 글입니다.
-      <a ng-click="removeBookkeeping($index)" ng-show="canUpdate({{ bookkeeping.writer.id }})">
+      <a ng-click="removeBookkeeping($index)" ng-show="canUpdate({{ bookkeeping.writer }})">
         <i class='cloud remove circle icon'></i>
       </a>
-      <a ng-click="showEditBookkeeping(bookkeeping)" ng-show="canUpdate({{ bookkeeping.writer.id }})">
+      <a ng-click="showEditBookkeeping(bookkeeping)" ng-show="canUpdate({{ bookkeeping.writer }})">
         <i class='cloud edit circle icon'></i>
       </a>
       <a ng-click="likeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) < 0"><i class='thumbs up outline icon'></i></a>
@@ -121,8 +121,7 @@
       <legend>거래내역 >></legend>
       <table class='ui celled four table segment'>
         <tr>
-          <td class='one wide'>{{bookkeeping.issue_date}}</td>
-          <td class='two wide'>{{bookkeeping.issuer.email}}</td>
+          <td class='two wide'>{{bookkeeping.issue_date}}</td>
           <td class='five wide'><span class='green'>[{{bookkeeping.account_title.title}}]</span>
             {{bookkeeping.remark}}
           </td>
@@ -131,6 +130,7 @@
               {{bookkeeping.operator}} <i class="korean won icon"></i> {{bookkeeping.amount | number}}
             </div>
           </td>
+          <td class='two wide'>{{bookkeeping.issuer.username}}</td>
         </tr>
       </table>
     </fieldset>
@@ -161,18 +161,19 @@
         <div class="field">
           <label>계정항목</label>
           <select ng-model="edit_form.account_title_id">
-            <option value="">Select</option>
+            <option value="" ng-selected="edit_form.account_title_id == ''">Select</option>
             <optgroup ng-repeat="account_category in account_titles" label="{{account_category.category}}">
-              <option ng-repeat="account_title in account_category.titles" value="{{account_title.id}}">{{account_title.title}}</option>
+              <option ng-repeat="account_title in account_category.titles" value="{{account_title.id}}"
+                      ng-selected="edit_form.account_title.id == account_title.id">{{account_title.title}}</option>
             </optgroup>
           </select>
         </div>
         <div class="field">
           <label>수입/지출</label>
           <select ng-model="edit_form.operator">
-            <option value="">Select</option>
-            <option value="+">수입</option>
-            <option value="-">지출</option>
+            <option value="" ng-selected="edit_form.operator == ''">Select</option>
+            <option value="+" ng-selected="edit_form.operator == '+'">수입</option>
+            <option value="-" ng-selected="edit_form.operator == '-'">지출</option>
           </select>
         </div>
       </div>
@@ -188,8 +189,9 @@
         <div class="field">
           <label>거래자</label>
           <select ng-model="edit_form.issuer_id">
-            <option value="">Select</option>
-            <option ng-repeat="member in group_members" value="{{member.id}}">{{member.email}}</option>
+            <option value="" ng-selected="edit_form.issuer_id == ''">Select</option>
+            <option ng-repeat="member in group_members" value="{{member.id}}"
+                    ng-selected="edit_form.issuer.id == member.id">{{member.username}}</option>
           </select>
         </div>
       </div>
