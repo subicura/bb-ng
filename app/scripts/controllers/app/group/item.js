@@ -17,7 +17,7 @@ angular.module('bbNgApp')
           issue_date: data[i].issue_date,
           remark: data[i].remark,
           account_title: data[i].account_title.title,
-          amount: numberWithCommas(((data[i].operator == "-") ? data[i].amount * -1 : data[i].amount)),
+          amount: ((data[i].operator == "-") ? data[i].amount * -1 : data[i].amount),
           issuer: data[i].issuer.username
         };
       };
@@ -47,13 +47,8 @@ angular.module('bbNgApp')
         {field: 'issue_date', displayName: '거래일', width: 120, headerClass:'center' },
         {field: 'remark',     displayName: '적요', headerClass:'center' },
         {field: 'account_title',    displayName: '계정항목', width:120, headerClass:'center' },
-        {field: 'amount',     displayName: '금액', width:200, cellClass:'right', headerClass:'center', cellTemplate: '<div ng-class="{red: row.getProperty(col.field) < 0}"><div class="ngCellText">₩ {{row.getProperty(col.field)}}</div></div>' },
+        {field: 'amount',     displayName: '금액', width:200, cellClass:'right', headerClass:'center', cellTemplate: '<div class="ngCellText number {{ row.getProperty(col.field) > 0 ? \'blue\' : \'red\'}}"><i class="korean won icon"></i> {{row.getProperty(col.field) | number}}</div>' },
         {field: 'issuer',     displayName: '거래자', width:150, cellClass:'center', headerClass:'center' }
       ]
     };
   });
-
-// http://stackoverflow.com/a/2901298
-function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
