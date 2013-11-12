@@ -1,5 +1,5 @@
 <div class="ui comments" ng-controller="AppGroupTimelineCommentCtrl">
-  <div class="comment" ng-repeat="comment in bookkeeping.comments">
+  <div class="comment" ng-repeat="comment in bookkeeping_comments.comments">
     <div class="content">
       <a class="author">{{ comment.writer.email }}</a>
       <div class="metadata">
@@ -9,10 +9,12 @@
         {{ comment.content }}
       </div>
       <div class="actions">
-        <a class="reply">Edit</a>
         <a class="delete" ng-click="removeComment($index)">Delete</a>
       </div>
     </div>
+  </div>
+  <div class="ui button" ng-if="bookkeeping_comments.next" ng-click="more(bookkeeping_comments.next)">
+    더보기
   </div>
   <form class="ui reply form commentForm" name="commentForm" ng-submit="addComment()" novalidate>
     <div class="field" ng-class="{ error: (commentForm.submitted || commentForm.content.$dirty) && commentForm.content.$invalid }">
