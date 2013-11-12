@@ -54,31 +54,6 @@
 </div>
 
 <h3>거래내역</h3>
-<ul class='bookkeepings'>
-  <li class='bookkeeping' ># 계정항목 별 sort
-
-    <fieldset>
-
-    	<legend><span class='green'>[자산]</span> {{bookkeeping.writer.email}}</legend>
-
-      <table class='ui celled four table segment' ng-repeat="bookkeeping in bookkeepings" ng-show="bookkeeping.account_title.title == '자산'">
-        <tr>
-          <td class='one wide'>{{bookkeeping.issue_date}}</td>
-          <td class='two wide'>{{bookkeeping.issuer.email}}</td>
-          <td class='five wide'>{{bookkeeping.remark}}</td>
-          <td class='two wide'>
-            <div class='number {{ bookkeeping.operator == "-" ? "red" : "blue"}}' style='text-align:right;'>
-              {{bookkeeping.operator}} <i class="korean won icon"></i> {{bookkeeping.amount | number}}
-            </div>
-          </td>
-        </tr>
-      </table>
-
-    </fieldset>
-
-  </li>
-</ul>
-
-# 계정항목 별 계산??
+<div class="gridStyle" ng-grid="gridOptions"></div>
 
 
