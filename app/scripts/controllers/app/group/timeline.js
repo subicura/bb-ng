@@ -51,11 +51,9 @@ angular.module('bbNgApp')
       var idx = $scope.bookkeepings.indexOf($scope.bookkeeping);
       $scope.bookkeeping = $scope.edit_form;
       $scope.bookkeeping.$update({group_id: $state.params.group_id, id: $scope.bookkeeping.id}, function(data) {
-        $scope.bookkeepings[idx] = BookkeepingService.get({group_id: $state.params.group_id, id: $scope.bookkeeping.id});
-        // 아래 코드를 추가하니까 해결되는군요.
-        // 그러나 궁금한 것은 이미 $scope.bookkeepings[idx] 에는 writer 가 있는데
-        // 왜 인식을 못나는지가 의문이군요.
-        $scope.bookkeepings[idx].writer = LoginInfo.currentUser;
+        BookkeepingService.get({group_id: $state.params.group_id, id: $scope.bookkeeping.id}, function(data) {
+          $scope.bookkeepings[idx] = data;
+        });
 
         $('.edit.group.modal').modal('hideDimmer');
       });
