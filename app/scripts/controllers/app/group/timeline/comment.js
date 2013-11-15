@@ -14,10 +14,10 @@ angular.module('bbNgApp')
         group_id: $state.params.group_id,
         commentable_type: 'bookkeepings',
         commentable_id: $scope.bookkeeping.id,
-        page: next,
+        next: next,
       }, function(data){
         angular.forEach(data.comments, function(value, key){
-          $scope.bookkeeping_comments.comments.push(value);
+          $scope.bookkeeping_comments.comments.unshift(value);
         });
         $scope.bookkeeping_comments.next = data.next;
       });
