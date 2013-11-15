@@ -1,6 +1,6 @@
 <div class="ui comments" ng-controller="AppGroupTimelineCommentCtrl">
   <div class="ui button" ng-show="bookkeeping_comments.next" ng-click="more(bookkeeping_comments.next)">
-    더보기
+    더보기 <div ng-show="busy" ng-init="busy=false" class="ui mini active inline loader"></div>
   </div>
   <div class="comment" ng-repeat="comment in bookkeeping_comments.comments | orderBy:'id'">
     <div class="content">

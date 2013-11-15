@@ -10,6 +10,7 @@ angular.module('bbNgApp')
     });
 
     $scope.more = function(next){
+      $scope.busy = true;
       CommentService.get({
         group_id: $state.params.group_id,
         commentable_type: 'bookkeepings',
@@ -20,6 +21,7 @@ angular.module('bbNgApp')
           $scope.bookkeeping_comments.comments.unshift(value);
         });
         $scope.bookkeeping_comments.next = data.next;
+        $scope.busy = false;
       });
     }
 
