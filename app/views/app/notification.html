@@ -1,3 +1,14 @@
 <div class="main-content">
-  <p>This is the app/notification view.</p>
+
+  <div class='bookkeeping' ng-repeat="activity in activities">
+    <div ng-switch on="activity.trackable_type">
+      <div ng-switch-when="Comment">
+        <div ng-include="'/views/app/notification/comment.html'"></div>
+      </div>
+      <div ng-switch-when="Bookkeeping">
+        <div ng-include="'/views/app/notification/bookkeeping.html'"></div>
+      </div>
+    </div>
+  </div>
+
 </div>
