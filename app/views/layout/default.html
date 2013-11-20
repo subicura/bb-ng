@@ -1,21 +1,15 @@
-<!--[if lt IE 7]>
-  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
+<div class="contents-wrapper">
+  <div class="contents">
+    <div class="logo-wrapper">
+      <img src="/images/logo.png" class="logo" />
+    </div>
 
-<!-- Add your site or application content here -->
-<div class="wrapper">
-  <a class="top-btn" ui-sref="default.join" ng-show="!$state.is('default.join')">
-    Join
-  </a>
-  <a class="top-btn" ui-sref="default.welcome" ng-show="$state.is('default.join')">
-    Login
-  </a>
-
-  <div class="main-title">
-    <h1 class="ui header">
-      BudgetBook <div class="ui red label">beta</div>
-    </h1>
+    <div class="container" ui-view></div>
   </div>
+</div>
 
-  <div class="container" ui-view></div>
+<div class="footer">
+  <div class="copyright">
+    &#169; 2013 공동가계부 TEAM
+  </div>
 </div>

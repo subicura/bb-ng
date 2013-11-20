@@ -1,80 +1,83 @@
-<!--[if lt IE 7]>
-  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
+<div id="gnb" class="gnb">
+  <a ui-sref="app.my.timeline"><img src="/images/small-logo.png" /></a>
 
-<div class="ui fixed transparent inverted main menu">
-  <div class="container">
-    <a class="launch item" ui-sref="app.my.timeline"><i class="rocket icon"></i> BudgetBook</a>
-
-    <div class="right menu">
-      <a ng-class="{active:$state.is('app.notification')}" class="popup developer icon item" ui-sref="app.notification">
-        <i class="bell outline icon"></i>
-      </a>
-      <a ng-class="{active:$state.is('app.setting')}" class="popup developer icon item top-user-info" ui-sref="app.setting">
-        <img ng-src="{{ currentUser.avatar_url.thumb }}" class="user-avatar" />
-        {{ currentUser.username }}
-        <i class="setting icon"></i>
-      </a>
-      <a class="popup icon github item" ng-click="logout()">
-        <i class="sign out icon"></i>
-      </a>
-    </div>
+  <div class="right menu">
+    <a ng-class="{active:$state.is('app.notification')}" class="notification" ui-sref="app.notification">
+      <i class="fa fa-bell-o"></i>
+    </a>
+    <a ng-class="{active:$state.is('app.setting')}" class="user-info" ng-click="showUserPopup = !showUserPopup">
+      <img ng-src="{{ currentUser.avatar_url.thumb }}" />
+      {{ currentUser.username }}
+      <i class="fa fa-chevron-down"></i>
+    </a>
   </div>
+</div>
+<div class="user-popup-menu" ng-show="showUserPopup">
+  <a class="settings" ui-sref="app.setting">
+    <i class="fa fa-cog"></i>
+    <div>Setting</div>
+  </a>
+  <a class="logout" ng-click="logout()">
+    <i class="fa fa-sign-out"></i>
+    <div>Logout</div>
+  </a>
 </div>
 
 <!-- Add your site or application content here -->
-<div class="container">
-  <div class="sidemenu" ng-controller="AppMenuCtrl">
-    <div class="ui vertical inverted text menu">
-      <a class="item" ng-class="{active:$state.includes('app.my')}" ui-sref="app.my.timeline">
-        <i class="home icon"></i> My Money
-      </a>
-    </div>
-    <div class="ui horizontal inverted divider">
-      <i class="users icon"></i>
-    </div>
-    <div class="ui vertical inverted text menu">
-      <a class="item" ng-class="{active:group.id == $state.params.group_id}" ui-sref="app.group.timeline({group_id:group.id})" ng-repeat="group in groups">
-        <i class="gittip icon"></i>
-        {{ group.name }}
-      </a>
-    </div>
-    <a class="ui fluid red small button" ng-click="showNewGroup()">New Group</a>
+<div class="contents-wrapper">
+  <div class="contents">
+    <div class="sidemenu" ng-controller="AppMenuCtrl">
+      <div class="ui vertical inverted text menu">
+        <a class="item" ng-class="{active:$state.includes('app.my')}" ui-sref="app.my.timeline">
+          <i class="home icon"></i> My Money
+        </a>
+      </div>
+      <div class="ui horizontal inverted divider">
+        <i class="users icon"></i>
+      </div>
+      <div class="ui vertical inverted text menu">
+        <a class="item" ng-class="{active:group.id == $state.params.group_id}" ui-sref="app.group.timeline({group_id:group.id})" ng-repeat="group in groups">
+          <i class="gittip icon"></i>
+          {{ group.name }}
+        </a>
+      </div>
+      <a class="ui fluid red small button" ng-click="showNewGroup()">New Group</a>
 
-    <!-- new group modal -->
-    <div class="ui new group modal">
-      <i class="close icon"></i>
-      <div class="header">
-        새로운 그룹 생성
-      </div>
-      <div class="content">
-        <div class="ui form">
-          <div class="field">
-            <label>그룹명</label>
-            <input ng-model="newGroupForm.name" type="text">
-          </div>
-          <div class="field">
-            <label>설명</label>
-            <input ng-model="newGroupForm.description" type="text">
+      <!-- new group modal -->
+      <div class="ui new group modal">
+        <i class="close icon"></i>
+        <div class="header">
+          새로운 그룹 생성
+        </div>
+        <div class="content">
+          <div class="ui form">
+            <div class="field">
+              <label>그룹명</label>
+              <input ng-model="newGroupForm.name" type="text">
+            </div>
+            <div class="field">
+              <label>설명</label>
+              <input ng-model="newGroupForm.description" type="text">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="actions">
-        <div class="ui black cancel button">
-          Cancel
-        </div>
-        <div class="ui green right labeled icon button" ng-click="createGroup()">
-          Create
-          <i class="checkmark icon"></i>
+        <div class="actions">
+          <div class="ui black cancel button">
+            Cancel
+          </div>
+          <div class="ui green right labeled icon button" ng-click="createGroup()">
+            Create
+            <i class="checkmark icon"></i>
+          </div>
         </div>
       </div>
     </div>
+    <div class="content" ui-view></div>
   </div>
-  <div ui-view></div>
 </div>
 
-
-<div class="copyright">
-  <span class="ui black label">2013 © Dev-study</span>
+<div class="footer">
+  <div class="copyright">
+    &#169; 2013 공동가계부 TEAM
+  </div>
 </div>
-

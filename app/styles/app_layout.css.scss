@@ -1,3 +1,141 @@
+html, body {
+  height: 100%;
+}
+
+.app-layout {
+  $gnb_height: 60px;
+  $footer_height: 50px;
+  $default_line_height: 170%;
+  $default-background-color: #ecf0f1;
+  background-color:$default-background-color;
+
+  .gnb {
+    position:fixed;
+    top:0;
+    width:100%;
+    height:$gnb_height;
+    z-index:10;
+    overflow:hidden;
+    background-color: rgba(255, 255, 255, 0.9);
+
+    .right.menu {
+      height:$gnb_height;
+      line-height:$gnb_height;
+      .notification, .user-info, .logout {
+        color:#666;
+        padding:8px;
+        border:1px solid #CCC;
+        border-radius:3px;
+        margin-right:10px;
+        &:hover {
+          color:#000;
+        }
+      }
+      .user-info {
+        padding:15px;
+        img {
+          width:30px;
+          height:30px;
+          margin-right:8px;
+        }
+      }
+    }
+  }
+
+  .user-popup-menu {
+    position:fixed;
+    top:($gnb_height - 5px);
+    right:10px;
+    background-color:#fff;
+    box-shadow:0 1px 2px rgba(30, 30, 30, 0.5);
+    border-radius:5px;
+    z-index:20;
+    padding:10px;
+    a {
+      text-align:center;
+      display:block;
+      float:left;
+      color:#333;
+      i {
+        color:#333;
+        margin:10px;
+        font-size:20px;
+      }
+    }
+    .settings {
+      margin-right:15px;
+    }
+  }
+  .contents-wrapper {
+    min-height: 100%;
+    margin-bottom:-$footer_height;
+    line-height:$default_line_height;
+    background-color:#2a3542;
+  }
+
+  .contents {
+    padding:($gnb_height + 10px) 15px ($footer_height + 100px);
+    margin-left:200px;
+    background-color:$default-background-color;
+  }
+
+  .sidemenu {
+    position:absolute;
+    top:0;
+    left:0;
+    width:200px;
+    color:#EFEFEF;
+    padding:($gnb_height + 20px) 10px 10px;
+    box-sizing: border-box;
+  }
+
+  .sidemenu.ui.vertical.menu {
+    width:200px;
+  }
+
+  .footer {
+    font-size:0.9em;
+
+    .copyright {
+      height:$footer_height;
+      line-height:$footer_height;
+      text-align: center;    
+    }
+  }
+  /* --------------------------
+   * Responsive Styles
+   * --------------------------
+  */
+
+  @media (max-width: 768px) {
+    .gnb {
+      position:relative;
+    }
+    .user-popup-menu {
+      position:absolute;
+    }
+    .sidemenu {
+      position:relative;
+      color:#EFEFEF;
+      padding:10px;
+      box-sizing: border-box;
+      background-color:#2a3542;
+      width:100%;
+    }
+    .contents {
+      margin-left:0;
+      padding:0 0 $footer_height;
+    }
+    .content {
+      padding:10px;
+    }
+  }
+}
+
+
+
+
+/*
 .app-layout {
   color:#333;
   background-color:#353D40;
@@ -62,3 +200,4 @@
     height:25px;
   }
 }
+*/
