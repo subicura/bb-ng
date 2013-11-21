@@ -47,15 +47,15 @@ angular.module('bbNgApp')
       }
     };
 
-    $scope.removeComment = function(idx) {
-      var comment_id = $scope.bookkeeping_comments.comments[idx].id;
+    $scope.removeComment = function(comment) {
       if(confirm("Are you sure?")) {
         CommentService.remove({
           group_id: $state.params.group_id,
           commentable_type: 'bookkeepings',
           commentable_id: $scope.bookkeeping.id,
-          comment_id: comment_id
+          comment_id: comment.id
         }, function(data) {
+          var idx = $scope.bookkeeping_comments.comments.indexOf(comment);
           $scope.bookkeeping_comments.comments.splice(idx, 1);
         });
       }
