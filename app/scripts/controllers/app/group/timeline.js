@@ -75,10 +75,12 @@ angular.module('bbNgApp')
     };
 
     $scope.formSubmit = function() {
+      $scope.busy = true;
       BookkeepingService.save({
         group_id: $state.params.group_id,
         bookkeeping: $scope.add_form
       }, function(data) {
+        $scope.busy = false;
         $scope.bookkeepings.unshift(data);
         $scope.add_form = {};
         $scope.stats = BookkeepingService.calculate({
