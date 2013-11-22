@@ -74,7 +74,7 @@ html, body {
   }
 
   .contents {
-    padding:($gnb_height + 10px) 15px ($footer_height + 100px);
+    padding:($gnb_height + 10px) 15px $footer_height;
     margin-left:200px;
   }
 
@@ -96,6 +96,7 @@ html, body {
 
   .footer {
     font-size:0.9em;
+    margin-left:200px;
 
     .copyright {
       height:$footer_height;
@@ -130,6 +131,11 @@ html, body {
     .content {
       padding:10px;
     }
+  }
+
+  .fc-header {
+    background-color:transparent;
+    border:0;
   }
 }
 
