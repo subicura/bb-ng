@@ -2,6 +2,23 @@
   text-align: right;
 }
 
+ul.bookkeepings {
+  margin-top:10px;
+  padding:15px 0;
+  background-color:#fff;
+  .writer {
+    padding:10px;
+    text-align:center;
+  }
+  .item {
+    width:100%;
+  }
+  .reply-avatar {
+    width:60px;
+    height:60px;
+  }
+}
+
 /*
 .timeline-top-menu {
   padding-bottom:10px;

@@ -1,7 +1,5 @@
-<legend>인증샷 >></legend>
-<div ng-show="bookkeeping.proofs.length > 0" class="ngx-ui-lightbox">
-  <p>사진보기 ({{ bookkeeping.proofs.length }})</p>
-  <ul class="proofs">
+<div class="ngx-ui-lightbox">
+  <ul class="proofs small-block-grid-3 large-block-grid-5">
     <li class="proof" ng-repeat="proof in bookkeeping.proofs" >
       <a class='fancybox' ng-href='{{ proof.picture_url.medium }}'
          ngx-lightbox="gallery_{{ bookkeeping.id }}"><img ng-src="{{ proof.picture_url.thumb }}"></a>
@@ -11,10 +9,8 @@
         <i class="trash icon"></i>
       </a>
     </li>
+    <li>
+      <a class="ui button" picture-upload> + 인증샷 </a>
+    </li>
   </ul>
-</div>
-<div class="fields">
-  <div>
-    <a class="ui button" picture-upload>업로드</a>
-  </div>
 </div>
