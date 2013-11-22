@@ -1,21 +1,23 @@
 <div class="ui comments" ng-controller="AppGroupTimelineCommentCtrl">
+  <h6>{{ bookkeeping_comments.comments.length }} Comments</h6>
   <div class="ui button" ng-show="bookkeeping_comments.next" ng-click="more(bookkeeping_comments.next)" ng-disabled="busy" ng-init="busy=false">
     더보기 <div ng-show="busy" class="ui mini active inline loader"></div>
   </div>
   <div class="comment" ng-repeat="comment in bookkeeping_comments.comments | orderBy:'id'">
-    <div class="content">
-      <a class="author">{{ comment.writer.email }}</a>
-      <div class="metadata">
-        <div class="date">{{ comment.created_at | timeago }}</div>
-      </div>
-      <div class="text">
-        {{ comment.content }}
-      </div>
-      <div class="actions">
-        <a class="delete" ng-click="removeComment(comment)">Delete</a>
+    <div class="row">
+      <div class="small-3 large-2 columns"><img class="reply-avatar" ng-src="{{ comment.writer.avatar_url }}"></div>
+      <div class="small-9 large-10 columns">
+        <p>
+          {{ comment.content }}
+          <small>{{ comment.created_at | timeago }}</small>
+        </p>
+        <div class="actions">
+          <a class="delete" ng-click="removeComment(comment)">Delete</a>
+        </div>
       </div>
     </div>
   </div>
+  
   <form class="ui reply form commentForm" name="commentForm" ng-submit="addComment()" novalidate>
     <div class="field" ng-class="{ error: (commentForm.submitted || commentForm.content.$dirty) && commentForm.content.$invalid }">
       <input type="text" ng-model="newComment.content" name="content" placeholder="Your comment" required />

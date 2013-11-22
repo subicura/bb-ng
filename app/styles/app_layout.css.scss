@@ -16,7 +16,8 @@ html, body {
     height:$gnb_height;
     z-index:10;
     overflow:hidden;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow:0 1px 1px rgba(100, 100, 100, 0.3);
 
     .right.menu {
       height:$gnb_height;
@@ -70,23 +71,23 @@ html, body {
     min-height: 100%;
     margin-bottom:-$footer_height;
     line-height:$default_line_height;
-    background-color:#2a3542;
   }
 
   .contents {
-    padding:($gnb_height + 10px) 15px ($footer_height + 100px);
+    padding:($gnb_height + 10px) 15px $footer_height;
     margin-left:200px;
-    background-color:$default-background-color;
   }
 
   .sidemenu {
-    position:absolute;
-    top:0;
+    position:fixed;
+    top:$gnb_height;
     left:0;
     width:200px;
+    min-height:100%;
     color:#EFEFEF;
-    padding:($gnb_height + 20px) 10px 10px;
+    padding:20px 10px 10px;
     box-sizing: border-box;
+    background-color:#2a3542;
   }
 
   .sidemenu.ui.vertical.menu {
@@ -95,6 +96,7 @@ html, body {
 
   .footer {
     font-size:0.9em;
+    margin-left:200px;
 
     .copyright {
       height:$footer_height;
@@ -129,6 +131,11 @@ html, body {
     .content {
       padding:10px;
     }
+  }
+
+  .fc-header {
+    background-color:transparent;
+    border:0;
   }
 }
 

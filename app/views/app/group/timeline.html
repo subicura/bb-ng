@@ -7,10 +7,10 @@
       <input ng-model="term.end_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="종료일자" type="text">
     </div>
     <div class="ui buttons">
-      <div class="ui blue large submit button" ng-click="termSubmit()">기간별</div>
-      <div class="ui blue large submit button" ng-click="thisMonth()">이번달</div>
-      <div class="ui blue large submit button" ng-click="thisYear()">올해</div>
-      <div class="ui positive large submit button" ng-click="monthlyBalance()">월말정산</div>
+      <div class="ui blue submit button" ng-click="termSubmit()">기간별</div>
+      <div class="ui blue submit button" ng-click="thisMonth()">이번달</div>
+      <div class="ui blue submit button" ng-click="thisYear()">올해</div>
+      <div class="ui positive submit button" ng-click="monthlyBalance()">월말정산</div>
     </div>
   </div>
 </form>
@@ -103,39 +103,72 @@
   <div class="ui blue submit button" ng-click="formSubmit()">Submit</div>
   <div class="ui submit button" ng-click="formCancel()">Cancel</div>
 </form>
+
 <ul class='bookkeepings'>
   <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings">
-    <div>{{bookkeeping.writer.email}}님이 {{bookkeeping.created_at | timeago}}에 작성한 글입니다.
-      <a ng-click="removeBookkeeping($index)" ng-show="canUpdate({{ bookkeeping.writer }})">
-        <i class='cloud remove circle icon'></i>
-      </a>
-      <a ng-click="showEditBookkeeping(bookkeeping)" ng-show="canUpdate({{ bookkeeping.writer }})">
-        <i class='cloud edit circle icon'></i>
-      </a>
-      <a ng-click="likeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) < 0"><i class='thumbs up outline icon'></i></a>
-      <a ng-click="dislikeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) >= 0"><i class='thumbs down outline icon'></i></a>
-      <span ng-show="bookkeeping.likes_count > 0">{{ bookkeeping.likes_count }} 명이 좋아합니다.</span>
+    <div class="row">
+      <div class="small-3 large-2 columns ">
+        <img ng-src="{{bookkeeping.writer.avatar_url}}">
+        <div class="writer">{{bookkeeping.writer.username}}</div>
+      </div>
+      <div class="small-9 large-10 columns">
+        <p>
+          {{bookkeeping.content}}
+          <small>{{bookkeeping.created_at | timeago}}에 작성</small>
+        </p>
+        <span class="label">거래내역</span>
+        <table class="item">
+          <thead>
+            <tr>
+              <th>날짜</th>
+              <th>적요</th>
+              <th>거래금액</th>
+              <th>거래자</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class='two wide'>{{bookkeeping.issue_date}}</td>
+              <td class='five wide'><span class='green'>[{{bookkeeping.account_title.title}}]</span>
+                {{bookkeeping.remark}}
+              </td>
+              <td class='two wide'>
+                <div class='number {{ bookkeeping.operator == "-" ? "red" : "blue"}}' style='text-align:right;'>
+                  {{bookkeeping.operator}} <i class="korean won icon"></i> {{bookkeeping.amount | number}}
+                </div>
+              </td>
+              <td class='two wide'>{{bookkeeping.issuer.username}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div ng-include="'/views/app/group/timeline/proof.html'"></div>
+        <ul class="inline-list">
+          <li>
+            <a ng-click="removeBookkeeping($index)" ng-show="canUpdate({{ bookkeeping.writer }})">
+              삭제
+            </a>
+          </li>
+          <li>
+            <a ng-click="showEditBookkeeping(bookkeeping)" ng-show="canUpdate({{ bookkeeping.writer }})">
+              수정
+            </a>
+          </li>
+          <li>
+            <a ng-click="likeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) < 0">
+              좋아요
+            </a>
+            <a ng-click="dislikeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) >= 0">
+              좋아요취소
+            </a>
+          </li>
+          <li>
+            <span ng-show="bookkeeping.likes_count > 0">{{ bookkeeping.likes_count }} 명이 좋아합니다.</span>
+          </li>
+        </ul>
+
+        <div ng-include="'/views/app/group/timeline/comment.html'"></div>
+      </div>
     </div>
-    <div class='content'>{{bookkeeping.content}}</div>
-    <fieldset>
-      <legend>거래내역 >></legend>
-      <table class='ui celled four table segment'>
-        <tr>
-          <td class='two wide'>{{bookkeeping.issue_date}}</td>
-          <td class='five wide'><span class='green'>[{{bookkeeping.account_title.title}}]</span>
-            {{bookkeeping.remark}}
-          </td>
-          <td class='two wide'>
-            <div class='number {{ bookkeeping.operator == "-" ? "red" : "blue"}}' style='text-align:right;'>
-              {{bookkeeping.operator}} <i class="korean won icon"></i> {{bookkeeping.amount | number}}
-            </div>
-          </td>
-          <td class='two wide'>{{bookkeeping.issuer.username}}</td>
-        </tr>
-      </table>
-    </fieldset>
-    <fieldset ng-include="'/views/app/group/timeline/proof.html'"></fieldset>
-    <fieldset ng-include="'/views/app/group/timeline/comment.html'"></fieldset>
   </li>
 </ul>
 
