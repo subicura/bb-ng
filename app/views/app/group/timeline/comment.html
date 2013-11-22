@@ -23,7 +23,7 @@
       <input type="text" ng-model="newComment.content" name="content" placeholder="Your comment" required />
     </div>
     <div class="ui button teal submit labeled icon" ng-click="addComment()">
-      <i class="icon edit"></i> Add Comment
+      <i class="icon edit"></i> Add Comment <div ng-show="busy" class="ui mini active inline loader"></div>
     </div>
   </form>
 </div>
