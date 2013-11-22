@@ -32,6 +32,7 @@ angular.module('bbNgApp')
     }
 
     $scope.addComment = function() {
+      $scope.busy = true;
       if($scope.commentForm.$valid) {
         CommentService.save({
           group_id: $state.params.group_id,
@@ -41,6 +42,7 @@ angular.module('bbNgApp')
         }, function(data) {
           $scope.bookkeeping_comments.comments.push(data);
           initForm();
+          $scope.busy = false;
         });
       } else {
         $scope.commentForm.submitted = true;
