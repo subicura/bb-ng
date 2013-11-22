@@ -1,16 +1,17 @@
-
-
-<div class="ui left floated icon input">
-  <input type="text" ng-model="search" placeholder="Search users...">
-  <i class="users icon"></i>
-</div>		
-
-<div class="ui right floated active button green" ng-click="showAddUserForm()">
-	<i class="user icon"></i>
-	Add Member
+<div class="ui grid">
+  <div class="nine wide column">
+    <div class="ui left floated icon input">
+      <input type="text" ng-model="search" placeholder="Search users...">
+      <i class="users icon"></i>
+    </div>    
+  </div>
+  <div class="seven wide column">
+    <div class="ui right floated active button green" ng-click="showAddUserForm()">
+      <i class="user icon"></i>
+      Add Member
+    </div>  
+  </div>  
 </div>
-
-<p></p>
 
 <div class="ui items">
   <div class="item" style="width:200px; min-height:260px" ng-repeat="member in members  | filter:search | orderBy:'email'">
