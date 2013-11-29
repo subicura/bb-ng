@@ -10,7 +10,7 @@
             Enter UserName
           </div>
         </div>
-        <div class="field" ng-class="{ error: (userForm.submitted || userForm.current_password.$dirty) && userForm.current_password.$invalid }">
+        <div class="field" ng-class="{ error: (userForm.submitted || userForm.current_password.$dirty) && userForm.current_password.$invalid }" ng-hide="currentUser.provider">
           <label>Current Password</label>
           <input type="password" name="current_password" ng-model="user.current_password" required>
           <div class="ui red pointing above ui label" ng-show="(userForm.submitted || userForm.current_password.$dirty) && userForm.current_password.$invalid">
