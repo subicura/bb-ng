@@ -16,10 +16,10 @@
 <div class="ui items">
   <div class="item" style="width:200px; min-height:260px" ng-repeat="member in members  | filter:search | orderBy:'email'">
     <div class="image">
-      <img src="{{ member.avatar_url }}">
+      <img src="{{ member.avatar_url.medium }}">
       <!-- currentUser가 owner인 경우만 삭제 아이콘을 보여줌 -->
       <a class="star ui corner label" ng-click="removeUser(member.id)" ng-show="isOwner">
-        <i class="remove sign icon" data-content="Hello, I am a pop-up."></i>
+        <i class="remove sign icon"></i>
       </a>
     </div>
     <div class="content">
@@ -45,7 +45,7 @@
 
 	<div class="ui divided list">
 	  <div class="item" ng-repeat="user in users">
-	    <img src="{{ user.avatar_url }}">
+	    <img src="{{ user.avatar_url.thumb }}">
 	    <div class="content">
 	      <div class="header">{{ user.email }}</div>	      
 	    </div>
