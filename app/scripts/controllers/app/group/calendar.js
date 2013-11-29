@@ -13,9 +13,11 @@ angular.module('bbNgApp')
   							+ bookkeeping.remark + (bookkeeping.content ? "-" + bookkeeping.content : "") 
   							+ ((bookkeeping.proofs.length + bookkeeping.comments.length) > 0 ? "(" + (bookkeeping.proofs.length + bookkeeping.comments.length) + ")" : ""),
   				start: bookkeeping.issue_date,
-  				end: bookkeeping.issue_date
+  				end: bookkeeping.issue_date,
+          backgroundColor: (bookkeeping.operator === '+' ? 'green' : 'red'),
+          borderColor: (bookkeeping.operator === '+' ? 'green' : 'red'),
+          textColor: 'yellow'          
   			})
-  			console.log(bookkeeping);
   		});
   	});
 
