@@ -18,7 +18,7 @@
     <div class="image">
       <img src="{{ member.avatar_url.medium }}">
       <!-- currentUser가 owner인 경우만 삭제 아이콘을 보여줌 -->
-      <a class="star ui corner label" ng-click="removeUser(member.id)" ng-show="isOwner">
+      <a class="star ui corner label" ng-click="removeUser(member.id)" ng-show="isOwner && currentUser.id !== member.id">
         <i class="remove sign icon"></i>
       </a>
     </div>

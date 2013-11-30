@@ -5,12 +5,13 @@ angular.module('bbNgApp')
 
   	$scope.search = "";
   	$scope.searchText = "";
+    $scope.currentUser = LoginInfo.currentUser;
   	$scope.members = GroupService.members({ id: $state.params.group_id }); 
 
     // 현재 사용자가 그룹의 owner인지 아닌지 $scope.isOwner에 저장
     GroupService.get({ id: $state.params.group_id }, function(data){
       $scope.isOwner = data.owner.id == LoginInfo.currentUser.id;      
-    });
+    });    
 
   	$scope.searchUsers = function(){
       if($scope.searchText == ""){
