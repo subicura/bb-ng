@@ -17,7 +17,9 @@ angular.module('bbNgApp')
         window.alert('Enter the search text!');
       } else {
     		UserService.search({search: $scope.searchText}, function(data){
-    			$scope.users = data;        
+          $scope.users = _.filter(data, function(user){
+            return !_.find($scope.members, function(member){ return member.id === user.id; });
+          });
     		});
       }
   	}
