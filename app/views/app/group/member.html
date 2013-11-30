@@ -14,7 +14,7 @@
 </div>
 
 <div class="ui items">
-  <div class="item" style="width:200px; min-height:260px" ng-repeat="member in members  | filter:search | orderBy:'email'">
+  <div class="item member" ng-repeat="member in members  | filter:search | orderBy:'email'">
     <div class="image">
       <img src="{{ member.avatar_url.medium }}">
       <!-- currentUser가 owner인 경우만 삭제 아이콘을 보여줌 -->
