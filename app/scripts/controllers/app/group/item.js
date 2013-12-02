@@ -9,16 +9,14 @@ angular.module('bbNgApp')
     });
     $scope.bookkeeping_list = [];
     $scope.bookkeepings = BookkeepingService.query({ group_id:$state.params.group_id }, function(data){
-      console.log(data);
       for (var i=0;i<data.length;i++)
       {
-        console.log(data);
         $scope.bookkeeping_list[i] = {
           issue_date: data[i].issue_date,
           remark: data[i].remark,
           account_title: data[i].account_title.title,
           amount: ((data[i].operator == "-") ? data[i].amount * -1 : data[i].amount),
-          issuer: data[i].issuer.username
+          issuer: "data[i].issuer.username"
         };
       };
 

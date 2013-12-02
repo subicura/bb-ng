@@ -11,7 +11,7 @@
       <a class="ui button" ng-class="{active:$state.is('app.group.member')}" ui-sref=".member({group_id:$state.params.group_id})">
         <i class="users icon"></i>
       </a>
-      <a class="ui button" ng-class="{active:$state.is('app.group.setting')}" ui-sref=".setting({group_id:$state.params.group_id})">
+      <a class="ui button ng-hide" ng-class="{active:$state.is('app.group.setting')}" ui-sref=".setting({group_id:$state.params.group_id})">
         <i class="setting icon"></i>
       </a>
     </div>
