@@ -3,7 +3,7 @@
 angular.module('bbNgApp')
   .controller('AppGroupTimelineCtrl', function ($scope, $state, GroupService, LoginInfo, BookkeepingService, AccountTitleService, CommentService) {
     $scope.form = {};
-    $scope.add_form = {};
+    $scope.add_form = { issue_date: new Date()};
     $scope.bookkeeping = {};
     $scope.currentUser = LoginInfo.currentUser;
 
