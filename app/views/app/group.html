@@ -1,13 +1,13 @@
 <div class="main-content">
   <div class="timeline-top-menu">
-    <div class="ui mini black buttons">
-      <a class="ui button" ng-class="{active:$state.is('app.group.timeline')}" ui-sref=".timeline({group_id:$state.params.group_id})">TIMELINE</a>
-      <a class="ui button" ng-class="{active:$state.is('app.group.item')}" ui-sref=".item({group_id:$state.params.group_id})">ITEMS</a>
-      <a class="ui button" ng-class="{active:$state.is('app.group.report')}" ui-sref=".report({group_id:$state.params.group_id})">REPORT</a>
-      <a class="ui button" ng-class="{active:$state.is('app.group.calendar')}" ui-sref=".calendar({group_id:$state.params.group_id})">CALENDAR</a>
+    <div class="ui black buttons">
+      <a class="ui button" ng-class="{active:$state.is('app.group.timeline')}" ui-sref=".timeline({group_id:$state.params.group_id})">타임라인</a>
+      <a class="ui button" ng-class="{active:$state.is('app.group.item')}" ui-sref=".item({group_id:$state.params.group_id})">거래내역</a>
+      <a class="ui button" ng-class="{active:$state.is('app.group.calendar')}" ui-sref=".calendar({group_id:$state.params.group_id})">달력</a>
+      <a class="ui button" ng-class="{active:$state.is('app.group.report')}" ui-sref=".report({group_id:$state.params.group_id})">보고서</a>
     </div>
 
-    <div class="ui right floated icon mini black buttons">
+    <div class="ui right floated icon black buttons">
       <a class="ui button" ng-class="{active:$state.is('app.group.member')}" ui-sref=".member({group_id:$state.params.group_id})">
         <i class="users icon"></i>
       </a>
@@ -16,11 +16,9 @@
       <!--   <i class="setting icon"></i> -->
       <!-- </a> -->
 
-      <a class="ui small button" ng-click="showEditGroup(group)">
+      <a class="ui button" ng-click="showEditGroup(group)">
         <i class="setting icon"></i>
       </a>
-
-
     </div>
   </div>
 
