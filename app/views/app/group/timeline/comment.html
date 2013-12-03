@@ -1,5 +1,13 @@
 <div class="ui comments" ng-controller="AppGroupTimelineCommentCtrl">
-  <h6>{{ bookkeeping_comments.comments.length }} Comments</h6>
+  <div ng-switch on="bookkeeping_comments.comments.length">  
+    <div ng-switch-when="0">
+      <h6>아직 댓글이 없어요. 첫번째 댓글을 달아주세요 :)</h6>
+    </div>
+    <div ng-switch-default>
+      <h6>{{ bookkeeping_comments.comments.length }}개의 댓글이 있습니다.</h6>
+    </div>
+  </div>
+
   <div class="ui button" ng-show="bookkeeping_comments.next" ng-click="more(bookkeeping_comments.next)" ng-disabled="busy" ng-init="busy=false">
     더보기 <div ng-show="busy" class="ui mini active inline loader"></div>
   </div>
