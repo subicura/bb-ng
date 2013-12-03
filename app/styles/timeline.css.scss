@@ -65,6 +65,16 @@ ul.bookkeepings {
   }
 }
 
+.comment {
+    &.ng-enter {
+      animation: fadeInRight 1s;
+    }
+    
+    &.ng-leave {
+      animation: hinge 1.5s;
+    }
+}
+
 /*
 .timeline-top-menu {
   padding-bottom:10px;
