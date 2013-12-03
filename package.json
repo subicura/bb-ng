@@ -1,6 +1,10 @@
 {
   "name": "bb-ng",
   "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/subicura/bb-ng"
+  },
   "dependencies": {
     "connect-modrewrite": "~0.5.9"
   },
