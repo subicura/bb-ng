@@ -54,6 +54,14 @@ ul.bookkeepings {
         width:100%;
       }
     }
+
+    &.ng-enter {
+      animation: fadeInRight 1s;
+    }
+    
+    &.ng-leave {
+      animation: fadeOutRight 1s;
+    }
   }
 }
 
