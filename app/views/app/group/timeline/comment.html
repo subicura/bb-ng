@@ -5,8 +5,8 @@
   </div>
   <div class="comment" ng-repeat="comment in bookkeeping_comments.comments | orderBy:'id'">
     <div class="row">
-      <div class="small-3 large-2 columns"><img class="reply-avatar" ng-src="{{ comment.writer.avatar_url.thumb }}"></div>
-      <div class="small-9 large-10 columns">
+      <div class="small-2 columns"><img class="reply-avatar" ng-src="{{ comment.writer.avatar_url }}"></div>
+      <div class="small-10 columns">
         <p>
           {{ comment.content }}
           <small>{{ comment.create_at | timeago }}</small>

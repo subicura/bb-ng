@@ -132,11 +132,41 @@ html, body {
     .content {
       padding:10px;
     }
+    .footer {
+      margin-left:0;
+    }
   }
 
   .fc-header {
     background-color:transparent;
     border:0;
+  }
+
+  .timeline-top-menu {
+    margin-bottom:10px;
+  }
+
+  .top-money-info {
+    .title {
+      font-size:1.2em;
+      color:#888;
+      padding:15px 5px 0;
+    }
+    .number {
+      text-align:center;
+      padding:20px 0;
+      font-size:1.5em;
+      color:#333;
+    }
+
+    .columns {
+      background-color:#FFF;
+      border:1px solid #bdc3c7;
+    }
+  }
+
+  .bookkeeping {
+    list-style:none;
   }
 }
 
