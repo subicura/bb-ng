@@ -16,7 +16,7 @@ angular.module('bbNgApp')
           remark: data[i].remark,
           account_title: data[i].account_title.title,
           amount: ((data[i].operator == "-") ? data[i].amount * -1 : data[i].amount),
-          issuer: "data[i].issuer.username"
+          issuer: data[i].issuer.username
         };
       };
 
