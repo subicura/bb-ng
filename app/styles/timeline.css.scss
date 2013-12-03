@@ -6,16 +6,54 @@ ul.bookkeepings {
   margin-top:10px;
   padding:15px 0;
   background-color:#fff;
-  .writer {
-    padding:10px;
-    text-align:center;
-  }
-  .item {
-    width:100%;
-  }
-  .reply-avatar {
-    width:60px;
-    height:60px;
+  .bookkeeping {
+    position:relative;
+    padding:25px 0;
+    border-bottom:1px solid #EFEFEF;
+
+    .writer-avatar {
+      width:100%;
+    }
+    .issuer {
+      font-weight:bold;
+    }
+    .created-at {
+      position:absolute;
+      right:15px;
+      top:0px;
+      color:#999;
+    }
+    .remark {
+      padding:5px 0;
+      font-size:14px;
+    }
+    .amount {
+      font-family:"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+      font-size:4em;
+      text-align:right;
+    }
+    .red {
+      color:#D95C5C;
+    }
+    .blue {
+      color:#1AB8F3;
+    }
+    .writer {
+      color:#AAA;
+      text-align:right;
+    }
+    .item {
+      width:100%;
+    }
+    .reply-avatar {
+      width:100%;
+    }
+    .proof {
+      margin-top:10px;
+      img {
+        width:100%;
+      }
+    }
   }
 }
 

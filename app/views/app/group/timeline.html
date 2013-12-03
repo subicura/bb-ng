@@ -15,47 +15,29 @@
   </div>
 </form>
 
-<div class="top-money-info ui connected items">
-  <div class="three ui row">
-    <div class="item">
-      <div class="content">
-        <div class="name">
-          <i class="cloud download icon"></i>
-          수입
-        </div>
-        <div class="number">
-          <i class="korean won icon"></i> {{stats.income | number}}
-        </div>
-      </div>
+<div class="top-money-info row">
+  <div class="large-4 columns income">
+    <div class="title"><i class="fa fa-cloud-download"></i> 수입</div>
+    <div class="number">
+      <i class="korean won icon"></i> {{stats.income | number}}
     </div>
-    <div class="item">
-      <div class="content">
-        <div class="name">
-          <i class="cloud upload icon"></i>
-          지출
-        </div>
-        <div class="number">
-          <i class="korean won icon"></i> {{stats.outlay | number}}
-        </div>
-      </div>
+  </div>
+  <div class="large-4 columns outlay">
+    <div class="title"><i class="fa fa-cloud-upload"></i> 지출</div>
+    <div class="number">
+      <i class="korean won icon"></i> {{stats.outlay | number}}
     </div>
-    <div class="item">
-      <div class="content">
-        <div class="name">
-          <i class="money icon"></i>
-          잔액
-        </div>
-        <div class="number {{ stats.total > 0 ? 'blue' : 'red'}}">
-          <i class="korean won icon"></i> {{stats.total | number}}
-        </div>
-      </div>
+  </div>
+  <div class="large-4 columns total">
+    <div class="title"><i class="fa fa-money"></i> 잔액</div>
+    <div class="number">
+      <i class="korean won icon"></i> {{stats.total | number}}
     </div>
   </div>
 </div>
 
-<h3>거래내역입력하기</h3>
 <form class="timeline-form ui small form segment">
-  <div class='field'>
+  <div class='field ng-hide'>
     <textarea ng-model='add_form.content' placeholder="Your message"></textarea>
   </div>
   <div class="three fields">
@@ -107,41 +89,26 @@
 <ul class='bookkeepings'>
   <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings">
     <div class="row">
-      <div class="small-3 large-2 columns ">
-        <img ng-src="{{bookkeeping.writer.avatar_url.medium}}">
-        <div class="writer">{{bookkeeping.writer.username}}</div>
+      <div class="small-3 columns">
+        <img class="writer-avatar" ng-src="{{bookkeeping.issuer.avatar_url}}">
       </div>
-      <div class="small-9 large-10 columns">
-        <p>
-          {{bookkeeping.content}}
-          <small>{{bookkeeping.created_at | timeago}}에 작성</small>
-        </p>
-        <span class="label">거래내역</span>
-        <table class="item">
-          <thead>
-            <tr>
-              <th>날짜</th>
-              <th>적요</th>
-              <th>거래금액</th>
-              <th>거래자</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class='two wide'>{{bookkeeping.issue_date}}</td>
-              <td class='five wide'><span class='green'>[{{bookkeeping.account_title.title}}]</span>
-                {{bookkeeping.remark}}
-              </td>
-              <td class='two wide'>
-                <div class='number {{ bookkeeping.operator == "-" ? "red" : "blue"}}' style='text-align:right;'>
-                  {{bookkeeping.operator}} <i class="korean won icon"></i> {{bookkeeping.amount | number}}
-                </div>
-              </td>
-              <td class='two wide'>{{bookkeeping.issuer.username}}</td>
-            </tr>
-          </tbody>
-        </table>
-        <div ng-include="'/views/app/group/timeline/proof.html'"></div>
+      <div class="small-9 columns">
+        <div class="issuer">{{bookkeeping.issuer.username}}</div>
+        <div class="created-at">{{bookkeeping.issue_date}}</div>
+        <div class="remark">
+          <span class='label'>{{bookkeeping.account_title.title}}</span>
+          {{bookkeeping.remark}}
+        </div>
+        <div class="amount" ng-class="bookkeeping.operator == '-' ? 'red' : 'blue'">
+          <i class="korean won icon"></i>{{bookkeeping.amount | number}}
+        </div>
+
+        <div class="writer">{{bookkeeping.writer.username}}님이 작성하였습니다.</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-9 small-offset-3 columns">
+        <div ng-include="'/views/app/group/timeline/proof.html'" class="proof"></div>
         <ul class="inline-list">
           <li>
             <a ng-click="removeBookkeeping($index)" ng-show="canUpdate({{ bookkeeping.writer }})">
@@ -171,7 +138,6 @@
     </div>
   </li>
 </ul>
-
 
 <!-- modal for edit bookkeeping -->
 <div class="ui edit bookkeeping modal">
