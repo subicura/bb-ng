@@ -2,28 +2,49 @@
 
 angular.module('bbNgApp')
   .controller('AppGroupItemCtrl', function ($scope, $state, GroupService, BookkeepingService) {
-    $scope.stats = BookkeepingService.calculate({ 
-      group_id:$state.params.group_id,
-      start_date:moment().startOf('month').format("YYYY-MM-DD"),
-      end_date:moment().endOf('month').format("YYYY-MM-DD")
-    });
-    $scope.bookkeeping_list = [];
+    // TODO Refectoring
     
-    $scope.bookkeepings = BookkeepingService.query({ group_id:$state.params.group_id }, function(data){
-      console.log(data);
-      for (var i=0;i<data.length;i++)
-      {
-        $scope.bookkeeping_list[i] = {
-          issue_date: data[i].issue_date,
-          remark: data[i].remark,
-          account_title: data[i].account_title.title,
-          amount: ((data[i].operator == "-") ? data[i].amount * -1 : data[i].amount),
-          issuer: data[i].issuer.username
-        };
-      };
+    $scope.bookkeeping_list = [];
 
+    $scope.$on('$viewContentLoaded', function() {
+      $scope.init_stats();
+      $scope.init_data_grid();
     });
 
+
+    $scope.init_stats = function(){
+      $scope.stats = BookkeepingService.calculate({ 
+        group_id: $state.params.group_id,
+        start_date: moment().startOf('month').format("YYYY-MM-DD"),
+        end_date: moment().endOf('month').format("YYYY-MM-DD")
+      });
+
+    };
+    
+    $scope.init_data_grid = function(){
+      var start_date = moment($scope.term.start_date).format("YYYY-MM-DD");
+      var end_date = moment($scope.term.end_date).format("YYYY-MM-DD");
+            
+      $scope.updateDataPeriod(start_date, end_date);
+    };
+
+    
+    $scope.create_start_date = function(){
+      var date = new Date();
+      date.setDate(1);
+      return date;
+    };
+
+    $scope.create_end_date = function(){
+      return new Date();
+    };
+    
+    $scope.term = {
+      start_date: $scope.create_start_date(),
+      end_date: $scope.create_end_date()
+    };
+
+    
     $scope.init_bookkeeping_list = function(){
       this.bookkeeping_list = [];
     };
@@ -48,10 +69,19 @@ angular.module('bbNgApp')
     $scope.termSubmit = function() {
       var start_date = moment($scope.term.start_date).format("YYYY-MM-DD");
       var end_date = moment($scope.term.end_date).format("YYYY-MM-DD");
-      this.stats = BookkeepingService.calculate({
+
+      $scope.updateDataPeriod(start_date, end_date);
+    };
+
+    $scope.updateDataPeriod = function(start_date, end_date){
+      BookkeepingService.calculate({
         group_id:$state.params.group_id,
         start_date:start_date,
         end_date:end_date
+      },function(data){
+        $scope.stats.total = data.total;
+        $scope.stats.income = data.income;
+        $scope.stats.outlay = data.outlay;
       });
 
       BookkeepingService.query({
@@ -64,12 +94,18 @@ angular.module('bbNgApp')
       });
     };
 
-    $scope.updateBetween = function(between){
-      this.stats = BookkeepingService.calculate_between({
+    $scope.updateDataDuration = function(between){
+      BookkeepingService.calculate_between({
         group_id:$state.params.group_id,
         between: between
+      },function(data){
+        $scope.stats.total = data.total;
+        $scope.stats.income = data.income;
+        $scope.stats.outlay = data.outlay;
+        $scope.term.start_date = new Date(data.start_date);
+        $scope.term.end_date = new Date(data.end_date);
       });
-
+      
       BookkeepingService.index_between({
         group_id:$state.params.group_id,
         between: between
