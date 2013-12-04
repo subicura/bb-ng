@@ -1,0 +1,51 @@
+<h3>거래내역 입력</h3>
+<form class="timeline-form ui small form segment">
+  <div class='field ng-hide'>
+    <textarea ng-model='add_form.content' placeholder="Your message"></textarea>
+  </div>
+  <div class="three fields">
+    <div class="date field">
+      <label>거래일자</label>
+      <input ng-model="add_form.issue_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="거래일자" type="text">
+      <!-- https://github.com/angular-ui/ui-date -->
+      <!-- https://github.com/angular-ui/angular-ui-OLDREPO/issues/47 -->
+    </div>
+    <div class="field">
+      <label>계정항목</label>
+      <select ng-model="add_form.account_title_id">
+          <option value="">Select</option>
+          <optgroup ng-repeat="account_category in account_titles" label="{{account_category.category}}">
+            <option ng-repeat="account_title in account_category.titles" value="{{account_title.id}}">{{account_title.title}}</option>  
+          </optgroup>
+      </select>
+    </div>
+    <div class="field">
+      <label>수입/지출</label>
+      <select ng-model="add_form.operator">
+          <option value="">Select</option>
+          <option value="+">수입</option>
+          <option value="-">지출</option>
+      </select>
+    </div>
+  </div>
+  <div class="three fields">
+    <div class="field">
+      <label>적요</label>
+      <input ng-model="add_form.remark" placeholder="적요란" type="text">
+    </div>
+    <div class="field">
+      <label>거래금액</label>
+      <input ng-model="add_form.amount" placeholder="거래금액" type="text">
+    </div>
+    <div class="field">
+      <label>거래자</label>
+      <select ng-model="add_form.issuer_id">
+          <option value="">Select</option>
+          <option ng-repeat="member in group_members" value="{{member.id}}">{{member.email}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="ui blue submit button" ng-click="formSubmit()">입력하기 <div ng-show="busy" class="ui mini active inline loader"></div></div>
+  <div class="ui submit button" ng-click="formCancel()">초기화</div>
+</form>
+
