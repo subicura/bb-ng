@@ -2,7 +2,7 @@
   <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings.bookkeepings | orderBy:'-id'">
     <div class="row">
       <div class="small-3 columns">
-        <img class="writer-avatar" ng-src="{{bookkeeping.issuer.avatar_url}}">
+        <img class="writer-avatar" ng-src="{{ bookkeeping.writer_avatar_url }}">
       </div>
       <div class="small-9 columns">
         <div class="issuer">
@@ -41,7 +41,7 @@
               <i class="fa fa-heart"></i> 좋아요
             </a>
             <a ng-click="dislikeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) >= 0">
-              <i class="fa fa-heart"></i> 좋아요취소
+              <i class="fa fa-heart"></i> 좋아요 취소
             </a>
           </li>
           <li>
