@@ -1,12 +1,16 @@
 <ul class='bookkeepings'>
-  <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings">
+  <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings.bookkeepings | orderBy:'-id'">
     <div class="row">
       <div class="small-3 columns">
         <img class="writer-avatar" ng-src="{{bookkeeping.issuer.avatar_url}}">
       </div>
       <div class="small-9 columns">
-        <div class="issuer">{{bookkeeping.issuer.username}}</div>
-        <div class="created-at">{{bookkeeping.issue_date}}</div>
+        <div class="issuer">
+          <i class="fa fa-user"></i> {{bookkeeping.issuer.username}}
+        </div>
+        <div class="created-at">
+          <i class="fa fa-clock-o"></i> {{bookkeeping.issue_date}}
+        </div>
         <div class="remark">
           <span class='label'>{{bookkeeping.account_title.title}}</span>
           {{bookkeeping.remark}}
@@ -23,21 +27,21 @@
         <div ng-include="'/views/app/group/timeline/proof.html'" class="proof"></div>
         <ul class="inline-list">
           <li>
-            <a ng-click="removeBookkeeping($index)" ng-show="canUpdate({{ bookkeeping.writer }})">
-              삭제
+            <a ng-click="removeBookkeeping(bookkeeping)" ng-show="canUpdate({{ bookkeeping.writer }})">
+              <i class="fa fa-times-circle"></i> 삭제
             </a>
           </li>
           <li>
             <a ng-click="showEditBookkeeping(bookkeeping)" ng-show="canUpdate({{ bookkeeping.writer }})">
-              수정
+              <i class="fa fa-pencil-square-o"></i> 수정
             </a>
           </li>
           <li>
             <a ng-click="likeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) < 0">
-              좋아요
+              <i class="fa fa-heart"></i> 좋아요
             </a>
             <a ng-click="dislikeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) >= 0">
-              좋아요취소
+              <i class="fa fa-heart"></i> 좋아요취소
             </a>
           </li>
           <li>

@@ -20,5 +20,8 @@
 <div ng-include="'/views/app/group/_new.html'"></div>
 
 <div ng-include="'/views/app/group/_bookkeepings.html'"></div>
-
+<div class="fluid ui button" ng-show="bookkeepings.next" ng-click="more(bookkeepings.next)">더보기 <div ng-show="busy" class="ui mini active inline loader"></div></div>
 <div ng-include="'/views/app/group/_edit.html'"></div>
+<div class="ui active dimmer" ng-show="busy" ng-init="busy=true">
+  <div class="ui loader"></div>
+</div>

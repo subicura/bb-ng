@@ -4,7 +4,7 @@
       <h6>아직 댓글이 없어요. 첫번째 댓글을 달아주세요 :)</h6>
     </div>
     <div ng-switch-default>
-      <h6>{{ bookkeeping_comments.comments.length }}개의 댓글이 있습니다.</h6>
+      <h6 ng-init="comments_count = bookkeeping.comments_count">{{ comments_count }}개의 댓글이 있습니다.</h6>
     </div>
   </div>
 

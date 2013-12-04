@@ -5,7 +5,7 @@
       <input type="text" ng-model="username">
       <label>Password</label>
       <input type="password" ng-model="password">
-      <a class="fluid ui big red button" ng-click="loginWithEmail()">
+      <a id="email_login_btn" class="fluid ui big red button ladda-button" data-style="slide-down" ng-click="loginWithEmail()">
         Login
       </a>
     </form>
@@ -14,7 +14,7 @@
       Or
     </div>
 
-    <a class="fluid ui big facebook button" ng-click="loginWithFacebook()">
+    <a id="facebook_btn" class="fluid ui big facebook button ladda-button" data-style="slide-down" ng-click="loginWithFacebook()">
       <i class="facebook icon"></i>
       Facebook
     </a>

@@ -21,16 +21,40 @@ angular.module('bbNgApp')
       });
     });
 
-    $scope.bookkeepings = BookkeepingService.query({ group_id:$state.params.group_id });
+    $scope.busy = true;
+
+    $scope.bookkeepings = BookkeepingService.get({
+      group_id:$state.params.group_id
+    }, function(){
+      $scope.busy = false;
+    });
 
     $scope.account_titles = AccountTitleService.query({ group_id:$state.params.group_id });
 
     $scope.group_members = GroupService.members({ id:$state.params.group_id });
 
-    $scope.removeBookkeeping = function(idx) {
+    $scope.more = function(next){
+      $scope.busy = true;
+      BookkeepingService.get({
+        group_id:$state.params.group_id,
+        next: next
+      }, function(data){
+        angular.forEach(data.bookkeepings, function(value, key){
+          $scope.bookkeepings.bookkeepings.push(value);
+        });
+        $scope.bookkeepings.next = data.next;
+        $scope.busy = false;
+      });
+    }
+
+    $scope.removeBookkeeping = function(bookkeeping) {
       if(confirm("Are you sure?")) {
-        $scope.bookkeepings[idx].$delete({ group_id:$state.params.group_id }, function (data) {
-          $scope.bookkeepings.splice(idx, 1);
+        BookkeepingService.remove({
+          group_id: $state.params.group_id,
+          id: bookkeeping.id
+        }, function (data) {
+          var idx = $scope.bookkeepings.bookkeepings.indexOf(bookkeeping);
+          $scope.bookkeepings.bookkeepings.splice(idx, 1);
         });
       }
     };
@@ -48,11 +72,13 @@ angular.module('bbNgApp')
     };
 
     $scope.editBookkeeping = function() {
-      var idx = $scope.bookkeepings.indexOf($scope.bookkeeping);
+      var idx = $scope.bookkeepings.bookkeepings.indexOf($scope.bookkeeping);
+      console.log(idx);
       $scope.bookkeeping = $scope.edit_form;
-      $scope.bookkeeping.$update({group_id: $state.params.group_id, id: $scope.bookkeeping.id}, function(data) {
+      //$scope.bookkeeping.$update({group_id: $state.params.group_id, id: $scope.bookkeeping.id}, function(data) {
+      BookkeepingService.update({group_id: $state.params.group_id, id: $scope.bookkeeping.id, bookkeeping:$scope.bookkeeping}, function(data) {
         BookkeepingService.get({group_id: $state.params.group_id, id: $scope.bookkeeping.id}, function(data) {
-          $scope.bookkeepings[idx] = data;
+          angular.extend($scope.bookkeepings.bookkeepings[idx], data);
         });
 
         $('.edit.group.modal').modal('hideDimmer');
@@ -117,7 +143,7 @@ angular.module('bbNgApp')
         bookkeeping: $scope.add_form
       }, function(data) {
         $scope.busy = false;
-        $scope.bookkeepings.unshift(data);
+        $scope.bookkeepings.bookkeepings.unshift(data);
         $scope.add_form = {};
         $scope.stats = BookkeepingService.calculate({
           group_id:$state.params.group_id,
