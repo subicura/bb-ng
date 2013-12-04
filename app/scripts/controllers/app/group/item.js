@@ -11,7 +11,6 @@ angular.module('bbNgApp')
       $scope.init_data_grid();
     });
 
-
     $scope.init_stats = function(){
       $scope.stats = BookkeepingService.calculate({ 
         group_id: $state.params.group_id,
@@ -87,7 +86,8 @@ angular.module('bbNgApp')
       BookkeepingService.query({
         group_id:$state.params.group_id,
         start_date:start_date,
-        end_date:end_date
+        end_date:end_date,
+        old: "true"
       }, function(data){
         $scope.bookkeepings = data;
         $scope.render_bookkeeping_list();
@@ -126,5 +126,5 @@ angular.module('bbNgApp')
         {field: 'amount',     displayName: '금액', width:200, cellClass:'right', headerClass:'center', cellTemplate: '<div class="ngCellText number {{ row.getProperty(col.field) > 0 ? \'blue\' : \'red\'}}"><i class="korean won icon"></i> {{row.getProperty(col.field) | number}}</div>' },
         {field: 'issuer',     displayName: '거래자', width:150, cellClass:'center', headerClass:'center' }
       ]
-    };})
-;
+    };
+  });

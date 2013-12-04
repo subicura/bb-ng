@@ -3,7 +3,7 @@
 angular.module('bbNgApp')
   .controller('AppGroupTimelineCtrl', function ($scope, $state, GroupService, LoginInfo, BookkeepingService, AccountTitleService, CommentService) {
     $scope.form = {};
-    $scope.add_form = { issue_date: new Date() };
+    $scope.add_form = { issue_date: new Date(), issuer_id: 1, amount: 0 };
     $scope.bookkeeping = {};
     $scope.currentUser = LoginInfo.currentUser;
 
@@ -100,6 +100,42 @@ angular.module('bbNgApp')
       });
     };
 
+    $scope.addAmount = function(amount){
+      $scope.add_form.amount += amount;
+
+      return false;
+    };
+
+
+    $scope.subtractDate = function(date, unit, num){
+      var adjusted_date = moment(date).subtract(unit, num).toDate();
+      $scope.add_form.issue_date = adjusted_date;
+
+      return false;
+    };
+
+    
+    $scope.addDate = function(date, unit, num){
+      var adjusted_date = moment(date).add(unit, num).toDate();
+      $scope.add_form.issue_date = adjusted_date;
+
+      return false;
+    };
+
+    
+    $scope.setAccountTitle = function(id, title, category) {
+      $scope.add_form.account_title_id = id;
+      $('#bookkeeping-new-category').attr('value', title);
+
+      if(category === '비용'){
+        $scope.add_form.operator = "-";
+      }else if(category === '수익'){
+        $scope.add_form.operator = "+";        
+      }
+      
+      return false;
+    };
+    
     $scope.formSubmit = function() {
       $scope.busy = true;
       BookkeepingService.save({

@@ -1,50 +1,124 @@
 <h3>거래내역 입력</h3>
+
 <form class="timeline-form ui small form segment">
-  <div class='field ng-hide'>
-    <textarea ng-model='add_form.content' placeholder="Your message"></textarea>
-  </div>
-  <div class="three fields">
-    <div class="date field">
-      <label>거래일자</label>
-      <input ng-model="add_form.issue_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="거래일자" type="text">
-      <!-- https://github.com/angular-ui/ui-date -->
-      <!-- https://github.com/angular-ui/angular-ui-OLDREPO/issues/47 -->
-    </div>
-    <div class="field">
-      <label>계정항목</label>
-      <select ng-model="add_form.account_title_id">
-          <option value="">Select</option>
-          <optgroup ng-repeat="account_category in account_titles" label="{{account_category.category}}">
-            <option ng-repeat="account_title in account_category.titles" value="{{account_title.id}}">{{account_title.title}}</option>  
-          </optgroup>
-      </select>
-    </div>
-    <div class="field">
-      <label>수입/지출</label>
-      <select ng-model="add_form.operator">
-          <option value="">Select</option>
-          <option value="+">수입</option>
-          <option value="-">지출</option>
-      </select>
-    </div>
-  </div>
-  <div class="three fields">
-    <div class="field">
-      <label>적요</label>
-      <input ng-model="add_form.remark" placeholder="적요란" type="text">
-    </div>
-    <div class="field">
-      <label>거래금액</label>
-      <input ng-model="add_form.amount" placeholder="거래금액" type="text">
-    </div>
-    <div class="field">
-      <label>거래자</label>
-      <select ng-model="add_form.issuer_id">
-          <option value="">Select</option>
+  <div class="ui grid">
+    <div class="row">
+      <div class="ten wide column">
+        <div class="field">
+          <label>무엇을</label>
+          <input ng-model="add_form.remark" placeholder="거래에 관한 간단한 설명을 적어주세요." type="text">
+        </div>
+      </div>
+      <div class="six wide column">
+        <label>누가</label>
+        <select ng-model="add_form.issuer_id">
+          <option value="거래자"></option>
           <option ng-repeat="member in group_members" value="{{member.id}}">{{member.email}}</option>
-      </select>
+        </select>
+        
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="five wide column">
+        <div class="date field">
+          <label>언제</label>
+          <input ng-model="add_form.issue_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="거래일자" type="text">
+          <!-- https://github.com/angular-ui/ui-date -->
+          <!-- https://github.com/angular-ui/angular-ui-OLDREPO/issues/47 -->
+        </div>
+        <div class="ui grid">
+          <div class="row">
+            <div class="eight wide column aligned right"> 
+              <div class="selected-date"><a href="#" ng-click="addDate(add_form.issue_date, 'days', 1)">1일 후</a></div>
+              <div class="selected-date"><a href="#" ng-click="addDate(add_form.issue_date, 'days', 2)">2일 후</a></div>
+              <div class="selected-date"><a href="#" ng-click="addDate(add_form.issue_date, 'days', 3)">3일 후</a></div>
+              <div class="selected-date"><a href="#" ng-click="addDate(add_form.issue_date, 'weeks', 1)">1주일 후</a></div>
+              <div class="selected-date"><a href="#" ng-click="addDate(add_form.issue_date, 'months', 1)">한 달 후</a></div>
+            </div>
+            <div class="eight wide column aligned right">
+              <div class="selected-date"><a href="#" ng-click="subtractDate(add_form.issue_date, 'days', 1)">1일 전</a></div>
+              <div class="selected-date"><a href="#" ng-click="subtractDate(add_form.issue_date, 'days', 2)">2일 전</a></div>
+              <div class="selected-date"><a href="#" ng-click="subtractDate(add_form.issue_date, 'days', 3)">3일 전</a></div>
+              <div class="selected-date"><a href="#" ng-click="subtractDate(add_form.issue_date, 'weeks', 1)">1주일 전</a></div>
+              <div class="selected-date"><a href="#" ng-click="subtractDate(add_form.issue_date, 'months', 1)">한 달 전</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="five wide column">
+        <div class="field">
+          <label>분류</label>
+          <input type="text" id="bookkeeping-new-category" placeholder="분류를 선택해주세요.">
+
+          <div class="account-category" ng-repeat="account_category in account_titles">
+            <div class="account-category-name">
+              {{account_category.category}}
+            </div>
+            <span ng-repeat="account_title in account_category.titles">
+              <a class="ui label account-category-item" ng-class="account_category.category === '비용' ? 'red' : 'blue'" href="#" ng-click="setAccountTitle(account_title.id, account_title.title, account_category.category)"> {{account_title.title}}</a>
+            </span>
+            <br/>
+          </div>
+
+          
+          <!-- <label>분류</label> -->
+          <!-- <select ng-model="add_form.account_title_id" id="bookkeepping-new-category"> -->
+          <!--   <option value="">Select</option> -->
+          <!--   <optgroup ng-repeat="account_category in account_titles" label="{{account_category.category}}"> -->
+          <!--     <option ng-repeat="account_title in account_category.titles" value="{{account_title.id}}">{{account_title.title}}</option>   -->
+          <!--   </optgroup> -->
+          <!-- </select> -->
+
+          <!-- <div class="ui selection dropdown"> -->
+          <!--   <input type="hidden" name="gender"> -->
+          <!--   <div class="default text">Gender</div> -->
+          <!--   <i class="dropdown icon"></i> -->
+          <!--   <div class="menu"> -->
+          <!--     <div class="item" data-value="male">Male</div> -->
+          <!--     <div class="item" data-value="female">Female</div> -->
+          <!--   </div> -->
+          <!-- </div> -->
+
+          <!-- <script> -->
+          <!--   $(function() { -->
+          <!--   $('#bookkeeping-new-category').dropdown(); -->
+          <!--   $('.ui.selection.dropdown').dropdown(); -->
+          <!--   }); -->
+          <!-- </script> -->
+        </div>
+
+      </div>
+
+      <div class="six wide column">
+        <div class="field">
+          <label>금액</label>
+          <input class="aligned right" ng-model="add_form.amount" placeholder="금액을 입력해주세요." type="text">
+        </div>     
+        <div class="ui grid">
+          <div class="row">
+            <div class="eight wide column aligned right">
+              <div class="selected-amount blue"><a href="#" ng-click="addAmount(1000)"><i class="korean won icon"></i>+ 1,000</a></div>
+              <div class="selected-amount blue"><a href="#" ng-click="addAmount(5000)"><i class="korean won icon"></i>+ 5,000</a></div>
+              <div class="selected-amount blue"><a href="#" ng-click="addAmount(10000)"><i class="korean won icon"></i>+ 10,000</a></div>
+              <div class="selected-amount blue"><a href="#" ng-click="addAmount(50000)"><i class="korean won icon"></i>+ 50,000</a></div>
+              <div class="selected-amount blue"><a href="#" ng-click="addAmount(100000)"><i class="korean won icon"></i>+ 100,000</a></div>
+            </div>
+            <div class="eight wide column aligned right">
+              <div class="selected-amount"><a href="#" class="red" ng-click="addAmount(-1000)"><i class="korean won icon"></i>- 1,000</a></div>
+              <div class="selected-amount"><a href="#" class="red" ng-click="addAmount(-5000)"><i class="korean won icon"></i>- 5,000</a></div>
+              <div class="selected-amount"><a href="#" class="red" ng-click="addAmount(-10000)"><i class="korean won icon"></i>- 10,000</a></div>
+              <div class="selected-amount"><a href="#" class="red" ng-click="addAmount(-50000)"><i class="korean won icon"></i>- 50,000</a></div>
+              <div class="selected-amount"><a href="#" class="red" ng-click="addAmount(-100000)"><i class="korean won icon"></i>- 100,000</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="ui blue submit button" ng-click="formSubmit()">입력하기 <div ng-show="busy" class="ui mini active inline loader"></div></div>
-  <div class="ui submit button" ng-click="formCancel()">초기화</div>
+
+  <div class="aligned right">
+    <div class="ui blue submit button" ng-click="formSubmit()">입력하기 <div ng-show="busy" class="ui mini active inline loader"></div></div>
+    <div class="ui submit button" ng-click="formCancel()">초기화</div>
+  </div>
 </form>

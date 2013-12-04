@@ -147,6 +147,9 @@ html, body {
   }
 
   .top-money-info {
+      min-height: 100px;
+      vertical-align: center;
+
     .title {
       font-size:1.2em;
       color:#888;
@@ -157,13 +160,13 @@ html, body {
       font-weight: 300; 
       text-align:center;
       padding:20px 0;
-      font-size:2.5em;
+      font-size:1.3em;
       color:#333;
     }
 
     .columns {
       background-color:#FFF;
-      border:1px solid #bdc3c7;
+      border: 1px solid #bdc3c7;
     }
   }
 

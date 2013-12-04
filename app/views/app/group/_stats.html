@@ -1,0 +1,39 @@
+<div class="ui connected items">
+  <div class="three ui row">
+    <div class="item top-money-info">
+      <div class="content">
+        <div class="name">
+          <i class="cloud download icon"></i>
+          수입
+        </div>
+        <div class="number">
+          <i class="korean won icon"></i> {{stats.income | number}}
+        </div>
+      </div>
+    </div>
+    <div class="item top-money-info">
+      <div class="content">
+        <div class="name">
+          <i class="cloud upload icon"></i>
+          지출
+        </div>
+        <div class="number">
+          <i class="korean won icon"></i> {{stats.outlay | number}}
+        </div>
+      </div>
+    </div>
+    <div class="item top-money-info">
+      <div class="content">
+        <div class="name">
+          <i class="money icon"></i>
+          잔액
+        </div>
+        <div class="number {{ stats.total > 0 ? 'blue' : 'red'}}">
+          <i class="korean won icon"></i> {{stats.total | number}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br/>

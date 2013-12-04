@@ -1,0 +1,32 @@
+html, body {
+  height: 100%; }
+
+.default-layout {
+  background-color: #bdc3c7; }
+  .default-layout .contents-wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+    line-height: 170%; }
+  .default-layout .contents {
+    padding: 0 0 150px; }
+  .default-layout .footer {
+    font-size: 0.9em; }
+    .default-layout .footer .copyright {
+      height: 50px;
+      line-height: 50px;
+      text-align: center; }
+  .default-layout .logo-wrapper {
+    height: 250px;
+    background-color: #2c3e50;
+    text-align: center; }
+    .default-layout .logo-wrapper .logo {
+      width: 100px;
+      height: 100px;
+      margin-top: 50px; }
+  .default-layout .form-wrapper {
+    padding: 20px;
+    margin: -80px auto 0;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px rgba(30, 30, 30, 0.4);
+    min-height: 200px; }
