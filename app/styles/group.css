@@ -13,3 +13,16 @@
         font-size: 55px;
         text-rendering: optimizelegibility;
 }
+
+/* my/timeline.html */
+.groups{
+}
+
+.ui.one.items>.group{
+    width: 95%;
+    min-height: 130px;
+}
+
+.item{
+
+}

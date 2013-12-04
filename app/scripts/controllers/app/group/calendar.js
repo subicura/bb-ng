@@ -16,7 +16,7 @@ angular.module('bbNgApp')
   				end: bookkeeping.issue_date,
           backgroundColor: (bookkeeping.operator === '+' ? 'green' : 'red'),
           borderColor: (bookkeeping.operator === '+' ? 'green' : 'red'),
-          textColor: 'yellow'          
+          textColor: 'yellow'   
   			});
   		});
   	});
