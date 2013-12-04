@@ -1,20 +1,20 @@
 <div class="main-content">
-  <h3>User Profile</h3>
+  <h3>사용자 정보</h3>
   <form name="userForm" ng-submit="userFormSubmit()" novalidate>
     <div class="ui two column middle aligned grid basic form segment">
       <div class="column">
         <div class="field" ng-class="{ error: (userForm.submitted || userForm.username.$dirty) && userForm.username.$invalid }">
-          <label>UserName</label>
+          <label>닉네임</label>
           <input type="text" name="username" ng-model="user.username" required>
           <div class="ui red pointing above ui label" ng-show="(userForm.submitted || userForm.username.$dirty) && userForm.username.$invalid">
-            Enter UserName
+            사용할 닉네임을 입력해주세요.
           </div>
         </div>
         <div class="field" ng-class="{ error: (userForm.submitted || userForm.current_password.$dirty) && userForm.current_password.$invalid }" ng-hide="currentUser.provider">
-          <label>Current Password</label>
+          <label>패스워드</label>
           <input type="password" name="current_password" ng-model="user.current_password" required>
           <div class="ui red pointing above ui label" ng-show="(userForm.submitted || userForm.current_password.$dirty) && userForm.current_password.$invalid">
-            Enter password
+            암호를 입력해주세요.
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
             <img ng-src="{{ currentUser.avatar_url.medium }}" class="avatar" />
           </div>
           <a id="addAvatarBtn" class="ui black button" avatar-upload>
-            <span class="ladda-label">프로필 이미지 등록</span>
+            <span class="ladda-label">사용자 이미지 등록</span>
           </a>
         </div>
       </div>

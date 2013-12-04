@@ -36,6 +36,7 @@
   </div>
 </div>
 
+<h3>거래내역 입력</h3>
 <form class="timeline-form ui small form segment">
   <div class='field ng-hide'>
     <textarea ng-model='add_form.content' placeholder="Your message"></textarea>
@@ -82,8 +83,8 @@
       </select>
     </div>
   </div>
-  <div class="ui blue submit button" ng-click="formSubmit()">Submit <div ng-show="busy" class="ui mini active inline loader"></div></div>
-  <div class="ui submit button" ng-click="formCancel()">Cancel</div>
+  <div class="ui blue submit button" ng-click="formSubmit()">입력하기 <div ng-show="busy" class="ui mini active inline loader"></div></div>
+  <div class="ui submit button" ng-click="formCancel()">초기화</div>
 </form>
 
 <ul class='bookkeepings'>
