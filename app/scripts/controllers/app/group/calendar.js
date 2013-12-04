@@ -4,14 +4,14 @@ angular.module('bbNgApp')
   .controller('AppGroupCalendarCtrl', function ($scope, $state, BookkeepingService) {
 
   	$scope.events = [];
-  	$scope.bookkeepings = BookkeepingService.query({ group_id:$state.params.group_id }, function(data){
+  	$scope.bookkeepings = BookkeepingService.query({ group_id:$state.params.group_id, old: "true"}, function(data){
   		_.each(data, function(bookkeeping){
   			$scope.events.push({
   				id: bookkeeping.id,
   				title: bookkeeping.operator + accounting.formatMoney(bookkeeping.amount, { symbol : "₩", precision : 0, format: "%s %v" })
   							+ " [" + bookkeeping.account_title.account_category.name + "-" + bookkeeping.account_title.title + "] "
-  							+ bookkeeping.remark + (bookkeeping.content ? "-" + bookkeeping.content : "") 
-  							+ ((bookkeeping.proofs.length + bookkeeping.comments.length) > 0 ? "(" + (bookkeeping.proofs.length + bookkeeping.comments.length) + ")" : ""),
+  							+ bookkeeping.remark + (bookkeeping.content ? "-" + bookkeeping.content : ""),
+
   				start: bookkeeping.issue_date,
   				end: bookkeeping.issue_date,
           backgroundColor: (bookkeeping.operator === '+' ? 'green' : 'red'),

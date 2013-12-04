@@ -15,7 +15,7 @@ angular.module('bbNgApp')
 
   	$scope.searchUsers = function(){
       if($scope.searchText == ""){
-        window.alert('Enter the search text!');
+        window.alert('찾으려는 사용자를 입력해주세요!!');
       } else {
     		UserService.search({search: $scope.searchText}, function(data){
           $scope.users = _.filter(data, function(user){
