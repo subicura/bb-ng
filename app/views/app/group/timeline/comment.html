@@ -1,5 +1,13 @@
 <div class="ui comments" ng-controller="AppGroupTimelineCommentCtrl">
-  <h6>{{ bookkeeping_comments.comments.length }} Comments</h6>
+  <div ng-switch on="bookkeeping_comments.comments.length">  
+    <div ng-switch-when="0">
+      <h6>아직 댓글이 없어요. 첫번째 댓글을 달아주세요 :)</h6>
+    </div>
+    <div ng-switch-default>
+      <h6>{{ bookkeeping_comments.comments.length }}개의 댓글이 있습니다.</h6>
+    </div>
+  </div>
+
   <div class="ui button" ng-show="bookkeeping_comments.next" ng-click="more(bookkeeping_comments.next)" ng-disabled="busy" ng-init="busy=false">
     더보기 <div ng-show="busy" class="ui mini active inline loader"></div>
   </div>
@@ -12,7 +20,7 @@
           <small>{{ comment.create_at | timeago }}</small>
         </p>
         <div class="actions">
-          <a class="delete" ng-click="removeComment(comment)">Delete</a>
+          <a class="delete" ng-click="removeComment(comment)">삭제</a>
         </div>
       </div>
     </div>
@@ -20,10 +28,10 @@
   
   <form class="ui reply form commentForm" name="commentForm" ng-submit="addComment()" novalidate>
     <div class="field" ng-class="{ error: (commentForm.submitted || commentForm.content.$dirty) && commentForm.content.$invalid }">
-      <input type="text" ng-model="newComment.content" name="content" placeholder="Your comment" required />
+      <input type="text" ng-model="newComment.content" name="content" placeholder="댓글을 입력해주세요." required />
     </div>
     <div class="ui button teal submit labeled icon" ng-click="addComment()">
-      <i class="icon edit"></i> Add Comment <div ng-show="busy" class="ui mini active inline loader"></div>
+      <i class="icon edit"></i> 댓글 달기 <div ng-show="busy" class="ui mini active inline loader"></div>
     </div>
   </form>
 </div>

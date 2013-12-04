@@ -15,11 +15,11 @@
 <div class="user-popup-menu" ng-show="showUserPopup">
   <a class="settings" ui-sref="app.setting">
     <i class="fa fa-cog"></i>
-    <div>Setting</div>
+    <div>계정 설정</div>
   </a>
   <a class="logout" ng-click="logout()">
     <i class="fa fa-sign-out"></i>
-    <div>Logout</div>
+    <div>로그아웃</div>
   </a>
 </div>
 
@@ -29,7 +29,7 @@
     <div class="sidemenu" ng-controller="AppMenuCtrl">
       <div class="ui vertical inverted text menu">
         <a class="item" ng-class="{active:$state.includes('app.my')}" ui-sref="app.my.timeline">
-          <i class="home icon"></i> My Money
+          <i class="home icon"></i> 내 그룹
         </a>
       </div>
       <div class="ui horizontal inverted divider">
@@ -41,7 +41,7 @@
           {{ group.name }}
         </a>
       </div>
-      <a class="ui fluid red small button" ng-click="showNewGroup()">New Group</a>
+      <a class="ui fluid red small button" ng-click="showNewGroup()">그룹 추가하기</a>
 
       <!-- new group modal -->
       <div class="ui new group modal">
