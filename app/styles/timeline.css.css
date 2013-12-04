@@ -1,0 +1,163 @@
+.right {
+  text-align: right; }
+
+ul.bookkeepings {
+  margin-top: 10px;
+  padding: 15px 0;
+  background-color: #fff; }
+  ul.bookkeepings .bookkeeping {
+    position: relative;
+    padding: 25px 0;
+    border-bottom: 1px solid #EFEFEF; }
+    ul.bookkeepings .bookkeeping .writer-avatar {
+      width: 100%; }
+    ul.bookkeepings .bookkeeping .issuer {
+      font-weight: bold;
+      font-size: 1.5em; }
+    ul.bookkeepings .bookkeeping .created-at {
+      position: absolute;
+      right: 15px;
+      top: 0px;
+      color: #999; }
+    ul.bookkeepings .bookkeeping .remark {
+      padding: 5px 0;
+      font-size: 14px; }
+    ul.bookkeepings .bookkeeping .amount {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
+      font-size: 4em;
+      text-align: right; }
+    ul.bookkeepings .bookkeeping .red {
+      color: #D95C5C; }
+    ul.bookkeepings .bookkeeping .blue {
+      color: #1AB8F3; }
+    ul.bookkeepings .bookkeeping .writer {
+      color: #AAA;
+      text-align: right; }
+    ul.bookkeepings .bookkeeping .item {
+      width: 100%; }
+    ul.bookkeepings .bookkeeping .reply-avatar {
+      width: 100%; }
+    ul.bookkeepings .bookkeeping .proof {
+      margin-top: 10px; }
+      ul.bookkeepings .bookkeeping .proof img {
+        width: 100%; }
+    ul.bookkeepings .bookkeeping.ng-enter {
+      animation: fadeInRight 1s; }
+    ul.bookkeepings .bookkeeping.ng-leave {
+      animation: fadeOutRight 1s; }
+
+.comment.ng-enter {
+  animation: fadeInRight 1s; }
+.comment.ng-leave {
+  animation: hinge 1.5s; }
+
+.red {
+  color: #D95C5C; }
+
+.blue {
+  color: #1AB8F3; }
+
+.selected-amount {
+  border-bottom: 1px solid #bbb;
+  display: block;
+  width: 100%;
+  padding: 2px;
+  margin: 3px 0; }
+
+.selected-date {
+  border-bottom: 1px solid #bbb;
+  display: block;
+  width: 100%;
+  padding: 2px;
+  margin: 3px 0; }
+
+.account-category {
+  line-height: 2em; }
+
+.account-category-items {
+  line-height: 1.3em; }
+
+.account-category-item {
+  line-height: 1em; }
+
+.account-category-name {
+  font-weight: bold;
+  margin: 8px 0;
+  padding: 1px;
+  border-bottom: 1px solid #bbb; }
+
+/*
+.timeline-top-menu {
+  padding-bottom:10px;
+}
+
+ul.bookkeepings {
+  margin-bottom:1em;
+}
+li.bookkeeping {
+  margin-bottom:2em;
+  td {
+    padding:.8em !important;
+  }
+   
+  .content {
+    border:1px solid #eaeaea;
+    background-color: white;
+    padding:1em;
+    margin-bottom:1em;
+    margin-top:1em;
+  }
+
+  &.ng-enter {
+    animation: fadeInDown 1s;
+  }
+  
+  &.ng-leave {
+    animation: fadeOutRight 1s;
+  }
+}
+
+.red { color:red;}
+.blue { color:blue;}
+.green { color:green;}
+
+ul.proofs {
+  padding-left:0;
+  padding:3px;
+  border:1px solid #d0d0d0;
+  display:table;
+  background: white;
+  margin-bottom:.5em;
+  li.proof {
+    list-style: none;
+    border:5px solid white;
+    border-spacing: 2px;
+    background-color: white;
+    display:table-cell;
+    position:relative;
+    img {
+      vertical-align: middle;
+    }
+  }
+}
+.gridStyle {
+  border: 1px solid rgb(212,212,212);
+  width: 99%;
+  height: 300px
+}
+
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.ngCellText {
+  line-height: 25px !important;
+}
+.ngHeaderText {
+  line-height: 25px !important;
+}
+
+*/

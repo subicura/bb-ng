@@ -1,0 +1,192 @@
+html, body {
+  height: 100%; }
+
+.app-layout {
+  background-color: #ecf0f1;
+  /* --------------------------
+   * Responsive Styles
+   * --------------------------
+  */ }
+  .app-layout .gnb {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 10;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 1px 1px rgba(100, 100, 100, 0.3); }
+    .app-layout .gnb .right.menu {
+      height: 60px;
+      line-height: 60px; }
+      .app-layout .gnb .right.menu .notification, .app-layout .gnb .right.menu .user-info, .app-layout .gnb .right.menu .logout {
+        color: #666;
+        padding: 8px;
+        border: 1px solid #CCC;
+        border-radius: 3px;
+        margin-right: 10px; }
+        .app-layout .gnb .right.menu .notification:hover, .app-layout .gnb .right.menu .user-info:hover, .app-layout .gnb .right.menu .logout:hover {
+          color: #000; }
+      .app-layout .gnb .right.menu .user-info {
+        padding: 15px; }
+        .app-layout .gnb .right.menu .user-info img {
+          width: 30px;
+          height: 30px;
+          margin-right: 8px; }
+  .app-layout .user-popup-menu {
+    position: fixed;
+    top: 55px;
+    right: 10px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(30, 30, 30, 0.5);
+    border-radius: 5px;
+    z-index: 20;
+    padding: 10px; }
+    .app-layout .user-popup-menu a {
+      text-align: center;
+      display: block;
+      float: left;
+      color: #333; }
+      .app-layout .user-popup-menu a i {
+        color: #333;
+        margin: 10px;
+        font-size: 20px; }
+    .app-layout .user-popup-menu .settings {
+      margin-right: 15px; }
+  .app-layout .contents-wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+    line-height: 170%; }
+  .app-layout .contents {
+    padding: 70px 15px 50px;
+    margin-left: 200px; }
+  .app-layout .sidemenu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 200px;
+    min-height: 100%;
+    color: #EFEFEF;
+    padding: 20px 10px 10px;
+    box-sizing: border-box;
+    background-color: #2a3542; }
+  .app-layout .sidemenu.ui.vertical.menu {
+    width: 200px; }
+  .app-layout .footer {
+    font-size: 0.9em;
+    margin-left: 200px; }
+    .app-layout .footer .copyright {
+      height: 50px;
+      line-height: 50px;
+      text-align: center; }
+  @media (max-width: 768px) {
+    .app-layout .gnb {
+      position: relative; }
+    .app-layout .user-popup-menu {
+      position: absolute; }
+    .app-layout .sidemenu {
+      position: relative;
+      color: #EFEFEF;
+      padding: 10px;
+      box-sizing: border-box;
+      background-color: #2a3542;
+      width: 100%;
+      top: 0; }
+    .app-layout .contents {
+      margin-left: 0;
+      padding: 0 0 50px; }
+    .app-layout .content {
+      padding: 10px; }
+    .app-layout .footer {
+      margin-left: 0; } }
+  .app-layout .fc-header {
+    background-color: transparent;
+    border: 0; }
+  .app-layout .timeline-top-menu {
+    margin-bottom: 10px; }
+  .app-layout .top-money-info {
+    min-height: 100px;
+    vertical-align: center; }
+    .app-layout .top-money-info .title {
+      font-size: 1.2em;
+      color: #888;
+      padding: 15px 5px 0; }
+    .app-layout .top-money-info .number {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 1.3em;
+      color: #333; }
+    .app-layout .top-money-info .columns {
+      background-color: #FFF;
+      border: 1px solid #bdc3c7; }
+  .app-layout .bookkeeping {
+    list-style: none; }
+
+/*
+.app-layout {
+  color:#333;
+  background-color:#353D40;
+
+  .main-content {
+    margin-left:200px;
+    background-color:#F4F4F4;
+    padding:50px 10px;
+    min-height:640px;
+  }
+}
+
+.main.menu {
+  top: 0px;
+  min-width: 320px;
+  z-index: 900;
+  box-sizing: border-box;
+  transition: margin 0.3s ease;
+}
+
+.copyright {
+  text-align:center;
+  padding:15px;
+  .ui.label {
+    font-size:10px;
+  }
+}
+
+.launch.item {
+  width:200px;
+}
+
+.sidemenu {
+  position:absolute;
+  top:0;
+  left:0;
+  width:200px;
+  color:#EFEFEF;
+  padding:52px 10px 10px;
+  box-sizing: border-box;
+}
+
+.sidemenu.ui.vertical.menu {
+  width:200px;
+}
+
+.top-money-info .number {
+  text-align:center;
+  padding-top:20px;
+  font-size:1.5rem;
+}
+
+.ui.menu .item.top-user-info {
+  position:relative;
+  padding-left:35px;
+
+  .user-avatar {
+    position:absolute;
+    top:5px;
+    left:5px;
+    width:25px;
+    height:25px;
+  }
+}
+*/
