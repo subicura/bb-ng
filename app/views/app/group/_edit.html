@@ -1,0 +1,67 @@
+<!-- modal for edit bookkeeping -->
+<div class="ui edit bookkeeping modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Bookkeeping 수정
+  </div>
+  <div class="content">
+    <form class="timeline-form ui small form segment">
+      <!-- <div class='field'> -->
+      <!--   <textarea ng-model='edit_form.content' placeholder="Your message"></textarea> -->
+      <!-- </div> -->
+      <div class="three fields">
+        <div class="date field">
+          <label>거래일자</label>
+          <input ng-model="edit_form.issue_date" ui-date="{ dateFormat: 'yy-mm-dd' }" placeholder="거래일자" type="text">
+          <!-- https://github.com/angular-ui/ui-date -->
+          <!-- https://github.com/angular-ui/angular-ui-OLDREPO/issues/47 -->
+        </div>
+        <div class="field">
+          <label>계정항목</label>
+          <select ng-model="edit_form.account_title_id">
+            <option value="" ng-selected="edit_form.account_title_id == ''">Select</option>
+            <optgroup ng-repeat="account_category in account_titles" label="{{account_category.category}}">
+              <option ng-repeat="account_title in account_category.titles" value="{{account_title.id}}"
+                      ng-selected="edit_form.account_title.id == account_title.id">{{account_title.title}}</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="field">
+          <label>수입/지출</label>
+          <select ng-model="edit_form.operator">
+            <option value="" ng-selected="edit_form.operator == ''">Select</option>
+            <option value="+" ng-selected="edit_form.operator == '+'">수입</option>
+            <option value="-" ng-selected="edit_form.operator == '-'">지출</option>
+          </select>
+        </div>
+      </div>
+      <div class="three fields">
+        <div class="field">
+          <label>적요</label>
+          <input ng-model="edit_form.remark" placeholder="적요란" type="text">
+        </div>
+        <div class="field">
+          <label>거래금액</label>
+          <input ng-model="edit_form.amount" placeholder="거래금액" type="text">
+        </div>
+        <div class="field">
+          <label>거래자</label>
+          <select ng-model="edit_form.issuer_id">
+            <option value="" ng-selected="edit_form.issuer_id == ''">Select</option>
+            <option ng-repeat="member in group_members" value="{{member.id}}"
+                    ng-selected="edit_form.issuer.id == member.id">{{member.username}}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="actions">
+    <div class="ui black cancel button">
+      Cancel
+    </div>
+    <div class="ui green right labeled icon button" ng-click="editBookkeeping()">
+      Edit
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>

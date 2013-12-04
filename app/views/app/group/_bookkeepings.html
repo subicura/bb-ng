@@ -1,0 +1,53 @@
+
+<ul class='bookkeepings'>
+  <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings">
+    <div class="row">
+      <div class="small-3 columns">
+        <img class="writer-avatar" ng-src="{{bookkeeping.issuer.avatar_url}}">
+      </div>
+      <div class="small-9 columns">
+        <div class="issuer">{{bookkeeping.issuer.username}}</div>
+        <div class="created-at">{{bookkeeping.issue_date}}</div>
+        <div class="remark">
+          <span class='label'>{{bookkeeping.account_title.title}}</span>
+          {{bookkeeping.remark}}
+        </div>
+        <div class="amount" ng-class="bookkeeping.operator == '-' ? 'red' : 'blue'">
+          <i class="korean won icon"></i>{{bookkeeping.amount | number}}
+        </div>
+
+        <div class="writer">{{bookkeeping.writer.username}}님이 작성하였습니다.</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-9 small-offset-3 columns">
+        <div ng-include="'/views/app/group/timeline/proof.html'" class="proof"></div>
+        <ul class="inline-list">
+          <li>
+            <a ng-click="removeBookkeeping($index)" ng-show="canUpdate({{ bookkeeping.writer }})">
+              삭제
+            </a>
+          </li>
+          <li>
+            <a ng-click="showEditBookkeeping(bookkeeping)" ng-show="canUpdate({{ bookkeeping.writer }})">
+              수정
+            </a>
+          </li>
+          <li>
+            <a ng-click="likeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) < 0">
+              좋아요
+            </a>
+            <a ng-click="dislikeBookkeeping(bookkeeping)" ng-show="bookkeeping.liker_ids.indexOf(currentUser.id) >= 0">
+              좋아요취소
+            </a>
+          </li>
+          <li>
+            <span ng-show="bookkeeping.likes_count > 0">{{ bookkeeping.likes_count }} 명이 좋아합니다.</span>
+          </li>
+        </ul>
+
+        <div ng-include="'/views/app/group/timeline/comment.html'"></div>
+      </div>
+    </div>
+  </li>
+</ul>

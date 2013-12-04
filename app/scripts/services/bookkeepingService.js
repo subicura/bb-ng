@@ -10,10 +10,23 @@ angular.module('bbNgApp')
       update: {
         method: "PUT"
       },
+      index_between: {
+        method: "GET",
+        params: {
+          collection_action: "index_between"
+        },
+        isArray: true
+      },
       calculate: {
         method: "GET",
         params: {
           collection_action: "calculate"
+        }
+      },
+      calculate_between: {
+        method: "GET",
+        params: {
+          collection_action: "calculate_between"
         }
       },
       add_proof: {

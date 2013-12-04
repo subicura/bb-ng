@@ -17,7 +17,7 @@ angular.module('bbNgApp')
           backgroundColor: (bookkeeping.operator === '+' ? 'green' : 'red'),
           borderColor: (bookkeeping.operator === '+' ? 'green' : 'red'),
           textColor: 'yellow'          
-  			})
+  			});
   		});
   	});
 
@@ -41,5 +41,4 @@ angular.module('bbNgApp')
     };
     /* event sources array*/
     $scope.eventSources = [$scope.events];
-
   });
