@@ -6,8 +6,12 @@
         <img class="writer-avatar" ng-src="{{bookkeeping.issuer.avatar_url}}">
       </div>
       <div class="small-9 columns">
-        <div class="issuer">{{bookkeeping.issuer.username}}</div>
-        <div class="created-at">{{bookkeeping.issue_date}}</div>
+        <div class="issuer">
+          <i class="fa fa-user"></i> {{bookkeeping.issuer.username}}
+        </div>
+        <div class="created-at">
+          <i class="fa fa-clock-o"></i> {{bookkeeping.issue_date}}
+        </div>
         <div class="remark">
           <span class='label'>{{bookkeeping.account_title.title}}</span>
           {{bookkeeping.remark}}

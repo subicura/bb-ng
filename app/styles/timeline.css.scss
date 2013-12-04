@@ -16,6 +16,7 @@ ul.bookkeepings {
     }
     .issuer {
       font-weight:bold;
+      font-size:1.5em;
     }
     .created-at {
       position:absolute;
@@ -28,7 +29,8 @@ ul.bookkeepings {
       font-size:14px;
     }
     .amount {
-      font-family:"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300; 
       font-size:4em;
       text-align:right;
     }
