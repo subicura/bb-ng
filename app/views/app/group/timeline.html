@@ -15,26 +15,7 @@
 <!--   </div> -->
 <!-- </form> -->
 
-<div class="top-money-info row">
-  <div class="large-4 columns income">
-    <div class="title"><i class="fa fa-cloud-download"></i> 수입</div>
-    <div class="number">
-      <i class="korean won icon"></i> {{stats.income | number}}
-    </div>
-  </div>
-  <div class="large-4 columns outlay">
-    <div class="title"><i class="fa fa-cloud-upload"></i> 지출</div>
-    <div class="number">
-      <i class="korean won icon"></i> {{stats.outlay | number}}
-    </div>
-  </div>
-  <div class="large-4 columns total">
-    <div class="title"><i class="fa fa-money"></i> 잔액</div>
-    <div class="number">
-      <i class="korean won icon"></i> {{stats.total | number}}
-    </div>
-  </div>
-</div>
+<div ng-include="'/views/app/group/_stats.html'"></div>
 
 <div ng-include="'/views/app/group/_new.html'"></div>
 
