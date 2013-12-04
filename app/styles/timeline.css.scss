@@ -75,6 +75,49 @@ ul.bookkeepings {
     }
 }
 
+.red {
+    color:#D95C5C;
+}
+.blue {
+    color:#1AB8F3;
+}
+
+.selected-amount{
+    border-bottom: 1px solid #bbb;
+    display: block;
+    width: 100%;
+    padding: 2px;
+    margin: 3px 0;
+}
+
+.selected-date{
+    border-bottom: 1px solid #bbb;
+    display: block;
+    width: 100%;
+    padding: 2px;
+    margin: 3px 0;
+}
+
+.account-category{
+    line-height: 2em;
+}
+
+.account-category-items{
+    line-height: 1.3em;
+}
+
+.account-category-item{
+    line-height: 1em;
+}
+
+.account-category-name{
+    font-weight: bold;
+    margin: 8px 0;
+    padding: 1px;
+    border-bottom: 1px solid #bbb;
+
+}
+
 /*
 .timeline-top-menu {
   padding-bottom:10px;
