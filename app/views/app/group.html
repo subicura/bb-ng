@@ -11,16 +11,23 @@
       <a class="ui button" ng-class="{active:$state.is('app.group.member')}" ui-sref=".member({group_id:$state.params.group_id})">
         <i class="users icon"></i>
       </a>
-      <a class="ui button ng-hide" ng-class="{active:$state.is('app.group.setting')}" ui-sref=".setting({group_id:$state.params.group_id})">
+
+      <!-- <a class="ui button ng-hide" ng-class="{active:$state.is('app.group.setting')}" ui-sref=".setting({group_id:$state.params.group_id})"> -->
+      <!--   <i class="setting icon"></i> -->
+      <!-- </a> -->
+
+      <a class="ui small button" ng-click="showEditGroup(group)">
         <i class="setting icon"></i>
       </a>
+
+
     </div>
   </div>
 
   <div class="timeline-detail">
     <h1 class="ui dividing header">
       {{ group.name }}
-      <a class="ui small button" ng-click="showEditGroup(group)">EDIT</a>
+      <!-- <a class="ui small button" ng-click="showEditGroup(group)">EDIT</a> -->
       <div class="sub header">{{ group.description }}</div>
     </h1>
     <!-- new group modal -->

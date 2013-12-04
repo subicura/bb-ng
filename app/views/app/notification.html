@@ -1,12 +1,14 @@
 <div class="main-content">
 
-  <div class='bookkeeping' ng-repeat="activity in activities">
-    <div ng-switch on="activity.trackable_type">
-      <div ng-switch-when="Comment">
-        <div ng-include="'/views/app/notification/comment.html'"></div>
-      </div>
-      <div ng-switch-when="Bookkeeping">
-        <div ng-include="'/views/app/notification/bookkeeping.html'"></div>
+  <div class="ui items" ng-repeat="activity in activities">
+    <div class="item" style="width:99%; min-height:10px">
+      <div ng-switch on="activity.trackable_type">
+        <div ng-switch-when="Comment">
+          <div ng-include="'/views/app/notification/comment.html'"></div>
+        </div>
+        <div ng-switch-when="Bookkeeping">
+          <div ng-include="'/views/app/notification/bookkeeping.html'"></div>
+        </div>
       </div>
     </div>
   </div>
