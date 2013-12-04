@@ -8,9 +8,10 @@
     </div>
     <div class="ui buttons">
       <div class="ui blue large submit button" ng-click="termSubmit()">기간별</div>
-      <div class="ui blue large submit button" ng-click="thisMonth()">이번달</div>
-      <div class="ui blue large submit button" ng-click="thisYear()">올해</div>
-      <div class="ui positive large submit button" ng-click="monthlyBalance()">월말정산</div>
+      <div class="ui blue large submit button" ng-click="updateBetween('week')">이번주</div>
+      <div class="ui blue large submit button" ng-click="updateBetween('month')">올번달</div>
+      <div class="ui blue large submit button" ng-click="updateBetween('year')">올해</div>
+      <!-- <div class="ui positive large submit button" ng-click="monthlyBalance()">월말정산</div> -->
     </div>
   </div>
 </form>
@@ -53,7 +54,8 @@
   </div>
 </div>
 
+<br/>
 <h3>거래내역</h3>
-<div class="gridStyle" ng-grid="gridOptions" style="height:300px"></div>
+<div class="gridStyle" ng-grid="gridOptions" style="height:500px"></div>
 
 
