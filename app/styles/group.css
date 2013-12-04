@@ -1,4 +1,15 @@
+/* Import Google Web Font */
+@import url(http://fonts.googleapis.com/css?family=Signika:700);
+
 .timeline-detail{
     margin-top: 30px;
     margin-bottom: 10px;
+}
+
+.group-name{
+        font-family: "Signika", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 700; 
+        text-transform: uppercase;
+        font-size: 55px;
+        text-rendering: optimizelegibility;
 }
