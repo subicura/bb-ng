@@ -73,10 +73,12 @@ angular.module('bbNgApp')
 
     $scope.editBookkeeping = function() {
       var idx = $scope.bookkeepings.bookkeepings.indexOf($scope.bookkeeping);
+      console.log(idx);
       $scope.bookkeeping = $scope.edit_form;
-      $scope.bookkeeping.$update({group_id: $state.params.group_id, id: $scope.bookkeeping.id}, function(data) {
+      //$scope.bookkeeping.$update({group_id: $state.params.group_id, id: $scope.bookkeeping.id}, function(data) {
+      BookkeepingService.update({group_id: $state.params.group_id, id: $scope.bookkeeping.id, bookkeeping:$scope.bookkeeping}, function(data) {
         BookkeepingService.get({group_id: $state.params.group_id, id: $scope.bookkeeping.id}, function(data) {
-          $scope.bookkeepings[idx] = data;
+          angular.extend($scope.bookkeepings.bookkeepings[idx], data);
         });
 
         $('.edit.group.modal').modal('hideDimmer');
