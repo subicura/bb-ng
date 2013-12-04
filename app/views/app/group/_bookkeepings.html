@@ -1,6 +1,6 @@
 
 <ul class='bookkeepings'>
-  <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings">
+  <li class='bookkeeping' ng-repeat="bookkeeping in bookkeepings.bookkeepings | orderBy:'-id'">
     <div class="row">
       <div class="small-3 columns">
         <img class="writer-avatar" ng-src="{{bookkeeping.issuer.avatar_url}}">
@@ -28,7 +28,7 @@
         <div ng-include="'/views/app/group/timeline/proof.html'" class="proof"></div>
         <ul class="inline-list">
           <li>
-            <a ng-click="removeBookkeeping($index)" ng-show="canUpdate({{ bookkeeping.writer }})">
+            <a ng-click="removeBookkeeping(bookkeeping)" ng-show="canUpdate({{ bookkeeping.writer }})">
               <i class="fa fa-times-circle"></i> 삭제
             </a>
           </li>
