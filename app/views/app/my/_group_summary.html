@@ -1,0 +1,87 @@
+<div class="ui one items groups">
+  <div class="item group" ng-repeat="group in membered_groups">
+    <div class="ui grid">
+      <div class="row">
+        <div class="four wide column center aligned">
+          <!-- <div class="image"> -->
+
+          <!--   <\!-- currentUser가 owner인 경우만 삭제 아이콘을 보여줌 -\-> -->
+          <!--   <a class="star ui corner label" ng-click="removeUser(member.id)" ng-hide="!isOwner"> -->
+          <!--     <i class="remove sign icon" data-content="Hello, I am a pop-up."></i> -->
+          <!--   </a> -->
+          <!-- </div> -->
+          <div class="content">
+            <h4>
+              <a ui-sref="app.group.timeline({group_id:group.id})">
+                <i class="users icon"></i>
+                {{ group.name }}
+              </a>
+            </h4>
+          </div>
+
+
+          <div class="ui vertical black buttons">
+            <a class="ui button" ng-class="{active:$state.is('app.group.timeline')}" ui-sref="app.group.timeline({group_id:group.id})">타임라인</a>
+            <a class="ui button" ng-class="{active:$state.is('app.group.item')}" ui-sref="app.group.item({group_id:group.id})">거래내역</a>
+          </div>
+          <div class="ui vertical black buttons">
+            <a class="ui button" ng-class="{active:$state.is('app.group.calendar')}" ui-sref="app.group.calendar({group_id:group.id})">달력</a>
+            <a class="ui button" ng-class="{active:$state.is('app.group.report')}" ui-sref="app.group.report({group_id:group.id})">보고서</a>
+          </div>
+        </div>
+
+        <!-- <div class="eight wide column"> -->
+        <!--   <div class="ui vertically divided grid"> -->
+        <!--     <div class="one column row"> -->
+        <!--       <div class="column">aoeuhaoeuhsoaeuthoehuse</div> -->
+        <!--     </div> -->
+        <!--     <div class="one column row"> -->
+        <!--       <div class="column">aoeutahoeusaeuhaehoushetsu</div> -->
+        <!--     </div> -->
+        <!--   </div> -->
+        <!-- </div> -->
+
+        <div class="twelve top-money-info wide column">
+          <div class=" ui connected items vertically">
+            <div class="three ui row">
+              <div class="item">
+                <div class="content">
+                  <div class="name">
+                    <i class="cloud download icon"></i>
+                    수입
+                  </div>
+                  <div class="number">
+                    <i class="korean won icon"></i> {{group.stats.income | number}}
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="content">
+                  <div class="name">
+                    <i class="cloud upload icon"></i>
+                    지출
+                  </div>
+                  <div class="number">
+                    <i class="korean won icon"></i> {{group.stats.outlay | number}}
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="content">
+                  <div class="name">
+                    <i class="money icon"></i>
+                    잔액
+                  </div>
+                  <div class="number {{ stats.total > 0 ? 'blue' : 'red'}}">
+                    <i class="korean won icon"></i> {{group.stats.total | number}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
