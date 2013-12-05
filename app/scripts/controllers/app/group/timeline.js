@@ -138,6 +138,7 @@ angular.module('bbNgApp')
     
     $scope.formSubmit = function() {
       $scope.busy = true;
+      $scope.add_form.amount = Math.abs($scope.add_form);
       BookkeepingService.save({
         group_id: $state.params.group_id,
         bookkeeping: $scope.add_form
